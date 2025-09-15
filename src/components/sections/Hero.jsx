@@ -1,11 +1,25 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { styles } from "../../constants/styles";
-import { ComputersCanvas } from "../canvas";
+import DenvilLogo3DLazy from "../DenvilLogo3DLazy";
+import StarFieldLazy from "../StarFieldLazy";
 
 const Hero = () => {
   return (
     <section className={`relative mx-auto h-screen w-full`}>
+      {/* 3D Star Field Background */}
+      <StarFieldLazy />
+      
+      {/* Background with gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80">
+        {/* Animated background pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#915EFF] rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+          <div className="absolute top-3/4 right-1/4 w-64 h-64 bg-secondary rounded-full mix-blend-multiply filter blur-xl animate-pulse" style={{animationDelay: '2s'}}></div>
+          <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-tertiary rounded-full mix-blend-multiply filter blur-xl animate-pulse" style={{animationDelay: '4s'}}></div>
+        </div>
+      </div>
+
       <div
         className={`absolute inset-0 top-[120px] mx-auto max-w-7xl ${styles.paddingX} flex flex-row items-start gap-5`}
       >
@@ -25,7 +39,17 @@ const Hero = () => {
         </div>
       </div>
 
-      <ComputersCanvas />
+      {/* 3D DENVIL Logo */}
+      <div className="absolute right-0 top-0 h-full w-1/2 flex items-center justify-center">
+        <motion.div 
+          className="h-64 w-64 md:h-80 md:w-80 lg:h-96 lg:w-96"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <DenvilLogo3DLazy className="h-full w-full" />
+        </motion.div>
+      </div>
 
       <div className="xs:bottom-10 absolute bottom-32 flex w-full items-center justify-center">
         <a href="#about">
