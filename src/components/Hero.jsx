@@ -1,5 +1,7 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import DenvilLogo3D from './DenvilLogo3D';
+import StarField from './StarField';
 
 export default function Hero() {
   const scrollToSection = (sectionId) => {
@@ -11,8 +13,11 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* 3D Star Field Background */}
+      <StarField />
+      
       {/* Background with gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900">
+      <div className="absolute inset-0 bg-gradient-to-br from-dark-900/80 via-dark-800/60 to-dark-900/80">
         {/* Animated background pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary-500 rounded-full mix-blend-multiply filter blur-xl animate-float"></div>
@@ -22,40 +27,74 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
-        {/* Main Title */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
-          <span className="block text-gradient mb-2">Code, Design, Compete</span>
-        </h1>
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        {/* Hi, I'm Text */}
+        <motion.h1 
+          className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <span className="block text-gradient">Hi, I'm</span>
+        </motion.h1>
 
         {/* 3D DENVIL Logo */}
-        <div className="relative z-20 mb-8">
-          <DenvilLogo3D className="mx-auto" />
-        </div>
+        <motion.div 
+          className="relative z-20 mb-4 sm:mb-6 h-48 sm:h-64 md:h-80 lg:h-96"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <DenvilLogo3D className="mx-auto h-full" />
+        </motion.div>
+
+        {/* CODER Text */}
+        <motion.h2 
+          className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold mb-6 sm:mb-8 text-gradient"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        >
+          CODER 👨‍💻
+        </motion.h2>
 
         {/* Subtitle */}
-        <p className="text-lg md:text-xl lg:text-2xl text-dark-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+        <motion.p 
+          className="text-base sm:text-lg md:text-xl lg:text-2xl text-dark-300 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-2"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.1 }}
+        >
           Crafting digital experiences and competing at the highest level
-        </p>
+        </motion.p>
 
         {/* Call to Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <motion.div 
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.4 }}
+        >
           <button
             onClick={() => scrollToSection('about')}
-            className="btn btn-primary text-lg px-8 py-4"
+            className="btn btn-primary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto"
           >
             Explore My Work
           </button>
           <button
             onClick={() => scrollToSection('contact')}
-            className="btn btn-secondary text-lg px-8 py-4"
+            className="btn btn-secondary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto"
           >
             Get In Touch
           </button>
-        </div>
+        </motion.div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <motion.div 
+          className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop" }}
+        >
           <button
             onClick={() => scrollToSection('about')}
             className="text-dark-400 hover:text-primary-400 transition-colors"
@@ -75,7 +114,7 @@ export default function Hero() {
               />
             </svg>
           </button>
-        </div>
+        </motion.div>
       </div>
 
       {/* Side decorative elements */}

@@ -12,26 +12,24 @@ function DenvilText({ mousePosition }) {
     if (textRef.current) {
       const time = state.clock.getElapsedTime();
       
-      // Base rotation with time
-      textRef.current.rotation.y = time * 0.3;
-      
-      // Add mouse interaction
+      // Enhanced mouse interaction with more responsiveness
       textRef.current.rotation.x = THREE.MathUtils.lerp(
         textRef.current.rotation.x,
-        mousePosition.y * 0.2,
-        0.05
+        mousePosition.y * 0.4,
+        0.1
       );
       textRef.current.rotation.y = THREE.MathUtils.lerp(
         textRef.current.rotation.y,
-        time * 0.3 + mousePosition.x * 0.3,
-        0.05
+        time * 0.2 + mousePosition.x * 0.5,
+        0.1
       );
       
-      // Gentle floating
-      textRef.current.position.y = Math.sin(time * 0.8) * 0.2;
+      // Enhanced floating with more dynamic movement
+      textRef.current.position.y = Math.sin(time * 0.6) * 0.3 + mousePosition.y * 0.2;
+      textRef.current.position.x = Math.sin(time * 0.4) * 0.1 + mousePosition.x * 0.1;
       
-      // Subtle scale pulsing
-      const scale = 1 + Math.sin(time * 2) * 0.05;
+      // Dynamic scale based on mouse interaction
+      const scale = 1 + Math.sin(time * 1.5) * 0.05 + Math.abs(mousePosition.x) * 0.1;
       textRef.current.scale.setScalar(scale);
     }
   });
@@ -40,21 +38,21 @@ function DenvilText({ mousePosition }) {
     <Center ref={textRef}>
       <Text3D
         font="/fonts/helvetiker_regular.typeface.json"
-        size={viewport.width < 6 ? 0.8 : 1.2}
-        height={0.2}
-        curveSegments={12}
+        size={viewport.width < 6 ? 0.6 : viewport.width < 10 ? 0.8 : 1.0}
+        height={0.25}
+        curveSegments={16}
         bevelEnabled
-        bevelThickness={0.02}
-        bevelSize={0.02}
+        bevelThickness={0.03}
+        bevelSize={0.03}
         bevelOffset={0}
-        bevelSegments={5}
+        bevelSegments={8}
       >
         DENVIL
-        <meshPhongMaterial 
+        <meshStandardMaterial 
           color="#3b82f6"
-          shininess={100}
-          transparent
-          opacity={0.9}
+          metalness={0.8}
+          roughness={0.2}
+          envMapIntensity={1.5}
         />
       </Text3D>
     </Center>
@@ -110,27 +108,25 @@ function GeometricDenvil({ mousePosition }) {
     if (groupRef.current) {
       const time = state.clock.getElapsedTime();
       
-      // Base rotation with time
-      groupRef.current.rotation.y = time * 0.3;
-      
-      // Add mouse interaction
+      // Enhanced mouse interaction
       groupRef.current.rotation.x = THREE.MathUtils.lerp(
         groupRef.current.rotation.x,
-        mousePosition.y * 0.2,
-        0.05
+        mousePosition.y * 0.4,
+        0.1
       );
       groupRef.current.rotation.y = THREE.MathUtils.lerp(
         groupRef.current.rotation.y,
-        time * 0.3 + mousePosition.x * 0.3,
-        0.05
+        time * 0.2 + mousePosition.x * 0.5,
+        0.1
       );
       
-      // Gentle floating
-      groupRef.current.position.y = Math.sin(time * 0.8) * 0.2;
+      // Enhanced floating movement
+      groupRef.current.position.y = Math.sin(time * 0.6) * 0.3 + mousePosition.y * 0.2;
+      groupRef.current.position.x = Math.sin(time * 0.4) * 0.1 + mousePosition.x * 0.1;
       
-      // Subtle scale pulsing
-      const scale = 1 + Math.sin(time * 2) * 0.05;
-      groupRef.current.scale.setScalar(scale * (viewport.width < 6 ? 0.6 : 1));
+      // Dynamic scale with interaction
+      const scale = 1 + Math.sin(time * 1.5) * 0.05 + Math.abs(mousePosition.x) * 0.1;
+      groupRef.current.scale.setScalar(scale * (viewport.width < 6 ? 0.4 : viewport.width < 10 ? 0.6 : 0.8));
     }
   });
 
@@ -271,11 +267,23 @@ export default function DenvilLogo3D({ className = "" }) {
     setMousePosition({ x, y });
   };
 
+  const handleTouchMove = (event) => {
+    if (event.touches.length > 0) {
+      const touch = event.touches[0];
+      const rect = event.currentTarget.getBoundingClientRect();
+      const x = (touch.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+      const y = -(touch.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+      setMousePosition({ x, y });
+    }
+  };
+
   return (
     <div 
-      className={`relative w-full h-96 ${className}`}
+      className={`relative w-full h-full ${className}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={() => setMousePosition({ x: 0, y: 0 })}
     >
       <Canvas
         camera={{ position: [0, 0, 5], fov: 75 }}
@@ -284,14 +292,15 @@ export default function DenvilLogo3D({ className = "" }) {
           antialias: true,
           powerPreference: "high-performance"
         }}
+        style={{ width: '100%', height: '100%' }}
       >
         <Lighting />
         <ParticleField />
         
         <Float
           speed={2}
-          rotationIntensity={0.2}
-          floatIntensity={0.2}
+          rotationIntensity={0.1}
+          floatIntensity={0.1}
         >
           {useFallback ? (
             <GeometricDenvil mousePosition={mousePosition} />
@@ -301,18 +310,18 @@ export default function DenvilLogo3D({ className = "" }) {
         </Float>
         
         <Sparkles
-          count={50}
-          scale={10}
-          size={2}
-          speed={0.4}
-          opacity={0.6}
+          count={30}
+          scale={8}
+          size={1.5}
+          speed={0.3}
+          opacity={0.4}
           color="#3b82f6"
         />
       </Canvas>
       
-      {/* Neon glow overlay */}
+      {/* Enhanced neon glow overlay */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 via-transparent to-secondary-500/20 animate-pulse-glow" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 via-transparent to-secondary-500/10 animate-pulse-glow" />
       </div>
     </div>
   );
