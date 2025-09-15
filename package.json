@@ -13,6 +13,7 @@
     "build:azure": "npm run build && cp staticwebapp.config.json dist/"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@react-three/drei": "^10.7.6",
     "@react-three/fiber": "^9.3.0",
     "@tailwindcss/typography": "^0.5.16",
@@ -23,6 +24,9 @@
     "postcss": "^8.5.6",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-parallax-tilt": "^1.7.308",
+    "react-router-dom": "^7.9.1",
+    "react-vertical-timeline-component": "^3.5.3",
     "tailwindcss": "^3.4.17",
     "three": "^0.180.0"
   },

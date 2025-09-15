@@ -14,23 +14,20 @@
   }
 
   body {
-    @apply bg-dark-900 text-dark-50 font-sans;
+    background: #050816;
+    color: white;
+    font-family: 'Inter', system-ui, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Better touch interactions on mobile */
     touch-action: manipulation;
-    /* Prevent bounce scrolling on iOS */
     -webkit-overflow-scrolling: touch;
-    /* Prevent zoom on double tap on mobile */
     -ms-touch-action: manipulation;
   }
 
-  /* Improve mobile performance */
   @media (max-width: 768px) {
     body {
-      /* Reduce animations for better mobile performance */
       -webkit-transform: translateZ(0);
       transform: translateZ(0);
       -webkit-backface-visibility: hidden;
@@ -38,133 +35,113 @@
     }
   }
 
-  /* Custom scrollbar for webkit browsers */
   ::-webkit-scrollbar {
     width: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-dark-800;
+    background: #050816;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary-600 rounded-full;
+    background: #aaa6c3;
+    border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary-500;
+    background: #151030;
   }
 }
 
 @layer components {
-  .container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  .violet-gradient {
+    background: linear-gradient(90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
+  }
+
+  .orange-text-gradient {
+    background: -webkit-linear-gradient(to bottom, #f12711, #f5af19);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .green-text-gradient {
+    background: -webkit-linear-gradient(to bottom, #11998e, #38ef7d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .blue-text-gradient {
+    background: -webkit-linear-gradient(to bottom, #40c9ff, #e81cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .pink-text-gradient {
+    background: -webkit-linear-gradient(to bottom, #ec4899, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .black-gradient {
+    background: linear-gradient(90deg, rgba(9, 3, 37, 0.8) 0%, rgba(16, 13, 37, 0.8) 100%);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-900;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    transform: scale(1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn:hover {
+    transform: scale(1.05);
+  }
+
+  .btn:active {
+    transform: scale(0.95);
   }
 
   .btn-primary {
-    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 shadow-lg hover:shadow-xl hover:shadow-primary-500/25;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white;
   }
 
   .btn-secondary {
-    @apply bg-transparent text-primary-400 border border-primary-400 hover:bg-primary-400 hover:text-dark-900 focus:ring-primary-500;
+    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    color: white;
   }
 
-  .btn-ghost {
-    @apply bg-transparent text-dark-300 hover:bg-dark-800 hover:text-white focus:ring-dark-600;
+  .btn-outline {
+    border: 2px solid #3b82f6;
+    color: #3b82f6;
+    background: transparent;
   }
 
-  .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-center;
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .section-subtitle {
-    @apply text-lg md:text-xl text-dark-300 text-center mt-4;
+  .btn-outline:hover {
+    background: #3b82f6;
+    color: white;
   }
 
   .card {
-    @apply bg-dark-800 border border-dark-700 rounded-xl p-6 hover:border-primary-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10;
-  }
-
-  .neon-glow {
-    box-shadow: 
-      0 0 5px theme('colors.primary.400'),
-      0 0 10px theme('colors.primary.400'),
-      0 0 15px theme('colors.primary.400'),
-      0 0 20px theme('colors.primary.400');
-  }
-
-  .neon-text {
-    text-shadow:
-      0 0 5px theme('colors.primary.400'),
-      0 0 10px theme('colors.primary.400'),
-      0 0 15px theme('colors.primary.400'),
-      0 0 20px theme('colors.primary.400');
-  }
-}
-
-@layer utilities {
-  .text-gradient {
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .bg-gradient-primary {
-    background: linear-gradient(135deg, #1e40af, #7c3aed);
-  }
-
-  .bg-gradient-secondary {
-    background: linear-gradient(135deg, #0f172a, #1e293b);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   }
 
   .glass {
-    background: rgba(30, 41, 59, 0.8);
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .animate-glow {
-    animation: glow 2s ease-in-out infinite alternate;
-  }
-
-  .animate-pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
-
-  /* Simple CSS stars fallback */
-  .stars {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-      radial-gradient(2px 2px at 20px 30px, #3b82f6, transparent),
-      radial-gradient(2px 2px at 40px 70px, rgba(59, 130, 246, 0.8), transparent),
-      radial-gradient(1px 1px at 90px 40px, #8b5cf6, transparent),
-      radial-gradient(1px 1px at 130px 80px, rgba(139, 92, 246, 0.6), transparent),
-      radial-gradient(2px 2px at 160px 30px, #06b6d4, transparent);
-    background-repeat: repeat;
-    background-size: 200px 100px;
-    animation: sparkle 3s linear infinite;
-    opacity: 0.6;
-  }
-
-  @keyframes sparkle {
-    from { transform: translateX(0); }
-    to { transform: translateX(-200px); }
   }
 }
