@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 export default function About() {
   const personalInfo = [
@@ -29,7 +29,7 @@ export default function About() {
   ];
 
   return (
-    <motion.section 
+    <Motion.section 
       id="about" 
       className="py-20 bg-gradient-to-b from-dark-900 to-dark-800"
       initial={{ opacity: 0 }}
@@ -136,6 +136,6 @@ export default function About() {
           </div>
         </div>
       </div>
-    </motion.section>
+    </Motion.section>
   );
 }
