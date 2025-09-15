@@ -1,10 +1,8 @@
 // Simple service worker for caching static assets
-const CACHE_NAME = 'denvil-portfolio-v1';
+const CACHE_NAME = 'denvil-portfolio-v2';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/src/main.jsx',
-  '/src/index.css',
   'https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap'
 ];
 

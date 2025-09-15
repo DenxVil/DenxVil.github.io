@@ -11,12 +11,11 @@ import Contact from "./components/sections/Contact";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [isAppReady, setIsAppReady] = useState(false);
 
   useEffect(() => {
     // Ensure fonts and critical resources are loaded
     const timer = setTimeout(() => {
-      setIsAppReady(true);
+      // Resources are ready, but loading screen will handle completion
     }, 500);
 
     return () => clearTimeout(timer);
