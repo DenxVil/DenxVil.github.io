@@ -5,33 +5,56 @@ const LoadingScreen = ({ onLoadComplete }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // More realistic loading simulation
-    const timer = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(timer);
-          // Shorter delay before completion
-          setTimeout(() => {
-            setIsVisible(false);
-            if (onLoadComplete) {
-              onLoadComplete();
-            }
-          }, 200);
-          return 100;
-        }
-        // Faster loading speed to avoid hanging
-        return prev + Math.random() * 20 + 10;
-      });
-    }, 50); // Faster interval
+    // More realistic loading simulation with font loading check
+    const checkFontsLoaded = () => {
+      if (document.fonts && document.fonts.ready) {
+        return document.fonts.ready;
+      }
+      return Promise.resolve();
+    };
 
-    // Shorter maximum loading time
-    const maxTimer = setTimeout(() => {
-      setProgress(100);
-    }, 1500); // Reduced from 3000ms
+    const startLoading = async () => {
+      try {
+        await checkFontsLoaded();
+      } catch (error) {
+        console.warn('Font loading check failed:', error);
+      }
 
+      const timer = setInterval(() => {
+        setProgress(prev => {
+          if (prev >= 100) {
+            clearInterval(timer);
+            // Shorter delay before completion
+            setTimeout(() => {
+              setIsVisible(false);
+              if (onLoadComplete) {
+                onLoadComplete();
+              }
+            }, 200);
+            return 100;
+          }
+          // Faster loading speed to avoid hanging
+          return prev + Math.random() * 20 + 10;
+        });
+      }, 50); // Faster interval
+
+      // Shorter maximum loading time - force completion if it takes too long
+      const maxTimer = setTimeout(() => {
+        setProgress(100);
+        clearInterval(timer);
+      }, 1200); // Further reduced from 1500ms
+
+      return () => {
+        clearInterval(timer);
+        clearTimeout(maxTimer);
+      };
+    };
+
+    const cleanup = startLoading();
     return () => {
-      clearInterval(timer);
-      clearTimeout(maxTimer);
+      if (cleanup && typeof cleanup === 'function') {
+        cleanup();
+      }
     };
   }, [onLoadComplete]);
 

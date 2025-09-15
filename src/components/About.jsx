@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion as Motion } from 'framer-motion';
 
 export default function About() {
   const personalInfo = [
@@ -29,13 +28,9 @@ export default function About() {
   ];
 
   return (
-    <Motion.section 
+    <section 
       id="about" 
       className="py-20 bg-gradient-to-b from-dark-900 to-dark-800"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
     >
       <div className="container mx-auto px-4">
         {/* Section Header */}
