@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
 import { styles } from "../../constants/styles";
-import { EarthCanvas } from "../canvas";
 import { SectionWrapper } from "../../hoc";
 import { slideIn } from "../../utils/motion";
 
@@ -31,37 +30,16 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
 
-    emailjs
-      .send(
-        'service_id',
-        'template_id', 
-        {
-          from_name: form.name,
-          to_name: "Denvil",
-          from_email: form.email,
-          to_email: "xdenvil0@gmail.com",
-          message: form.message,
-        },
-        'public_key'
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible.");
-
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
-
-          alert("Ahh, something went wrong. Please try again.");
-        }
-      );
+    // For now, just simulate sending
+    setTimeout(() => {
+      setLoading(false);
+      alert("Thank you! I will get back to you as soon as possible.");
+      setForm({
+        name: "",
+        email: "",
+        message: "",
+      });
+    }, 1000);
   };
 
   return (
@@ -127,7 +105,15 @@ const Contact = () => {
         variants={slideIn("right", "tween", 0.2, 1)}
         className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
       >
-        <EarthCanvas />
+        <div className="w-full h-full bg-black-100 rounded-2xl flex items-center justify-center">
+          <div className="text-center">
+            <h3 className="text-white text-[24px] font-bold mb-4">Let's Connect!</h3>
+            <p className="text-secondary">
+              Ready to work together? <br />
+              Send me a message and let's create something amazing!
+            </p>
+          </div>
+        </div>
       </motion.div>
     </div>
   );
