@@ -3,31 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DenxVil - AI Developer & Innovation Specialist</title>
-    <meta name="description" content="Portfolio of DenxVil, an AI developer specializing in ultra-human AI assistants and advanced machine learning solutions.">
-    <meta name="keywords" content="AI Developer, Machine Learning, Python, Telegram Bots, AI Assistant, DenxVil">
+    <title>Denvil (Harsh) - Code, Design, Compete</title>
+    <meta name="description" content="Professional portfolio of Denvil (Harsh) - Developer, Designer, and Esports Competitor with 4+ years of coding experience.">
+    <meta name="keywords" content="Developer, Designer, Esports, Python, Telethon, HTML, CSS, SQL, Logo Design, Denvil, Harsh">
     
-    <!-- External Libraries (Fallback for local development) -->
-    <script>
-        // Simple fallback animation if external libraries fail to load
-        window.hasVanta = false;
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" onerror="window.hasVanta=false;"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js" onerror="window.hasVanta=false;"></script>
+    <!-- Three.js for 3D Monograms -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <span class="logo-text">DenxVil</span>
-                <span class="logo-emoji">🤖</span>
+                <span class="logo-text">DENVIL</span>
+                <span class="logo-emoji">⚡</span>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -40,7 +35,7 @@
                     <a href="#projects" class="nav-link">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#pipeline" class="nav-link">Pipeline</a>
                 </li>
                 <li class="nav-item">
                     <a href="#contact" class="nav-link">Contact</a>
@@ -56,284 +51,175 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-background" id="vanta-bg"></div>
+        <div class="hero-background"></div>
         <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    <span class="greeting">Hi, I'm</span>
-                    <span class="name">DenxVil</span>
-                </h1>
-                <h2 class="hero-subtitle">AI Developer & Innovation Specialist</h2>
-                <p class="hero-description">
-                    Crafting ultra-human AI assistants and pushing the boundaries of 
-                    machine learning to create intelligent solutions that feel truly natural.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                </div>
+            <h1 class="hero-title">Code, Design, Compete</h1>
+            
+            <!-- 3D Monograms -->
+            <div class="monograms-container">
+                <canvas id="denvil-monogram" class="monogram-canvas"></canvas>
+                <canvas id="harsh-monogram" class="monogram-canvas"></canvas>
             </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number">7+</span>
-                    <span class="stat-label">Projects</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">1+</span>
-                    <span class="stat-label">Years Experience</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">∞</span>
-                    <span class="stat-label">Learning</span>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
+            
+            <p class="hero-subtitle">
+                Crafting digital experiences and competing at the highest level
+            </p>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Me Section -->
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Passionate about creating AI that understands and connects</p>
+                <p class="section-subtitle">Developer, Designer, and Esports Competitor</p>
             </div>
             <div class="about-content">
-                <div class="about-text">
-                    <p class="about-paragraph">
-                        I'm a dedicated AI developer with a passion for creating intelligent systems that bridge 
-                        the gap between artificial and human intelligence. My flagship project, 
-                        <strong>Shan-D Superadvanced</strong>, represents my vision of ultra-human AI assistants 
-                        that can engage in natural, empathetic conversations while providing intelligent analysis 
-                        and creative solutions.
-                    </p>
-                    <p class="about-paragraph">
-                        With expertise in Python, machine learning, and conversational AI, I specialize in 
-                        building multimodal AI systems that can understand context, learn from interactions, 
-                        and adapt to user preferences. My work focuses on creating AI that doesn't just process 
-                        information, but truly understands and responds with emotional intelligence.
-                    </p>
-                    <p class="about-paragraph">
-                        When I'm not coding, I'm exploring the latest advancements in AI research, contributing 
-                        to open-source projects, and constantly learning new technologies to stay at the 
-                        forefront of artificial intelligence innovation.
-                    </p>
+                <div class="personal-info">
+                    <h3 class="card-title">Personal Info</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Name</span>
+                            <span class="info-value">Denvil (Harsh)</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Age</span>
+                            <span class="info-value">20</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Location</span>
+                            <span class="info-value">Delhi</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Experience</span>
+                            <span class="info-value">4+ years coding</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="about-features">
-                    <div class="feature">
-                        <div class="feature-icon">🧠</div>
-                        <h3 class="feature-title">AI Innovation</h3>
-                        <p class="feature-description">
-                            Creating next-generation AI systems with emotional intelligence and human-like reasoning
-                        </p>
+                
+                <div class="cards-container">
+                    <!-- Esports Team Card -->
+                    <div class="card">
+                        <h3 class="card-title">
+                            Esports: 𝐓𝐄𝐀𝐌 𝐊𝐑𝐘𝐎
+                        </h3>
+                        <p class="team-subtitle">Professional Esports Team</p>
+                        <div class="players-list">
+                            <span class="player-tag">Ğhóšț</span>
+                            <span class="player-tag">『DENVIL』</span>
+                            <span class="player-tag">么SpїÐɣ๛</span>
+                            <span class="player-tag">「MYLO」</span>
+                            <span class="player-tag">ÚTKÂRSH卐</span>
+                        </div>
                     </div>
-                    <div class="feature">
-                        <div class="feature-icon">🚀</div>
-                        <h3 class="feature-title">Performance Focus</h3>
-                        <p class="feature-description">
-                            Optimizing AI models for speed, efficiency, and scalability in production environments
-                        </p>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon">🌍</div>
-                        <h3 class="feature-title">Global Perspective</h3>
-                        <p class="feature-description">
-                            Building culturally aware AI with multilingual support and diverse understanding
-                        </p>
+                    
+                    <!-- Skills Card -->
+                    <div class="card">
+                        <h3 class="card-title">Skills</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Telethon</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Logo Design</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
+    <!-- Featured Projects Section -->
+    <section id="projects" class="featured-projects">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Innovative AI solutions that make a difference</p>
+                <p class="section-subtitle">Innovative solutions and creative works</p>
             </div>
             <div class="projects-grid">
-                <div class="project-card featured">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <span class="project-emoji">🤖</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">ⵢɧαɳ-Đ Superadvanced AI</h3>
-                        <p class="project-description">
-                            Ultra-human AI assistant with emotional intelligence, multimodal capabilities, 
-                            and advanced learning. Features natural conversation, cultural awareness, 
-                            and self-improving algorithms.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">OpenAI</span>
-                            <span class="tech-tag">Telegram Bot</span>
-                            <span class="tech-tag">Machine Learning</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/DenxVil/Shan_D_Superadvanced" target="_blank" class="project-link">
-                                <span>GitHub</span>
-                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
+                <!-- Nexus AI Project -->
                 <div class="project-card">
                     <div class="project-image">
-                        <div class="project-placeholder">
-                            <span class="project-emoji">🧠</span>
-                        </div>
+                        <div class="project-placeholder">🤖</div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">ShanxAi</h3>
+                        <h3 class="project-title">Nexus AI</h3>
                         <p class="project-description">
-                            Advanced AI system built with TypeScript, focusing on intelligent automation 
-                            and enhanced user interaction capabilities.
+                            Advanced AI-powered application platform featuring multi-model support, 
+                            Telegram bot integration, and stunning 3D-enhanced user interface with 
+                            custom three.js elements.
                         </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">AI/ML</span>
-                            <span class="tech-tag">Node.js</span>
-                        </div>
                         <div class="project-links">
-                            <a href="https://github.com/DenxVil/ShanxAi" target="_blank" class="project-link">
-                                <span>GitHub</span>
-                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                                </svg>
-                            </a>
+                            <a href="nexus-ai.html" class="btn btn-primary">Learn More</a>
                         </div>
                     </div>
                 </div>
-
+                
+                <!-- Dark Userbot Project -->
                 <div class="project-card">
                     <div class="project-image">
-                        <div class="project-placeholder">
-                            <span class="project-emoji">🌐</span>
-                        </div>
+                        <div class="project-placeholder">🌙</div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Synapse</h3>
+                        <h3 class="project-title">Dark Userbot</h3>
                         <p class="project-description">
-                            Web-based neural network visualization and analysis tool for understanding 
-                            complex AI model architectures and data flows.
+                            Powerful Telegram userbot with advanced automation features, 
+                            custom plugins, and extensive customization options for power users.
                         </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Data Viz</span>
-                        </div>
                         <div class="project-links">
-                            <a href="https://github.com/DenxVil/Synapse" target="_blank" class="project-link">
-                                <span>GitHub</span>
-                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                                </svg>
+                            <a href="https://github.com/DenxVil/Dark-Userbot" target="_blank" class="btn btn-secondary">
+                                View GitHub
                             </a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="projects-footer">
-                <a href="https://github.com/DenxVil" target="_blank" class="btn btn-outline">
-                    View All Projects on GitHub
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
+    <!-- Project Pipeline Section -->
+    <section id="pipeline" class="project-pipeline">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Technical Skills</h2>
-                <p class="section-subtitle">Technologies and tools I work with</p>
+                <h2 class="section-title">Project Pipeline</h2>
+                <p class="section-subtitle">Current status of ongoing and planned projects</p>
             </div>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3 class="category-title">AI & Machine Learning</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Python</span>
-                            <span class="skill-level">Expert</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">OpenAI API</span>
-                            <span class="skill-level">Advanced</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Machine Learning</span>
-                            <span class="skill-level">Advanced</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Natural Language Processing</span>
-                            <span class="skill-level">Advanced</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Neural Networks</span>
-                            <span class="skill-level">Intermediate</span>
-                        </div>
-                    </div>
+            <div class="pipeline-grid">
+                <!-- Completed Projects -->
+                <div class="pipeline-column">
+                    <h3 class="pipeline-title completed">Completed</h3>
+                    <ul class="pipeline-list">
+                        <li class="pipeline-item">Dark Userbot v2.0</li>
+                        <li class="pipeline-item">TEAM KRYO Website</li>
+                        <li class="pipeline-item">Personal Portfolio v1</li>
+                        <li class="pipeline-item">Telegram Bot Framework</li>
+                        <li class="pipeline-item">Logo Design Collection</li>
+                    </ul>
                 </div>
                 
-                <div class="skill-category">
-                    <h3 class="category-title">Development</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <span class="skill-name">TypeScript</span>
-                            <span class="skill-level">Advanced</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Node.js</span>
-                            <span class="skill-level">Advanced</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">HTML/CSS</span>
-                            <span class="skill-level">Advanced</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">JavaScript</span>
-                            <span class="skill-level">Advanced</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Git</span>
-                            <span class="skill-level">Intermediate</span>
-                        </div>
-                    </div>
+                <!-- In Development -->
+                <div class="pipeline-column">
+                    <h3 class="pipeline-title development">In Development</h3>
+                    <ul class="pipeline-list">
+                        <li class="pipeline-item">Nexus AI v2.0</li>
+                        <li class="pipeline-item">Advanced Telethon Library</li>
+                        <li class="pipeline-item">Esports Analytics Dashboard</li>
+                        <li class="pipeline-item">Multi-language Bot Support</li>
+                        <li class="pipeline-item">3D Portfolio Animations</li>
+                    </ul>
                 </div>
                 
-                <div class="skill-category">
-                    <h3 class="category-title">Tools & Platforms</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Telegram Bot API</span>
-                            <span class="skill-level">Expert</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Docker</span>
-                            <span class="skill-level">Intermediate</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Vercel</span>
-                            <span class="skill-level">Intermediate</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">GitHub Actions</span>
-                            <span class="skill-level">Beginner</span>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">API Development</span>
-                            <span class="skill-level">Advanced</span>
-                        </div>
-                    </div>
+                <!-- Planned Projects -->
+                <div class="pipeline-column">
+                    <h3 class="pipeline-title planned">Planned</h3>
+                    <ul class="pipeline-list">
+                        <li class="pipeline-item">AI Voice Assistant</li>
+                        <li class="pipeline-item">Gaming Performance Tracker</li>
+                        <li class="pipeline-item">Open Source Bot Template</li>
+                        <li class="pipeline-item">Design System Library</li>
+                        <li class="pipeline-item">Mobile App Development</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -344,37 +230,37 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Let's Connect</h2>
-                <p class="section-subtitle">Ready to collaborate on innovative AI projects</p>
+                <p class="section-subtitle">Ready to collaborate on your next project</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <p class="contact-description">
-                        I'm always excited to discuss new opportunities, collaborate on AI projects, 
-                        or chat about the latest developments in artificial intelligence. 
-                        Whether you have a project in mind or just want to connect, feel free to reach out!
+                    <p>
+                        Whether you're interested in development work, esports collaboration, 
+                        or just want to chat about technology and gaming, I'm always open to 
+                        new connections and opportunities.
                     </p>
                     <div class="contact-links">
-                        <a href="https://github.com/DenxVil" target="_blank" class="contact-link">
-                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        <a href="https://t.me/xDenvil_bot" target="_blank" class="contact-link">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 8.16l-1.58 7.44c-.12.539-.432.672-.864.42l-2.388-1.764-1.152 1.116c-.128.128-.236.236-.48.236l.168-2.388 4.356-3.936c.192-.168-.036-.264-.3-.096l-5.388 3.396-2.316-.732c-.504-.156-.516-.504.108-.744l9.024-3.492c.42-.156.792.096.66.54z"/>
                             </svg>
-                            <span>GitHub</span>
+                            <span>Telegram (@xDenvil_bot)</span>
                         </a>
-                        <a href="mailto:contact@denx.me" class="contact-link">
+                        <a href="mailto:xdenvil0@gmail.com" class="contact-link">
                             <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
                                 <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
                             </svg>
-                            <span>Email</span>
+                            <span>Gmail (xdenvil0@gmail.com)</span>
                         </a>
                     </div>
                 </div>
                 <div class="contact-cta">
-                    <h3 class="cta-title">Interested in AI Innovation?</h3>
+                    <h3 class="cta-title">Ready to Collaborate?</h3>
                     <p class="cta-description">
-                        Let's build the future of artificial intelligence together. 
-                        I'm open to collaborations, consultations, and exciting new projects.
+                        Let's build something amazing together. Whether it's a new project, 
+                        collaboration, or just a conversation about tech and gaming.
                     </p>
-                    <a href="mailto:contact@denx.me" class="btn btn-primary">Start a Conversation</a>
+                    <a href="mailto:xdenvil0@gmail.com" class="btn btn-primary">Get In Touch</a>
                 </div>
             </div>
         </div>
@@ -385,141 +271,19 @@
         <div class="container">
             <div class="footer-content">
                 <p class="footer-text">
-                    &copy; 2024 DenxVil. Crafted with ❤️ and AI innovation.
+                    &copy; 2024 Denvil (Harsh). Code, Design, Compete.
                 </p>
                 <div class="footer-links">
-                    <a href="https://github.com/DenxVil" target="_blank" class="footer-link">GitHub</a>
-                    <a href="mailto:contact@denx.me" class="footer-link">Email</a>
+                    <a href="https://t.me/xDenvil_bot" target="_blank" class="footer-link">Telegram</a>
+                    <a href="mailto:xdenvil0@gmail.com" class="footer-link">Email</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Custom JavaScript -->
-    <script>
-        // Enhanced 3D Background with fallback
-        function initializeBackground() {
-            if (typeof VANTA !== 'undefined' && window.hasVanta !== false) {
-                // Use Vanta.js Globe if available
-                VANTA.GLOBE({
-                    el: "#vanta-bg",
-                    mouseControls: true,
-                    touchControls: true,
-                    gyroControls: false,
-                    minHeight: 200.00,
-                    minWidth: 200.00,
-                    scale: 1.00,
-                    scaleMobile: 1.00,
-                    color: 0x3b82f6,
-                    color2: 0x1e40af,
-                    size: 1.20,
-                    backgroundColor: 0x0f172a
-                });
-            } else {
-                // Fallback animated background
-                createFallbackBackground();
-            }
-        }
-
-        function createFallbackBackground() {
-            const bg = document.getElementById('vanta-bg');
-            bg.innerHTML = `
-                <div class="fallback-bg">
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                </div>
-            `;
-        }
-
-        // Initialize when page loads
-        window.addEventListener('load', function() {
-            setTimeout(initializeBackground, 500);
-        });
-
-        // Mobile Navigation Toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        }));
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections for animations
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Type writer effect for hero subtitle
-        document.addEventListener('DOMContentLoaded', function() {
-            const subtitle = document.querySelector('.hero-subtitle');
-            const subtitleText = subtitle.textContent;
-            subtitle.textContent = '';
-            
-            let charIndex = 0;
-            const typeWriter = () => {
-                if (charIndex < subtitleText.length) {
-                    subtitle.textContent += subtitleText.charAt(charIndex);
-                    charIndex++;
-                    setTimeout(typeWriter, 100);
-                }
-            };
-            
-            // Start typewriter effect after a delay
-            setTimeout(typeWriter, 1000);
-        });
-    </script>
+    <!-- JavaScript -->
+    <script src="assets/js/denvil-monogram.js"></script>
+    <script src="assets/js/harsh-monogram.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
