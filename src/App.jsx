@@ -11,6 +11,7 @@ import {
   Works,
   StarsCanvas,
 } from "./components";
+import WebGLWrapper from "./components/WebGLWrapper";
 
 function App() {
   return (
@@ -27,7 +28,9 @@ function App() {
         <Feedbacks />
         <div className="relative z-0">
           <Contact />
-          <StarsCanvas />
+          <WebGLWrapper>
+            <StarsCanvas />
+          </WebGLWrapper>
         </div>
       </div>
     </BrowserRouter>
