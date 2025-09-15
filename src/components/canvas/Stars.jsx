@@ -5,9 +5,6 @@ import { Points, PointMaterial, Preload } from "@react-three/drei";
 const Stars = (props) => {
   const ref = useRef();
   
-const Stars = (props) => {
-  const ref = useRef();
-  
   // Create sphere with bulletproof error handling to prevent NaN values
   const [sphere] = useState(() => {
     try {
