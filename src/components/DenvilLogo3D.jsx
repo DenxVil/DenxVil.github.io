@@ -3,6 +3,11 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Text3D, Center, Float, Sparkles } from '@react-three/drei';
 import * as THREE from 'three';
 
+// Detect mobile device
+const isMobile = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+};
+
 // Enhanced DENVIL 3D Text Component
 function DenvilText({ mousePosition }) {
   const textRef = useRef();
@@ -258,9 +263,11 @@ function Lighting() {
 // Main 3D DENVIL Logo Component
 export default function DenvilLogo3D({ className = "" }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [useFallback, setUseFallback] = useState(false);
+  const [_useFallback, _setUseFallback] = useState(false);
+  const mobile = useMemo(() => isMobile(), []);
 
   const handleMouseMove = (event) => {
+    if (mobile) return; // Disable mouse tracking on mobile for performance
     const rect = event.currentTarget.getBoundingClientRect();
     const x = (event.clientX - rect.left - rect.width / 2) / (rect.width / 2);
     const y = -(event.clientY - rect.top - rect.height / 2) / (rect.height / 2);
@@ -289,30 +296,27 @@ export default function DenvilLogo3D({ className = "" }) {
         camera={{ position: [0, 0, 5], fov: 75 }}
         gl={{ 
           alpha: true, 
-          antialias: true,
-          powerPreference: "high-performance"
+          antialias: !mobile, // Disable antialiasing on mobile for performance
+          powerPreference: mobile ? "low-power" : "high-performance"
         }}
         style={{ width: '100%', height: '100%' }}
+        dpr={mobile ? 1 : Math.min(window.devicePixelRatio, 2)} // Limit pixel ratio on mobile
       >
         <Lighting />
-        <ParticleField />
+        {!mobile && <ParticleField />} {/* Disable particles on mobile */}
         
         <Float
-          speed={2}
-          rotationIntensity={0.1}
-          floatIntensity={0.1}
+          speed={mobile ? 1 : 2}
+          rotationIntensity={mobile ? 0.05 : 0.1}
+          floatIntensity={mobile ? 0.05 : 0.1}
         >
-          {useFallback ? (
-            <GeometricDenvil mousePosition={mousePosition} />
-          ) : (
-            <GeometricDenvil mousePosition={mousePosition} />
-          )}
+          <GeometricDenvil mousePosition={mousePosition} />
         </Float>
         
         <Sparkles
-          count={30}
-          scale={8}
-          size={1.5}
+          count={mobile ? 15 : 30} // Reduce particles on mobile
+          scale={mobile ? 4 : 8}
+          size={mobile ? 1 : 1.5}
           speed={0.3}
           opacity={0.4}
           color="#3b82f6"
