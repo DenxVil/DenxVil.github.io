@@ -19,6 +19,10 @@
     @apply bg-dark-900 text-dark-50 font-sans;
     min-height: 100vh;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Better touch interactions on mobile */
+    touch-action: manipulation;
   }
 
   /* Custom scrollbar for webkit browsers */
