@@ -5,28 +5,29 @@ const LoadingScreen = ({ onLoadComplete }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Simulate loading progress
+    // More realistic loading simulation
     const timer = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(timer);
-          // Fade out after a brief delay
+          // Shorter delay before completion
           setTimeout(() => {
             setIsVisible(false);
             if (onLoadComplete) {
               onLoadComplete();
             }
-          }, 500);
+          }, 200);
           return 100;
         }
-        return prev + Math.random() * 15 + 5; // Realistic loading speed
+        // Faster loading speed to avoid hanging
+        return prev + Math.random() * 20 + 10;
       });
-    }, 100);
+    }, 50); // Faster interval
 
-    // Ensure we don't get stuck
+    // Shorter maximum loading time
     const maxTimer = setTimeout(() => {
       setProgress(100);
-    }, 3000);
+    }, 1500); // Reduced from 3000ms
 
     return () => {
       clearInterval(timer);
@@ -37,7 +38,7 @@ const LoadingScreen = ({ onLoadComplete }) => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#050816] transition-opacity duration-500"
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#050816] transition-opacity duration-300"
          style={{ opacity: progress >= 100 ? 0 : 1 }}>
       <div className="text-center">
         {/* Logo/Brand */}
@@ -52,7 +53,7 @@ const LoadingScreen = ({ onLoadComplete }) => {
         <div className="w-64 mx-auto">
           <div className="w-full bg-gray-700 rounded-full h-2 overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full transition-all duration-300 ease-out"
+              className="h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full transition-all duration-100 ease-out"
               style={{ width: `${Math.min(progress, 100)}%` }}
             />
           </div>
@@ -72,10 +73,9 @@ const LoadingScreen = ({ onLoadComplete }) => {
           ))}
         </div>
 
-        {/* Tips for Safari users */}
+        {/* Simplified message */}
         <div className="mt-8 text-gray-500 text-xs max-w-xs mx-auto">
-          <p>Optimized for all browsers including Safari</p>
-          <p className="mt-1">If content doesn't load, try refreshing the page</p>
+          <p>Loading interactive content...</p>
         </div>
       </div>
     </div>

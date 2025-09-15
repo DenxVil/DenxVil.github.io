@@ -13,11 +13,20 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor': ['react', 'react-dom'],
-          'three': ['three', '@react-three/fiber', '@react-three/drei'],
-          'motion': ['framer-motion'],
-          'utils': ['maath', 'gsap']
+        manualChunks: (id) => {
+          // More careful chunk splitting to avoid circular dependencies
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'vendor';
+            }
+            if (id.includes('three') || id.includes('@react-three')) {
+              return 'three';
+            }
+            if (id.includes('framer-motion')) {
+              return 'motion';
+            }
+            return 'vendor';
+          }
         }
       }
     }
@@ -27,6 +36,7 @@ export default defineConfig({
     open: true,
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'three', '@react-three/fiber', '@react-three/drei']
+    include: ['react', 'react-dom'],
+    exclude: ['three', '@react-three/fiber', '@react-three/drei'] // Let these load naturally
   }
 })
