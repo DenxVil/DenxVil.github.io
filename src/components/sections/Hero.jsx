@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { styles } from "../../constants/styles";
 import { ComputersCanvas } from "../canvas";
+import WebGLWrapper from "../WebGLWrapper";
 
 const Hero = () => {
   return (
@@ -25,7 +26,9 @@ const Hero = () => {
         </div>
       </div>
 
-      <ComputersCanvas />
+      <WebGLWrapper>
+        <ComputersCanvas />
+      </WebGLWrapper>
 
       <div className="xs:bottom-10 absolute bottom-32 flex w-full items-center justify-center">
         <a href="#about">
