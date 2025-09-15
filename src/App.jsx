@@ -11,13 +11,12 @@ import Contact from "./components/sections/Contact";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [isAppReady, setIsAppReady] = useState(false);
 
   useEffect(() => {
     // Ensure fonts and critical resources are loaded
     const timer = setTimeout(() => {
-      setIsAppReady(true);
-    }, 500);
+      setIsLoading(false);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
