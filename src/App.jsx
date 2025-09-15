@@ -1,21 +1,36 @@
 import React from 'react';
-import Navigation from './components/Navigation';
-import Hero from './components/Hero';
-import About from './components/About';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import { BrowserRouter } from "react-router-dom";
+import {
+  About,
+  Contact,
+  Experience,
+  Feedbacks,
+  Hero,
+  Navbar,
+  Tech,
+  Works,
+  StarsCanvas,
+} from "./components";
 
 function App() {
   return (
-    <div className="min-h-screen bg-dark-900">
-      <Navigation />
-      <Hero />
-      <About />
-      <Projects />
-      <Contact />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="bg-primary relative z-0">
+        <div className="bg-hero-pattern bg-cover bg-center bg-no-repeat">
+          <Navbar />
+          <Hero />
+        </div>
+        <About />
+        <Experience />
+        <Tech />
+        <Works />
+        <Feedbacks />
+        <div className="relative z-0">
+          <Contact />
+          <StarsCanvas />
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
