@@ -16,74 +16,74 @@ export const navLinks = [
 export const services = [
   {
     title: "Web Developer",
-    icon: "web.png",
+    icon: "/vite.svg",
   },
   {
     title: "React Native Developer", 
-    icon: "mobile.png",
+    icon: "/vite.svg",
   },
   {
     title: "Backend Developer",
-    icon: "backend.png",
+    icon: "/vite.svg",
   },
   {
     title: "Content Creator",
-    icon: "creator.png",
+    icon: "/vite.svg",
   },
 ];
 
 export const technologies = [
   {
     name: "HTML 5",
-    icon: "html.png",
+    icon: "/vite.svg",
   },
   {
     name: "CSS 3",
-    icon: "css.png",
+    icon: "/vite.svg",
   },
   {
     name: "JavaScript",
-    icon: "javascript.png",
+    icon: "/vite.svg",
   },
   {
     name: "TypeScript",
-    icon: "typescript.png",
+    icon: "/vite.svg",
   },
   {
     name: "React JS",
-    icon: "reactjs.png",
+    icon: "/vite.svg",
   },
   {
     name: "Redux Toolkit",
-    icon: "redux.png",
+    icon: "/vite.svg",
   },
   {
     name: "Tailwind CSS",
-    icon: "tailwind.png",
+    icon: "/vite.svg",
   },
   {
     name: "Node JS",
-    icon: "nodejs.png",
+    icon: "/vite.svg",
   },
   {
     name: "MongoDB",
-    icon: "mongodb.png",
+    icon: "/vite.svg",
   },
   {
     name: "Three JS",
-    icon: "threejs.svg",
+    icon: "/vite.svg",
   },
   {
     name: "git",
-    icon: "git.png",
+    icon: "/vite.svg",
   },
   {
     name: "figma",
-    icon: "figma.png",
+    icon: "/vite.svg",
   },
   {
     name: "docker",
-    icon: "docker.png",
+    icon: "/vite.svg",
   },
 ];
 
@@ -91,7 +91,7 @@ export const experiences = [
   {
     title: "React.js Developer",
     company_name: "Freelance",
-    icon: "starbucks.png",
+    icon: "/vite.svg",
     iconBg: "#383E56",
     date: "2021 - Present",
     points: [
@@ -104,7 +104,7 @@ export const experiences = [
   {
     title: "Full stack Developer",
     company_name: "Personal Projects",
-    icon: "tesla.png",
+    icon: "/vite.svg",
     iconBg: "#E6DEDD",
     date: "2020 - 2021",
     points: [
@@ -145,66 +145,66 @@ export const testimonials = [
 
 export const projects = [
   {
-    name: "Car Rent",
+    name: "Nexus AI",
     description:
-      "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+      "Advanced AI-powered application platform featuring multi-model support, Telegram bot integration, and stunning 3D-enhanced user interface.",
+    tags: [
+      {
+        name: "ai",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "telegram",
+        color: "green-text-gradient",
+      },
+      {
+        name: "threejs",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: "/vite.svg",
+    source_code_link: "https://github.com/DenxVil",
+  },
+  {
+    name: "Dark Userbot",
+    description:
+      "Powerful Telegram userbot with advanced automation features, custom plugins, and extensive customization options for power users.",
+    tags: [
+      {
+        name: "telegram",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "python",
+        color: "green-text-gradient",
+      },
+      {
+        name: "automation",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: "/vite.svg",
+    source_code_link: "https://github.com/DenxVil/Dark-Userbot",
+  },
+  {
+    name: "Portfolio Website",
+    description:
+      "Modern, responsive portfolio website built with React, Three.js, and TailwindCSS featuring interactive 3D elements and smooth animations.",
     tags: [
       {
         name: "react",
         color: "blue-text-gradient",
       },
       {
-        name: "mongodb",
+        name: "threejs",
         color: "green-text-gradient",
       },
       {
-        name: "tailwind",
+        name: "tailwindcss",
         color: "pink-text-gradient",
       },
     ],
-    image: "carrent.png",
-    source_code_link: "https://github.com/",
-  },
-  {
-    name: "Job IT",
-    description:
-      "Web application that enables users to search for job openings, view detailed job descriptions, and locate available jobs based on their current location.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "restapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "scss",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: "jobit.png",
-    source_code_link: "https://github.com/",
-  },
-  {
-    name: "Trip Guide",
-    description:
-      "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
-    tags: [
-      {
-        name: "nextjs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "supabase",
-        color: "green-text-gradient",
-      },
-      {
-        name: "css",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: "tripguide.png",
-    source_code_link: "https://github.com/",
+    image: "/vite.svg",
+    source_code_link: "https://github.com/DenxVil/DenxVil.github.io",
   },
 ];
