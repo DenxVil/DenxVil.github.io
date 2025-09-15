@@ -65,12 +65,21 @@ const StarsCanvas = () => {
     <div className="w-full h-auto absolute inset-0 z-[-1]">
       <Canvas 
         camera={{ position: [0, 0, 1] }}
+        gl={{ 
+          alpha: true,
+          antialias: true,
+          powerPreference: "default",
+          failIfMajorPerformanceCaveat: false
+        }}
         onCreated={(state) => {
-          // Ensure canvas context is valid
-          const gl = state.gl.getContext();
-          if (!gl) {
-            console.warn("WebGL context not available");
-            return;
+          // Safari-friendly WebGL context setup
+          try {
+            const gl = state.gl;
+            gl.outputEncoding = 3001; // sRGBEncoding
+            gl.toneMapping = 1; // LinearToneMapping
+            gl.setClearColor(0x050816, 0); // Transparent background
+          } catch (error) {
+            console.warn("Canvas setup error:", error);
           }
         }}
         onError={(error) => {

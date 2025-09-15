@@ -151,7 +151,19 @@ const ComputersCanvas = () => {
       shadows
       dpr={[1, 2]}
       camera={{ position: [20, 3, 5], fov: 25 }}
-      gl={{ preserveDrawingBuffer: true }}
+      gl={{ 
+        preserveDrawingBuffer: true,
+        alpha: true,
+        antialias: true,
+        powerPreference: "default", // Better Safari compatibility
+        failIfMajorPerformanceCaveat: false // Allow software rendering
+      }}
+      onCreated={({ gl }) => {
+        // Safari-specific WebGL context setup
+        gl.outputEncoding = 3001; // sRGBEncoding for better color handling
+        gl.toneMapping = 1; // LinearToneMapping
+        gl.setClearColor(0x050816, 1); // Set background color
+      }}
     >
       <Suspense fallback={null}>
         <OrbitControls

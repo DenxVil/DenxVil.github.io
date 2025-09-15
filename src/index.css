@@ -145,3 +145,83 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
+
+/* Safari-specific fixes and enhancements */
+@supports (-webkit-appearance: none) {
+  /* Safari detection and fixes */
+  
+  /* Fix for black screen issues in Safari */
+  #root {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 0;
+  }
+  
+  /* Ensure body has proper background for Safari */
+  body {
+    background-color: #050816 !important;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  /* Fix text gradient rendering in Safari */
+  .text-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* Fallback for Safari */
+    color: #667eea;
+  }
+  
+  /* Improve Safari WebGL canvas rendering */
+  canvas {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  /* Fix gradient issues in Safari */
+  .violet-gradient {
+    background: -webkit-linear-gradient(90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
+    background: linear-gradient(90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
+  }
+  
+  /* Safari-specific button fixes */
+  .btn {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  
+  /* Fix backdrop-filter issues in Safari */
+  .card, .glass {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Ensure proper rendering in Safari */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Additional Safari mobile fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 1) {
+  /* iOS Safari specific fixes */
+  body {
+    -webkit-text-size-adjust: 100%;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Fix viewport issues */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+}
