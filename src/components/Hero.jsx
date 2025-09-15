@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion as Motion } from 'framer-motion';
 import DenvilLogo3DLazy from './DenvilLogo3DLazy';
-import StarFieldLazy from './StarFieldLazy';
+import { ComputersBackgroundCanvas, EnhancedStarsCanvas, FloatingGeometryCanvas } from './canvas';
 
 export default function Hero() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -13,8 +22,14 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* 3D Star Field Background */}
-      <StarFieldLazy />
+      {/* Enhanced 3D Star Field Background - Deepest layer */}
+      <EnhancedStarsCanvas />
+      
+      {/* 3D Computers Background - Middle layer */}
+      <ComputersBackgroundCanvas />
+      
+      {/* Floating Geometry - Front background layer */}
+      <FloatingGeometryCanvas isMobile={isMobile} />
       
       {/* Background with gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-dark-900/80 via-dark-800/60 to-dark-900/80">
@@ -125,9 +140,9 @@ export default function Hero() {
         <div className="w-px h-32 bg-gradient-to-b from-transparent via-secondary-500 to-transparent"></div>
       </div>
 
-      {/* Floating particles overlay */}
+      {/* Enhanced floating particles overlay */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(30)].map((_, i) => (
           <div
             key={i}
             className="absolute w-1 h-1 bg-primary-400 rounded-full opacity-60 animate-pulse"
@@ -138,6 +153,38 @@ export default function Hero() {
               animationDuration: `${2 + Math.random() * 3}s`
             }}
           ></div>
+        ))}
+        
+        {/* Additional geometric floating elements */}
+        {[...Array(10)].map((_, i) => (
+          <div
+            key={`geo-${i}`}
+            className="absolute w-2 h-2 border border-secondary-400 opacity-30 animate-bounce"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 4}s`,
+              animationDuration: `${3 + Math.random() * 2}s`,
+              transform: `rotate(${Math.random() * 360}deg)`
+            }}
+          ></div>
+        ))}
+        
+        {/* CSS-based 3D wireframe elements */}
+        {[...Array(5)].map((_, i) => (
+          <div
+            key={`wireframe-${i}`}
+            className="absolute opacity-20 animate-spin"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${10 + Math.random() * 10}s`,
+              transform: `scale(${0.5 + Math.random() * 0.5})`
+            }}
+          >
+            <div className="w-8 h-8 border border-accent-400 transform rotate-45"></div>
+          </div>
         ))}
       </div>
     </section>
