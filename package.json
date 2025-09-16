@@ -8,9 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "npm run build && cp CNAME dist/ && git add dist && git commit -m 'Deploy to GitHub Pages' && git subtree push --prefix dist origin gh-pages",
-    "predeploy": "npm run build && cp CNAME dist/",
-    "build:azure": "npm run build && cp staticwebapp.config.json dist/"
+    "deploy": "npm run build && cp CNAME dist/",
+    "predeploy": "npm run build && cp CNAME dist/"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
