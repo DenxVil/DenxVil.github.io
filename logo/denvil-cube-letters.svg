@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 120" width="600" height="120">
+  <defs>
+    <linearGradient id="cubeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#141727;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9333ea;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Letter D -->
+  <text x="10" y="80" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="url(#cubeGradient)">D</text>
+  
+  <!-- Letter E -->
+  <text x="100" y="80" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="url(#cubeGradient)">E</text>
+  
+  <!-- Letter N -->
+  <text x="190" y="80" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="url(#cubeGradient)">N</text>
+  
+  <!-- Letter V -->
+  <text x="290" y="80" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="url(#cubeGradient)">V</text>
+  
+  <!-- Letter I -->
+  <text x="390" y="80" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="url(#cubeGradient)">I</text>
+  
+  <!-- Letter L -->
+  <text x="460" y="80" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="url(#cubeGradient)">L</text>
+</svg>

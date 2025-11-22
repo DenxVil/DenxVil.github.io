@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nexus AI - Advanced AI chatbot by Denvil (Harsh) with intelligent conversation capabilities">
+    <title>Nexus AI - Advanced AI Chatbot</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .nexus-page {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+        
+        .nexus-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1), transparent);
+        }
+        
+        .nexus-icon {
+            font-size: 6rem;
+            margin-bottom: 1rem;
+            animation: float3s 3s ease-in-out infinite;
+        }
+        
+        .nexus-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #1e3a8a, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nexus-subtitle {
+            font-size: 1.5rem;
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .nexus-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .status-badge {
+            padding: 0.5rem 1.5rem;
+            background: rgba(59, 130, 246, 0.2);
+            border: 2px solid rgba(59, 130, 246, 0.4);
+            border-radius: 2rem;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+        
+        .features-section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--color-text);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: var(--color-bg-secondary);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .feature-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-8px) rotateX(2deg);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            color: var(--color-text);
+        }
+        
+        .feature-desc {
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+        
+        .usage-section {
+            background: var(--color-bg-secondary);
+            padding: 4rem 0;
+            border-radius: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .usage-steps {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .usage-step {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: rgba(59, 130, 246, 0.05);
+            border-left: 4px solid var(--color-primary);
+            border-radius: 0.5rem;
+        }
+        
+        .step-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--color-primary);
+            flex-shrink: 0;
+        }
+        
+        .step-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+        }
+        
+        .step-content p {
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', monospace;
+            color: #22c55e;
+            margin-top: 0.5rem;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+        
+        .cta-desc {
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .tech-stack {
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .tech-items {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .tech-item {
+            padding: 1rem 2rem;
+            background: var(--gradient-primary);
+            border-radius: 1rem;
+            font-weight: 600;
+            color: white;
+            transform-style: preserve-3d;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-item:hover {
+            transform: translateY(-4px) rotateX(5deg);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="brand" aria-label="Home">
+                <div class="brand-cube" aria-hidden="true"></div>
+                <span>DENVIL</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#projects" class="nav-link">Projects</a></li>
+                <li><a href="projects.html" class="nav-link">All Projects</a></li>
+                <li><a href="/#contact" class="nav-link-cta">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="nexus-page">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="nexus-hero">
+                <div class="nexus-icon">🤖</div>
+                <h1 class="nexus-title">Nexus AI</h1>
+                <p class="nexus-subtitle">
+                    Advanced AI chatbot with intelligent conversation capabilities, natural language processing, and seamless Telegram integration.
+                </p>
+                <div class="nexus-badges">
+                    <span class="status-badge">🚀 In Development</span>
+                    <span class="status-badge">🤖 AI-Powered</span>
+                    <span class="status-badge">⚡ Fast Response</span>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <section class="features-section">
+                <h2 class="section-heading">Key Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <h3 class="feature-title">Natural Conversations</h3>
+                        <p class="feature-desc">
+                            Engage in human-like conversations with advanced natural language understanding and context awareness.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3 class="feature-title">Smart AI Engine</h3>
+                        <p class="feature-desc">
+                            Powered by cutting-edge AI models for accurate responses and intelligent decision making.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3 class="feature-title">Lightning Fast</h3>
+                        <p class="feature-desc">
+                            Optimized for speed with minimal latency, providing instant responses to your queries.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3 class="feature-title">Secure & Private</h3>
+                        <p class="feature-desc">
+                            Your conversations are encrypted and private, ensuring complete data security.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3 class="feature-title">Multi-Purpose</h3>
+                        <p class="feature-desc">
+                            From general queries to specific tasks, Nexus AI handles diverse conversation types.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3 class="feature-title">24/7 Available</h3>
+                        <p class="feature-desc">
+                            Always online and ready to assist you whenever you need help or information.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Usage Section -->
+            <section class="usage-section">
+                <div class="container">
+                    <h2 class="section-heading">How to Use</h2>
+                    <div class="usage-steps">
+                        <div class="usage-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Start the Bot</h3>
+                                <p>Open Telegram and search for <strong>@NexusAiProbot</strong> or click the link below to start chatting.</p>
+                                <div class="code-block">/start</div>
+                            </div>
+                        </div>
+                        
+                        <div class="usage-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Send Your Query</h3>
+                                <p>Type your question or message naturally. Nexus AI understands context and conversational flow.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="usage-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Get Instant Response</h3>
+                                <p>Receive intelligent, accurate responses powered by advanced AI within seconds.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="usage-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Continue Conversation</h3>
+                                <p>Ask follow-up questions or start new topics. Nexus AI maintains context throughout the conversation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <h2 class="cta-title">Ready to Experience Nexus AI?</h2>
+                <p class="cta-desc">Start chatting with one of the most advanced AI bots on Telegram</p>
+                <div class="cta-buttons">
+                    <a href="https://t.me/NexusAiProbot" target="_blank" rel="noopener" class="btn-primary">
+                        Chat on Telegram
+                    </a>
+                    <a href="https://github.com/Shanxai/Nexus" target="_blank" rel="noopener" class="btn-outline">
+                        View Repository
+                    </a>
+                </div>
+            </section>
+
+            <!-- Tech Stack -->
+            <section class="tech-stack">
+                <h2 class="section-heading">Built With</h2>
+                <div class="tech-items">
+                    <div class="tech-item">Python</div>
+                    <div class="tech-item">AI/ML</div>
+                    <div class="tech-item">Natural Language Processing</div>
+                    <div class="tech-item">Telegram Bot API</div>
+                    <div class="tech-item">Cloud Infrastructure</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; <span id="year">2024</span> Denvil (Harsh). All rights reserved.</p>
+                </div>
+                <div class="footer-right">
+                    <a href="https://github.com/DenxVil" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+                    <a href="https://t.me/xDenvil_bot" target="_blank" rel="noopener" class="footer-link">Telegram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
