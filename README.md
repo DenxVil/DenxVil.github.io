@@ -48,6 +48,16 @@ npm install --legacy-peer-deps
 npm run dev
 ```
 
+**Note**: The current `package.json` includes React and React Three Fiber dependencies from the previous implementation. These are not used in the vanilla JS version but are kept to minimize migration risk. For production optimization, consider removing unused dependencies:
+- All `react*` packages
+- `@react-three/*` packages
+- `framer-motion`
+- `@emailjs/browser`
+- `maath`
+- `prop-types`
+
+Required dependencies: `three`, `gsap`, `tailwindcss`, `autoprefixer`, `postcss`
+
 The site will be available at `http://localhost:3000`
 
 ### Build for Production

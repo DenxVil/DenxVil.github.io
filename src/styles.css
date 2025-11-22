@@ -39,7 +39,7 @@
 
 /* Focus-visible styles for better accessibility */
 *:focus-visible {
-  @apply outline-2 outline-offset-2 outline-violet-400;
+  @apply outline outline-2 outline-offset-2 outline-violet-400;
 }
 
 /* Smooth scrolling */
