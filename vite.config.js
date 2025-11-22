@@ -1,10 +1,9 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
 
-// GitHub Pages optimized configuration
+// GitHub Pages optimized configuration - Vanilla JS
 export default defineConfig({
-  plugins: [react()],
-  base: '/', // GitHub Pages serves from root domain (denx.me)
+  plugins: [],
+  base: '/', // GitHub Pages serves from root domain
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
@@ -16,14 +15,11 @@ export default defineConfig({
         // Optimized chunk splitting for GitHub Pages
         manualChunks: (id) => {
           if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'vendor';
-            }
-            if (id.includes('three') || id.includes('@react-three')) {
+            if (id.includes('three')) {
               return 'three';
             }
-            if (id.includes('framer-motion')) {
-              return 'motion';
+            if (id.includes('gsap')) {
+              return 'gsap';
             }
             return 'vendor';
           }
@@ -39,9 +35,8 @@ export default defineConfig({
     port: 3000,
     open: true,
   },
-  // Optimized for GitHub Pages performance
+  // Optimized for vanilla JS + Three.js
   optimizeDeps: {
-    include: ['react', 'react-dom'],
-    exclude: ['three', '@react-three/fiber', '@react-three/drei'] // Let these load naturally for better performance
+    include: ['three', 'gsap'],
   }
 })
