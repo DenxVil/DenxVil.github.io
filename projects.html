@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="All projects by Denvil (Harsh) - Python, Telegram bots, web development, and more">
+    <title>All Projects - Denvil (Harsh)</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .projects-page {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-description {
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            color: var(--color-text);
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gradient-primary);
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+        
+        .all-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .project-item {
+            background: var(--color-bg-secondary);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .project-item:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-8px) rotateX(2deg);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
+        }
+        
+        .project-preview {
+            height: 200px;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            transform: rotateX(0deg) rotateZ(0deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-item:hover .project-preview {
+            transform: rotateX(5deg) rotateZ(-2deg);
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+        }
+        
+        .project-desc {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .project-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .status-completed {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        
+        .status-development {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+        
+        .status-planned {
+            background: rgba(249, 115, 22, 0.2);
+            color: #f97316;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tech-badge {
+            padding: 0.25rem 0.75rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            color: var(--color-primary);
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .project-link:hover {
+            gap: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="brand" aria-label="Home">
+                <div class="brand-cube" aria-hidden="true"></div>
+                <span>DENVIL</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#projects" class="nav-link">Projects</a></li>
+                <li><a href="projects.html" class="nav-link">All Projects</a></li>
+                <li><a href="/#contact" class="nav-link-cta">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="projects-page">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">All Projects</h1>
+                <p class="page-description">
+                    A comprehensive showcase of my work in development, design, and technology
+                </p>
+            </div>
+
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+                <button class="filter-btn" data-filter="development">In Development</button>
+                <button class="filter-btn" data-filter="planned">Planned</button>
+            </div>
+
+            <div class="all-projects-grid">
+                <!-- Nexus AI -->
+                <div class="project-item" data-status="development">
+                    <div class="project-preview" style="background: linear-gradient(135deg, #1e3a8a, #7c3aed);">
+                        🤖
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Nexus AI</h3>
+                        <p class="project-desc">Advanced AI chatbot with intelligent conversation capabilities and natural language processing.</p>
+                        <div class="project-meta">
+                            <span class="project-status status-development">In Development</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">AI/ML</span>
+                            <span class="tech-badge">Telegram</span>
+                        </div>
+                        <a href="nexus.html" class="project-link">Learn More →</a>
+                    </div>
+                </div>
+
+                <!-- Dark Userbot -->
+                <div class="project-item" data-status="completed">
+                    <div class="project-preview" style="background: linear-gradient(135deg, #1f2937, #7c3aed);">
+                        ⚡
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Dark Userbot</h3>
+                        <p class="project-desc">Powerful Telegram userbot with extensive automation features and custom modules.</p>
+                        <div class="project-meta">
+                            <span class="project-status status-completed">Completed</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Telethon</span>
+                            <span class="tech-badge">Telegram</span>
+                        </div>
+                        <a href="https://github.com/DenxVil/DARK-USERBOT" target="_blank" rel="noopener" class="project-link">View on GitHub →</a>
+                    </div>
+                </div>
+
+                <!-- TEAM KYRO -->
+                <div class="project-item" data-status="completed" id="team-kyro">
+                    <div class="project-preview" style="background: linear-gradient(135deg, #dc2626, #f97316);">
+                        🎮
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">TEAM KYRO</h3>
+                        <p class="project-desc">Professional esports team brand identity, logo design, and online presence.</p>
+                        <div class="project-meta">
+                            <span class="project-status status-completed">Active</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">Branding</span>
+                            <span class="tech-badge">Design</span>
+                            <span class="tech-badge">Esports</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hecker Result Bot -->
+                <div class="project-item" data-status="completed">
+                    <div class="project-preview" style="background: linear-gradient(135deg, #059669, #10b981);">
+                        📊
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Hecker/Aakash Result Bot</h3>
+                        <p class="project-desc">Automated result checking and notification bot for educational purposes.</p>
+                        <div class="project-meta">
+                            <span class="project-status status-completed">Completed</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Telegram</span>
+                            <span class="tech-badge">Automation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- X9 Spammer -->
+                <div class="project-item" data-status="completed">
+                    <div class="project-preview" style="background: linear-gradient(135deg, #7c3aed, #a855f7);">
+                        💬
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">X9 Spammer Modules</h3>
+                        <p class="project-desc">Custom modules for X9 with advanced messaging capabilities.</p>
+                        <div class="project-meta">
+                            <span class="project-status status-completed">Completed</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Telethon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-Certificate Generator -->
+                <div class="project-item" data-status="completed">
+                    <div class="project-preview" style="background: linear-gradient(135deg, #0891b2, #06b6d4);">
+                        📜
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">E-Certificate Generator</h3>
+                        <p class="project-desc">Automated certificate generation and distribution system with email integration.</p>
+                        <div class="project-meta">
+                            <span class="project-status status-completed">Completed</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Email</span>
+                            <span class="tech-badge">PDF</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MITRA AI -->
+                <div class="project-item" data-status="development">
+                    <div class="project-preview" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+                        🧠
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">MITRA AI</h3>
+                        <p class="project-desc">AI-powered assistant with advanced capabilities and multi-platform support.</p>
+                        <div class="project-meta">
+                            <span class="project-status status-development">In Development</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">AI/ML</span>
+                            <span class="tech-badge">NLP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SYNAPSE WEB -->
+                <div class="project-item" data-status="development">
+                    <div class="project-preview" style="background: linear-gradient(135deg, #ec4899, #f472b6);">
+                        🌐
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">SYNAPSE WEB</h3>
+                        <p class="project-desc">Modern web application with advanced features and responsive design.</p>
+                        <div class="project-meta">
+                            <span class="project-status status-development">In Development</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arduino Projects -->
+                <div class="project-item" data-status="planned">
+                    <div class="project-preview" style="background: linear-gradient(135deg, #0ea5e9, #38bdf8);">
+                        🔧
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Arduino Projects</h3>
+                        <p class="project-desc">Hardware projects using Arduino for IoT and automation applications.</p>
+                        <div class="project-meta">
+                            <span class="project-status status-planned">Planned</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">Arduino</span>
+                            <span class="tech-badge">C++</span>
+                            <span class="tech-badge">IoT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Robot Hardware -->
+                <div class="project-item" data-status="planned">
+                    <div class="project-preview" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+                        🤖
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Robot Hardware</h3>
+                        <p class="project-desc">Custom robot development with advanced sensors and control systems.</p>
+                        <div class="project-meta">
+                            <span class="project-status status-planned">Planned</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">Hardware</span>
+                            <span class="tech-badge">Robotics</span>
+                            <span class="tech-badge">Engineering</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pyboard/Micropython -->
+                <div class="project-item" data-status="planned">
+                    <div class="project-preview" style="background: linear-gradient(135deg, #14b8a6, #2dd4bf);">
+                        ⚙️
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Pyboard/Micropython</h3>
+                        <p class="project-desc">Embedded systems programming with Micropython for efficient hardware control.</p>
+                        <div class="project-meta">
+                            <span class="project-status status-planned">Planned</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">Micropython</span>
+                            <span class="tech-badge">Embedded</span>
+                            <span class="tech-badge">IoT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Denx.me Website -->
+                <div class="project-item" data-status="planned">
+                    <div class="project-preview" style="background: linear-gradient(135deg, #6366f1, #818cf8);">
+                        🌟
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Denx.me Website</h3>
+                        <p class="project-desc">Personal website with portfolio, blog, and showcase of all projects.</p>
+                        <div class="project-meta">
+                            <span class="project-status status-planned">Planned</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; <span id="year">2024</span> Denvil (Harsh). All rights reserved.</p>
+                </div>
+                <div class="footer-right">
+                    <a href="https://github.com/DenxVil" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+                    <a href="https://t.me/xDenvil_bot" target="_blank" rel="noopener" class="footer-link">Telegram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Project filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectItems = document.querySelectorAll('.project-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                // Filter projects
+                projectItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-status') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

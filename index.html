@@ -1,106 +1,308 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Denvil (Harsh) - Code, Design, Compete</title>
-    <meta name="description" content="Professional portfolio of Denvil (Harsh) - Developer, Designer, and Esports Competitor with 4+ years of coding experience.">
-    <meta name="keywords" content="Developer, Designer, Esports, Python, Telethon, HTML, CSS, SQL, Logo Design, Denvil, Harsh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Denvil (Harsh) - 20-year-old MBBS student, Developer with 4+ years experience in Python, Telethon, Web Dev. Esports gamer at TEAM KYRO.">
+    <meta name="keywords" content="Denvil, Harsh, Developer, Python, Telethon, HTML, CSS, SQL, GitHub, Telegram Bot, MBBS, TEAM KYRO">
+    <meta name="author" content="Denvil (Harsh)">
+    <meta name="theme-color" content="#141727">
     
-    <!-- Theme -->
-    <meta name="theme-color" content="#0f172a">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Denvil (Harsh) - Developer, Designer, Esports Gamer">
+    <meta property="og:description" content="20-year-old MBBS student with 4+ years coding experience. Python, Telethon, Web Development specialist.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://denxvil.github.io/">
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-slate-950 text-white font-['Inter',sans-serif] antialiased">
-    <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-sm border-b border-slate-800">
-      <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="/" class="text-xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent" aria-label="Home">
-          DENVIL
-        </a>
-        <div class="flex gap-6">
-          <a href="#about" class="text-slate-300 hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-400 focus-visible:outline-offset-4 rounded">About</a>
-          <a href="#work" class="text-slate-300 hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-400 focus-visible:outline-offset-4 rounded">Work</a>
-          <a href="#contact" class="text-slate-300 hover:text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-400 focus-visible:outline-offset-4 rounded">Contact</a>
-        </div>
-      </nav>
+    <title>Denvil (Harsh) - Developer, Designer, Esports Gamer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- 3D Background Shapes -->
+    <div class="bg-shapes" aria-hidden="true">
+        <div class="shape-cube"></div>
+        <div class="shape-pyramid"></div>
+        <div class="shape-sphere"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="brand" aria-label="Home">
+                <div class="brand-cube" aria-hidden="true"></div>
+                <span>DENVIL</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="projects.html" class="nav-link">All Projects</a></li>
+                <li><a href="#contact" class="nav-link-cta">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Hero Section -->
-    <main class="min-h-screen pt-20">
-      <section class="container mx-auto px-6 py-12 lg:py-20">
-        <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-8rem)]">
-          <!-- Left: Content -->
-          <div class="space-y-8 order-2 lg:order-1">
-            <h1 class="text-5xl lg:text-7xl font-bold leading-tight">
-              Hi, I'm <span class="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Denvil</span>
-            </h1>
-            <p class="text-xl lg:text-2xl text-slate-300 leading-relaxed">
-              A developer, designer, and esports competitor crafting digital experiences with code and creativity.
-            </p>
-            <p class="text-lg text-slate-400">
-              4+ years of coding experience in Python, web technologies, and competitive gaming. I build things that matter and compete at the highest level.
-            </p>
-            <div class="flex flex-wrap gap-4">
-              <a href="#work" class="btn-primary">
-                View My Work
-              </a>
-              <a href="#contact" class="btn-outline">
-                Get In Touch
-              </a>
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <div class="denvil-cube" aria-hidden="true">
+                        <div class="cube-face cube-front">D</div>
+                        <div class="cube-face cube-back">E</div>
+                        <div class="cube-face cube-right">N</div>
+                        <div class="cube-face cube-left">V</div>
+                        <div class="cube-face cube-top">I</div>
+                        <div class="cube-face cube-bottom">L</div>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="gradient-text">Denvil</span><br>
+                        <span class="subtitle">(Harsh)</span>
+                    </h1>
+                    <p class="hero-description">
+                        20-year-old MBBS 2nd year student at Maulana Azad Medical College, Delhi.<br>
+                        Developer with 4+ years of coding experience in Python, Telethon, HTML, CSS, and SQL.
+                    </p>
+                    <div class="hero-badges">
+                        <span class="badge">Developer</span>
+                        <span class="badge">Esports Gamer</span>
+                        <span class="badge">Logo Designer</span>
+                        <span class="badge">Website Creator</span>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn-primary">View Projects</a>
+                        <a href="#contact" class="btn-secondary">Get in Touch</a>
+                    </div>
+                </div>
             </div>
-          </div>
-
-          <!-- Right: 3D Canvas -->
-          <div class="order-1 lg:order-2">
-            <div class="canvas-container">
-              <canvas id="hero-canvas" aria-label="Interactive 3D visualization"></canvas>
-            </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      <!-- About Section (Placeholder) -->
-      <section id="about" class="container mx-auto px-6 py-20">
-        <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">About Me</h2>
-        <p class="text-lg text-slate-300 max-w-2xl">
-          With over 4 years of experience in software development, I specialize in Python, web technologies (HTML, CSS, SQL), and creating engaging user experiences. When I'm not coding, you'll find me competing in esports or designing stunning visuals.
-        </p>
-      </section>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-intro">
+                        I'm a passionate developer balancing medical studies with my love for technology and gaming.
+                    </p>
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <strong>Location:</strong> Delhi, India
+                        </div>
+                        <div class="detail-item">
+                            <strong>Education:</strong> MBBS 2nd Year, Maulana Azad Medical College
+                        </div>
+                        <div class="detail-item">
+                            <strong>Experience:</strong> 4+ years in coding
+                        </div>
+                        <div class="detail-item">
+                            <strong>Gaming:</strong> TEAM KYRO Esports
+                        </div>
+                    </div>
+                    
+                    <h3 class="skills-title">Technical Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-fill" style="width: 90%" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span class="skill-name">Telethon</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-fill" style="width: 85%" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span class="skill-name">HTML & CSS</span>
+                                <span class="skill-percent">88%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-fill" style="width: 88%" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span class="skill-name">SQL</span>
+                                <span class="skill-percent">80%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-fill" style="width: 80%" data-width="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span class="skill-name">GitHub</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-fill" style="width: 85%" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span class="skill-name">Telegram Bots</span>
+                                <span class="skill-percent">92%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-fill" style="width: 92%" data-width="92"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="harsh-tower" aria-hidden="true">
+                        <div class="tower-layer layer-h">H</div>
+                        <div class="tower-layer layer-a">A</div>
+                        <div class="tower-layer layer-r">R</div>
+                        <div class="tower-layer layer-s">S</div>
+                        <div class="tower-layer layer-h2">H</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <!-- Work Section (Placeholder) -->
-      <section id="work" class="container mx-auto px-6 py-20 bg-slate-900/50">
-        <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">My Work</h2>
-        <p class="text-lg text-slate-300 max-w-2xl">
-          A showcase of projects combining technical expertise with creative vision. Coming soon...
-        </p>
-      </section>
+    <!-- Featured Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Nexus AI Card -->
+                <div class="project-card" data-tilt>
+                    <div class="card-inner">
+                        <div class="card-front" style="background: linear-gradient(135deg, #1e3a8a, #7c3aed);">
+                            <div class="card-icon">🤖</div>
+                            <h3 class="card-title">Nexus AI</h3>
+                            <p class="card-description">Advanced AI chatbot with intelligent conversation capabilities</p>
+                            <div class="card-status">In Development</div>
+                        </div>
+                        <div class="card-back">
+                            <h4>Technologies</h4>
+                            <div class="tech-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">AI/ML</span>
+                                <span class="tag">Telegram</span>
+                            </div>
+                            <a href="nexus.html" class="card-link">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Contact Section (Placeholder) -->
-      <section id="contact" class="container mx-auto px-6 py-20">
-        <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Get In Touch</h2>
-        <p class="text-lg text-slate-300 max-w-2xl mb-8">
-          Have a project in mind or want to collaborate? I'd love to hear from you.
-        </p>
-        <a href="#contact" class="btn-primary inline-block">
-          Send Message
-        </a>
-      </section>
-    </main>
+                <!-- Dark Userbot Card -->
+                <div class="project-card" data-tilt>
+                    <div class="card-inner">
+                        <div class="card-front" style="background: linear-gradient(135deg, #1f2937, #7c3aed);">
+                            <div class="card-icon">⚡</div>
+                            <h3 class="card-title">Dark Userbot</h3>
+                            <p class="card-description">Powerful Telegram userbot with extensive automation features</p>
+                            <div class="card-status completed">Completed</div>
+                        </div>
+                        <div class="card-back">
+                            <h4>Technologies</h4>
+                            <div class="tech-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">Telethon</span>
+                                <span class="tag">Telegram</span>
+                            </div>
+                            <a href="https://github.com/DenxVil/DARK-USERBOT" target="_blank" rel="noopener" class="card-link">View on GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEAM KYRO Card -->
+                <div class="project-card" data-tilt>
+                    <div class="card-inner">
+                        <div class="card-front" style="background: linear-gradient(135deg, #dc2626, #f97316);">
+                            <div class="card-icon">🎮</div>
+                            <h3 class="card-title">TEAM KYRO</h3>
+                            <p class="card-description">Professional esports team brand and online presence</p>
+                            <div class="card-status">Active</div>
+                        </div>
+                        <div class="card-back">
+                            <h4>Technologies</h4>
+                            <div class="tech-tags">
+                                <span class="tag">Branding</span>
+                                <span class="tag">Design</span>
+                                <span class="tag">Esports</span>
+                            </div>
+                            <a href="projects.html#team-kyro" class="card-link">View Details →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="projects-cta">
+                <a href="projects.html" class="btn-outline">View All Projects →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="contact-intro">
+                Have a project in mind or want to collaborate? Feel free to reach out!
+            </p>
+            <div class="contact-methods">
+                <a href="https://t.me/xDenvil_bot" target="_blank" rel="noopener" class="contact-card telegram">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Telegram Bot</h3>
+                        <p>@xDenvil_bot</p>
+                    </div>
+                </a>
+                <a href="mailto:xdenvil0@gmail.com" class="contact-card email">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Email</h3>
+                        <p>xdenvil0@gmail.com</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 border-t border-slate-800 py-8">
-      <div class="container mx-auto px-6 text-center text-slate-400">
-        <p>&copy; <span id="year">2024</span> Denvil (Harsh). All rights reserved.</p>
-      </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; <span id="year">2024</span> Denvil (Harsh). All rights reserved.</p>
+                </div>
+                <div class="footer-right">
+                    <a href="https://github.com/DenxVil" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+                    <a href="https://t.me/xDenvil_bot" target="_blank" rel="noopener" class="footer-link">Telegram</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
-    <!-- Load main JavaScript module -->
-    <script type="module" src="/src/main.js"></script>
-  </body>
+    <script src="assets/js/main.js"></script>
+</body>
 </html>

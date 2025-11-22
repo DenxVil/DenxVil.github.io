@@ -1,157 +1,186 @@
 # DenxVil.github.io
 
-A polished, modern 3D-forward portfolio website combining top design inspirations and advanced Three.js 3D elements.
+A production-ready 3D portfolio website for Denvil (Harsh) - Developer, Designer, and Esports Gamer.
 
-## 🎨 Design Inspirations
+## 🚀 Overview
 
-### Top 5 Template Ideas
-1. **Spline-like editable 3D scene affordance** - Modular scene architecture allowing easy scene swapping
-2. **Bruno Simon-style playful interaction** - Pointer-driven orbit/parallax and cursor microinteractions
-3. **Active Theory cinematic polish** - Smooth scene fades, refined lighting, subtle postprocessing
-4. **react-three-fiber aesthetic** - Componentized, well-documented scene code for maintainability
-5. **Tailwind + minimal markup** - Utility-first styling with custom button utilities
-
-### Top 7 3D Element Concepts
-1. **Procedural primary object** - TorusKnot with stylized MeshStandardMaterial
-2. **Ambient particle field** - Subtle particle cloud with pointer parallax
-3. **Soft rim lighting** - Multi-light setup with directional, rim, and fill lights
-4. **Subtle bloom postprocessing** - Optional, respects reduced-motion preferences
-5. **Contact soft shadow** - Shadow plane approximation for depth
-6. **Cursor-driven parallax** - Object reacts to pointer with GSAP micro-tweens
-7. **GLTF/GLB placeholder** - Instructions for custom model integration
-
-## 🚀 Tech Stack
-
-- **Vite** - Fast build tool and dev server
-- **Tailwind CSS** - Utility-first styling
-- **Three.js** - 3D rendering and WebGL
-- **GSAP** - Smooth animations and micro-interactions
-- **Vanilla ES Modules** - No framework dependency
-
-## 💻 Local Development
-
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/DenxVil/DenxVil.github.io.git
-cd DenxVil.github.io
-
-# Install dependencies
-npm install --legacy-peer-deps
-
-# Start development server
-npm run dev
-```
-
-**Note**: The current `package.json` includes React and React Three Fiber dependencies from the previous implementation. These are not used in the vanilla JS version but are kept to minimize migration risk. For production optimization, consider removing unused dependencies:
-- All `react*` packages
-- `@react-three/*` packages
-- `framer-motion`
-- `@emailjs/browser`
-- `maath`
-- `prop-types`
-
-Required dependencies: `three`, `gsap`, `tailwindcss`, `autoprefixer`, `postcss`
-
-The site will be available at `http://localhost:3000`
-
-### Build for Production
-
-```bash
-# Build the site
-npm run build
-
-# Preview the production build
-npm run preview
-```
-
-## 🌐 Deployment
-
-The site automatically deploys to GitHub Pages when changes are pushed to the `main` branch via GitHub Actions.
-
-### GitHub Actions Workflow
-- Triggers on push to `main` or `redesign/3d-gh-pages` branches
-- Installs dependencies, builds the project, and deploys to GitHub Pages
-- Uses official GitHub Actions for Pages deployment
-
-### Manual Deployment Trigger
-You can manually trigger deployment from the Actions tab in the GitHub repository.
+This is a modern, interactive portfolio website featuring advanced 3D elements and animations built with pure HTML, CSS, and JavaScript. The site showcases projects, skills, and provides contact information.
 
 ## ✨ Features
 
-### Accessibility
-- Semantic HTML structure
-- Keyboard-focusable interactive elements
-- Visible focus-visible outlines
-- ARIA labels for enhanced screen reader support
+### 3D Elements
+- **DENVIL Rotating Cube**: 140x140px 6-faced cube with letter rotation in hero section
+- **HARSH Letter Tower**: 5-layer stacked letters with mouse-follow parallax effect
+- **3D Project Cards**: Flip cards with front/back faces for featured projects
+- **Background Shapes**: Animated geometric shapes (cube, pyramid, sphere) with floating particles
+- **3D Navigation**: Brand cube with rotation and 3D hover effects on links
+- **Contact Cards**: Floating icons with 3D lift effects
+
+### Pages
+- **index.html**: Homepage with hero, about, projects, and contact sections
+- **projects.html**: Complete project showcase with filtering by status
+- **nexus.html**: Dedicated page for Nexus AI project
+
+### Performance & Accessibility
+- Total page size under 150KB
 - Respects `prefers-reduced-motion` user preference
+- Keyboard-accessible navigation
+- Mobile responsive design
+- SEO optimized with meta tags and Open Graph
+- No external dependencies (pure vanilla JS)
 
-### Performance
-- Capped pixel ratio (max 2x) for optimal WebGL performance
-- Minimal lights and low-poly geometry
-- Optional postprocessing based on device capabilities
-- Lazy loading and code splitting
+## 💻 Local Development
 
-### HMR Safe
-- Proper WebGL context cleanup on hot module reload
-- No memory leaks during development
-- Automatic resource disposal
+### Quick Start
 
-## 🎮 3D Scene Customization
+1. Clone the repository:
+```bash
+git clone https://github.com/DenxVil/DenxVil.github.io.git
+cd DenxVil.github.io
+```
 
-### Swapping the 3D Model
-To replace the procedural geometry with a custom GLTF/GLB model:
+2. Open the site:
+Simply open `index.html` in your web browser. No build process required!
 
-1. Add your model file (< 500KB recommended) to the `/public` folder
-2. Uncomment and configure the GLTF loader in `src/scene.js`
-3. Follow the inline instructions in the file
+For live reloading during development, you can use a simple HTTP server:
 
-### Configuration
-Scene settings can be adjusted in `src/scene.js`:
-- Primary object type and materials
-- Particle count and appearance
-- Lighting intensity and colors
-- Postprocessing effects
-- Interaction behavior
+```bash
+# Using Python 3
+python -m http.server 8000
+
+# Using Python 2
+python -m SimpleHTTPServer 8000
+
+# Using Node.js (if you have npx)
+npx serve
+
+# Using PHP
+php -S localhost:8000
+```
+
+Then visit `http://localhost:8000` in your browser.
 
 ## 📁 Project Structure
 
 ```
 .
-├── index.html              # Main HTML entry point
-├── src/
-│   ├── main.js            # Application entry (HMR, initialization)
-│   ├── scene.js           # Three.js scene implementation
-│   └── styles.css         # Tailwind utilities and custom styles
-├── public/                # Static assets
-├── .github/
-│   └── workflows/
-│       └── deploy-pages.yml  # GitHub Actions deployment
-├── vite.config.js        # Vite configuration
-├── tailwind.config.js    # Tailwind configuration
-└── package.json          # Dependencies and scripts
+├── index.html              # Homepage
+├── projects.html           # All projects page
+├── nexus.html             # Nexus AI dedicated page
+├── assets/
+│   ├── css/
+│   │   └── style.css      # All styles including 3D effects
+│   └── js/
+│       └── main.js        # JavaScript interactions
+├── logo/                   # Logo assets (SVG/CSS)
+│   ├── harsh-tower-style.css
+│   ├── nexus-ai-badge.svg
+│   ├── dark-userbot-icon.svg
+│   └── denvil-cube-letters.svg
+└── README.md
 ```
 
-## 🧪 Testing
+## 🎨 3D Elements Guide
 
-### Development Testing
-1. Run `npm run dev`
-2. Validate 3D scene loads without errors
-3. Test pointer parallax and microinteractions
-4. Verify HMR by editing source files
-5. Check accessibility with keyboard navigation
-6. Enable reduced-motion in browser settings to verify animation disable
+### DENVIL Rotating Cube
+- Located in hero section
+- 6 faces spelling D-E-N-V-I-L
+- 16s rotation, slows to 4s on hover
+- Gradient: `linear-gradient(135deg, #141727, #3b82f6, #9333ea)`
 
-### Production Testing
-1. Run `npm run build && npm run preview`
-2. Verify all assets load correctly
-3. Test on different devices and browsers
-4. Check performance metrics
+### HARSH Letter Tower
+- Located in about section
+- 5 layers with 20px Z-offset increments
+- Mouse-follow parallax effect (±10deg rotation)
+- Gradient: `linear-gradient(135deg, #1f2937, #4f46e5, #7c3aed)`
+
+### 3D Project Cards
+- 300x280px flip cards
+- Y-axis flip on hover with X-axis tilt
+- Custom gradients per project
+- Front: Project info, Back: Tech stack & links
+
+### Background Shapes
+- Particle system: 5 floating particles
+- Geometric shapes: cube, pyramid, sphere
+- All with 3D rotation animations
+- Opacity: 0.05 (subtle background effect)
+
+## 🛠️ Customization
+
+### Updating Projects
+Edit the project cards in `index.html` and `projects.html`. Each project has:
+- Icon (emoji or SVG)
+- Title and description
+- Status (completed/development/planned)
+- Tech stack tags
+- Link (internal or external)
+
+### Changing Colors
+All colors are defined in CSS custom properties at the top of `assets/css/style.css`:
+
+```css
+:root {
+    --color-bg: #0a0e1a;
+    --color-primary: #3b82f6;
+    --color-secondary: #9333ea;
+    /* ... */
+}
+```
+
+### Adding New Pages
+1. Create new HTML file
+2. Copy header and footer from existing pages
+3. Link new CSS file: `<link rel="stylesheet" href="assets/css/style.css">`
+4. Add link in navigation
+
+## 🌐 Deployment
+
+### GitHub Pages
+The site is automatically deployed to GitHub Pages. Any push to the `main` branch will update the live site at `https://denxvil.github.io/`
+
+### Manual Deployment
+Simply upload all files to any static hosting service:
+- Netlify
+- Vercel
+- Cloudflare Pages
+- AWS S3
+- Any web server
+
+No build process required!
+
+## 📊 Performance
+
+- **Total Size**: ~75KB (HTML+CSS+JS combined)
+- **Load Time**: <1s on fast connections
+- **Mobile Optimized**: Responsive breakpoints at 768px
+- **Animations**: Disabled automatically for users with `prefers-reduced-motion`
+
+## 🎯 Browser Support
+
+- Chrome/Edge: ✅ Full support
+- Firefox: ✅ Full support
+- Safari: ✅ Full support
+- Mobile browsers: ✅ Full support
+
+Requires support for:
+- CSS 3D Transforms
+- CSS Custom Properties
+- ES6 JavaScript
+
+## 👤 Author
+
+**Denvil (Harsh)**
+- Age: 20
+- Education: MBBS 2nd Year, Maulana Azad Medical College, Delhi
+- Experience: 4+ years in coding
+- Specialties: Python, Telethon, HTML, CSS, SQL, GitHub, Telegram bots
+- Gaming: TEAM KYRO Esports
+
+### Contact
+- Telegram: [@xDenvil_bot](https://t.me/xDenvil_bot)
+- Email: xdenvil0@gmail.com
+- GitHub: [@DenxVil](https://github.com/DenxVil)
 
 ## 📝 License
 
@@ -159,4 +188,4 @@ All rights reserved © 2024 Denvil (Harsh)
 
 ## 🤝 Contributing
 
-This is a personal portfolio project. Feel free to fork and adapt for your own use!
+This is a personal portfolio project. Feel free to fork and adapt for your own use, but please give credit and don't claim it as your own work.

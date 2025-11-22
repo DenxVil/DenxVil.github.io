@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="darkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1f2937;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4f46e5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Lightning Bolt Background -->
+  <rect width="200" height="200" rx="20" fill="url(#darkGradient)" opacity="0.1"/>
+  
+  <!-- Main Lightning Shape -->
+  <path d="M 100 20 L 80 100 L 110 100 L 90 180 L 140 90 L 110 90 L 130 20 Z" 
+        fill="url(#darkGradient)" 
+        stroke="#ffffff" 
+        stroke-width="2" 
+        opacity="0.9"/>
+  
+  <!-- Glow Effect -->
+  <path d="M 100 20 L 80 100 L 110 100 L 90 180 L 140 90 L 110 90 L 130 20 Z" 
+        fill="none" 
+        stroke="url(#darkGradient)" 
+        stroke-width="6" 
+        opacity="0.3"
+        filter="blur(4px)"/>
+  
+  <!-- Energy Particles -->
+  <circle cx="70" cy="60" r="3" fill="#3b82f6" opacity="0.8"/>
+  <circle cx="130" cy="80" r="4" fill="#7c3aed" opacity="0.8"/>
+  <circle cx="85" cy="120" r="3" fill="#3b82f6" opacity="0.8"/>
+  <circle cx="125" cy="140" r="3" fill="#9333ea" opacity="0.8"/>
+</svg>
