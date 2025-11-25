@@ -657,6 +657,12 @@ body {
     height: 280px;
     perspective: 1000px;
     cursor: pointer;
+    text-decoration: none;
+    display: block;
+}
+
+a.project-card {
+    color: inherit;
 }
 
 .card-inner {
