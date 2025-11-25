@@ -757,6 +757,62 @@ body {
     text-align: center;
 }
 
+/* Featured Project Badge */
+.featured-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 0.25rem 0.75rem;
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: #1f2937;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    z-index: 1;
+    animation: pulseBadge 2s ease-in-out infinite;
+}
+
+@keyframes pulseBadge {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(251, 191, 36, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(251, 191, 36, 0.9);
+    }
+}
+
+.project-card.featured .card-front {
+    position: relative;
+    border: 2px solid rgba(251, 191, 36, 0.5);
+}
+
+.project-card.featured:hover .card-inner {
+    transform: rotateY(180deg) rotateX(5deg) scale(1.02);
+}
+
+.project-card.featured .card-front::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #fbbf24, transparent, #f59e0b);
+    border-radius: 1rem;
+    z-index: -1;
+    opacity: 0.6;
+    animation: borderGlow 3s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+    0%, 100% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
 /* ===== CONTACT SECTION ===== */
 .contact {
     padding: 6rem 0;

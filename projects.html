@@ -174,6 +174,54 @@
         .project-link:hover {
             gap: 0.75rem;
         }
+        
+        /* Featured Project Styles */
+        .featured-project {
+            border: 2px solid rgba(251, 191, 36, 0.5);
+            position: relative;
+            overflow: visible;
+        }
+        
+        .featured-project::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #fbbf24, transparent, #f59e0b);
+            border-radius: 1rem;
+            z-index: -1;
+            opacity: 0.4;
+            animation: featuredGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes featuredGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        
+        .featured-project:hover {
+            border-color: #fbbf24;
+            box-shadow: 0 15px 35px rgba(251, 191, 36, 0.3);
+        }
+        
+        .featured-star {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            animation: starPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes starPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        .featured-project .project-preview {
+            position: relative;
+        }
     </style>
 </head>
 <body>
@@ -210,6 +258,27 @@
             </div>
 
             <div class="all-projects-grid">
+                <!-- Pulse Protector (Featured) -->
+                <div class="project-item featured-project" data-status="completed">
+                    <div class="project-preview" style="background: linear-gradient(135deg, #dc2626, #059669);">
+                        <span class="featured-star">⭐</span>
+                        🏥
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Pulse Protector</h3>
+                        <p class="project-desc">AI-powered trauma assessment pad with real-time vitals monitoring, START triage protocol, and automated clinical recommendations.</p>
+                        <div class="project-meta">
+                            <span class="project-status status-completed">Completed</span>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-badge">HTML5</span>
+                            <span class="tech-badge">CSS3</span>
+                            <span class="tech-badge">JavaScript</span>
+                        </div>
+                        <a href="https://denxvil.github.io/Pulse-Protector-/" target="_blank" rel="noopener" class="project-link">View Live Demo →</a>
+                    </div>
+                </div>
+
                 <!-- Nexus AI -->
                 <div class="project-item" data-status="development">
                     <div class="project-preview" style="background: linear-gradient(135deg, #1e3a8a, #7c3aed);">
