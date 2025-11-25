@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pulse Protector - AI-powered trauma assessment pad with real-time vitals monitoring and START triage protocol by Denvil (Harsh)">
+    <title>Pulse Protector - Smart Trauma Vitals Assessment</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .pulse-page {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+        
+        .pulse-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+            background: radial-gradient(circle at center, rgba(220, 38, 38, 0.1), rgba(5, 150, 105, 0.1), transparent);
+        }
+        
+        .pulse-icon {
+            font-size: 6rem;
+            margin-bottom: 1rem;
+            animation: float3s 3s ease-in-out infinite;
+        }
+        
+        .pulse-title {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #dc2626, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .pulse-subtitle {
+            font-size: 1.5rem;
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .pulse-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .status-badge {
+            padding: 0.5rem 1.5rem;
+            background: rgba(5, 150, 105, 0.2);
+            border: 2px solid rgba(5, 150, 105, 0.4);
+            border-radius: 2rem;
+            font-weight: 600;
+            color: #10b981;
+        }
+        
+        .status-badge.featured {
+            background: rgba(251, 191, 36, 0.2);
+            border-color: rgba(251, 191, 36, 0.4);
+            color: #fbbf24;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .features-section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--color-text);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: var(--color-bg-secondary);
+            border: 2px solid rgba(5, 150, 105, 0.2);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .feature-card:hover {
+            border-color: #059669;
+            transform: translateY(-8px) rotateX(2deg);
+            box-shadow: 0 15px 35px rgba(5, 150, 105, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            color: var(--color-text);
+        }
+        
+        .feature-desc {
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+        
+        .triage-section {
+            background: var(--color-bg-secondary);
+            padding: 4rem 0;
+            border-radius: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .triage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .triage-card {
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .triage-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .triage-card.red {
+            background: rgba(220, 38, 38, 0.2);
+            border: 2px solid rgba(220, 38, 38, 0.5);
+        }
+        
+        .triage-card.yellow {
+            background: rgba(234, 179, 8, 0.2);
+            border: 2px solid rgba(234, 179, 8, 0.5);
+        }
+        
+        .triage-card.green {
+            background: rgba(34, 197, 94, 0.2);
+            border: 2px solid rgba(34, 197, 94, 0.5);
+        }
+        
+        .triage-card.black {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(100, 100, 100, 0.5);
+        }
+        
+        .triage-label {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .triage-card.red .triage-label { color: #dc2626; }
+        .triage-card.yellow .triage-label { color: #eab308; }
+        .triage-card.green .triage-label { color: #22c55e; }
+        .triage-card.black .triage-label { color: #9ca3af; }
+        
+        .triage-desc {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+        
+        .scenarios-section {
+            margin-bottom: 4rem;
+        }
+        
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .scenario-card {
+            background: var(--color-bg-secondary);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .scenario-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-4px);
+        }
+        
+        .scenario-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+        
+        .scenario-info h4 {
+            color: var(--color-text);
+            margin-bottom: 0.25rem;
+        }
+        
+        .scenario-info p {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+        
+        .algorithm-section {
+            background: var(--color-bg-secondary);
+            padding: 4rem 0;
+            border-radius: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .algorithm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .algorithm-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 1rem;
+            border-left: 4px solid var(--color-primary);
+        }
+        
+        .algorithm-percent {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .algorithm-name {
+            font-weight: 600;
+            color: var(--color-text);
+            margin-top: 0.5rem;
+        }
+        
+        .tech-stack {
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .tech-items {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .tech-item {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #dc2626, #059669);
+            border-radius: 1rem;
+            font-weight: 600;
+            color: white;
+            transform-style: preserve-3d;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-item:hover {
+            transform: translateY(-4px) rotateX(5deg);
+            box-shadow: 0 10px 25px rgba(5, 150, 105, 0.3);
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+        
+        .cta-desc {
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .disclaimer {
+            background: rgba(234, 179, 8, 0.1);
+            border: 2px solid rgba(234, 179, 8, 0.3);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .disclaimer h4 {
+            color: #eab308;
+            margin-bottom: 0.5rem;
+        }
+        
+        .disclaimer p {
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .references-section {
+            margin-top: 4rem;
+        }
+        
+        .references-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .references-list li {
+            padding: 1rem;
+            background: rgba(59, 130, 246, 0.05);
+            border-left: 3px solid var(--color-primary);
+            margin-bottom: 1rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        
+        .references-list strong {
+            color: var(--color-primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="brand" aria-label="Home">
+                <div class="brand-cube" aria-hidden="true"></div>
+                <span>DENVIL</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#projects" class="nav-link">Projects</a></li>
+                <li><a href="projects.html" class="nav-link">All Projects</a></li>
+                <li><a href="/#contact" class="nav-link-cta">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="pulse-page">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="pulse-hero">
+                <div class="pulse-icon">🏥</div>
+                <h1 class="pulse-title">Pulse Protector</h1>
+                <p class="pulse-subtitle">
+                    AI-powered Smart Trauma Vitals Assessment Pad that monitors patient vitals, analyzes conditions using clinical parameters, and provides automated triage recommendations based on START protocol.
+                </p>
+                <div class="pulse-badges">
+                    <span class="status-badge featured">⭐ Featured Project</span>
+                    <span class="status-badge">✅ Completed</span>
+                    <span class="status-badge">🏥 Medical AI</span>
+                    <span class="status-badge">📊 Real-time Monitoring</span>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://denxvil.github.io/Pulse-Protector-/" target="_blank" rel="noopener" class="btn-primary">
+                        🚀 View Live Demo
+                    </a>
+                    <a href="https://github.com/DenxVil/Pulse-Protector-" target="_blank" rel="noopener" class="btn-outline">
+                        📂 View Repository
+                    </a>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <section class="features-section">
+                <h2 class="section-heading">Key Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3 class="feature-title">CNS Monitoring</h3>
+                        <p class="feature-desc">
+                            Glasgow Coma Scale (GCS) with E/V/M breakdown, pupil reactivity assessment, and consciousness level tracking (AVPU).
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">💨</div>
+                        <h3 class="feature-title">Respiratory Assessment</h3>
+                        <p class="feature-desc">
+                            Real-time respiratory rate monitoring, SpO2 saturation tracking, and breathing pattern analysis.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">❤️</div>
+                        <h3 class="feature-title">Cardiovascular Tracking</h3>
+                        <p class="feature-desc">
+                            Heart rate, blood pressure, capillary refill time, and pulse strength monitoring with alerts.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🩸</div>
+                        <h3 class="feature-title">Circulation Assessment</h3>
+                        <p class="feature-desc">
+                            Skin color/perfusion evaluation, temperature monitoring, and estimated blood loss calculation.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3 class="feature-title">AI Triage Engine</h3>
+                        <p class="feature-desc">
+                            Intelligent START protocol implementation with confidence scoring and clinical reasoning explanation.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3 class="feature-title">Trend Analysis</h3>
+                        <p class="feature-desc">
+                            Real-time trend graphs showing vital sign history over the last 5 minutes with critical alerts.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Triage Categories Section -->
+            <section class="triage-section">
+                <div class="container">
+                    <h2 class="section-heading">Triage Categories (START Protocol)</h2>
+                    <div class="triage-grid">
+                        <div class="triage-card red">
+                            <div class="triage-label">🔴 RED - Immediate</div>
+                            <p class="triage-desc">Critical patients requiring immediate intervention. RR &lt;10 or &gt;29, GCS &le;8, SpO2 &lt;90%</p>
+                        </div>
+                        <div class="triage-card yellow">
+                            <div class="triage-label">🟡 YELLOW - Delayed</div>
+                            <p class="triage-desc">Serious but stable patients. RR 10-29, can follow commands, GCS 9-13, SpO2 90-94%</p>
+                        </div>
+                        <div class="triage-card green">
+                            <div class="triage-label">🟢 GREEN - Minor</div>
+                            <p class="triage-desc">Walking wounded with minor injuries. Normal vitals, GCS 14-15, SpO2 &gt;95%</p>
+                        </div>
+                        <div class="triage-card black">
+                            <div class="triage-label">⚫ BLACK - Expectant</div>
+                            <p class="triage-desc">No respiratory effort after positioning, no pulse, or injuries incompatible with survival</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pre-loaded Scenarios -->
+            <section class="scenarios-section">
+                <h2 class="section-heading">Pre-loaded Trauma Scenarios</h2>
+                <div class="scenarios-grid">
+                    <div class="scenario-card">
+                        <div class="scenario-icon">🚗</div>
+                        <div class="scenario-info">
+                            <h4>Road Traffic Accident</h4>
+                            <p>Hemorrhagic Shock simulation</p>
+                        </div>
+                    </div>
+                    <div class="scenario-card">
+                        <div class="scenario-icon">🌊</div>
+                        <div class="scenario-info">
+                            <h4>Drowning Victim</h4>
+                            <p>Respiratory Distress case</p>
+                        </div>
+                    </div>
+                    <div class="scenario-card">
+                        <div class="scenario-icon">⚡</div>
+                        <div class="scenario-info">
+                            <h4>Electrocution</h4>
+                            <p>Cardiac Arrest scenario</p>
+                        </div>
+                    </div>
+                    <div class="scenario-card">
+                        <div class="scenario-icon">🪜</div>
+                        <div class="scenario-info">
+                            <h4>Fall from Height</h4>
+                            <p>Head Injury case</p>
+                        </div>
+                    </div>
+                    <div class="scenario-card">
+                        <div class="scenario-icon">💥</div>
+                        <div class="scenario-info">
+                            <h4>Mass Casualty</h4>
+                            <p>Explosion Victim scenario</p>
+                        </div>
+                    </div>
+                    <div class="scenario-card">
+                        <div class="scenario-icon">🩹</div>
+                        <div class="scenario-info">
+                            <h4>Minor Trauma</h4>
+                            <p>Stable Patient baseline</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Clinical Algorithm -->
+            <section class="algorithm-section">
+                <div class="container">
+                    <h2 class="section-heading">Clinical Scoring Algorithm</h2>
+                    <div class="algorithm-grid">
+                        <div class="algorithm-item">
+                            <div class="algorithm-percent">30%</div>
+                            <div class="algorithm-name">CNS Assessment</div>
+                        </div>
+                        <div class="algorithm-item">
+                            <div class="algorithm-percent">25%</div>
+                            <div class="algorithm-name">Respiratory Score</div>
+                        </div>
+                        <div class="algorithm-item">
+                            <div class="algorithm-percent">25%</div>
+                            <div class="algorithm-name">Cardiovascular</div>
+                        </div>
+                        <div class="algorithm-item">
+                            <div class="algorithm-percent">20%</div>
+                            <div class="algorithm-name">Circulation</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tech Stack -->
+            <section class="tech-stack">
+                <h2 class="section-heading">Built With</h2>
+                <div class="tech-items">
+                    <div class="tech-item">HTML5</div>
+                    <div class="tech-item">CSS3</div>
+                    <div class="tech-item">JavaScript (ES6+)</div>
+                    <div class="tech-item">No Dependencies</div>
+                    <div class="tech-item">Offline Ready</div>
+                </div>
+            </section>
+
+            <!-- Clinical References -->
+            <section class="references-section">
+                <h2 class="section-heading">Clinical References</h2>
+                <ul class="references-list">
+                    <li><strong>ATLS:</strong> American College of Surgeons Committee on Trauma. ATLS Student Course Manual, 10th edition</li>
+                    <li><strong>START Protocol:</strong> Benson M, Koenig KL, Schultz CH. Disaster triage: START, then SAVE. Ann Emerg Med. 1996</li>
+                    <li><strong>SALT Triage:</strong> Lerner EB, et al. Mass casualty triage: An evaluation of the SALT triage guideline. Ann Emerg Med. 2008</li>
+                </ul>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <h2 class="cta-title">Ready to Explore Pulse Protector?</h2>
+                <p class="cta-desc">Experience the AI-powered trauma assessment demonstration</p>
+                <div class="cta-buttons">
+                    <a href="https://denxvil.github.io/Pulse-Protector-/" target="_blank" rel="noopener" class="btn-primary">
+                        🚀 Launch Demo
+                    </a>
+                    <a href="https://github.com/DenxVil/Pulse-Protector-" target="_blank" rel="noopener" class="btn-outline">
+                        📂 View Source Code
+                    </a>
+                </div>
+                
+                <div class="disclaimer">
+                    <h4>⚠️ Disclaimer</h4>
+                    <p>This is a demonstration application for educational purposes only. NOT intended for clinical use, medical diagnosis, or treatment decisions. Always consult qualified medical professionals for actual patient care.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; <span id="year">2024</span> Denvil (Harsh). All rights reserved.</p>
+                </div>
+                <div class="footer-right">
+                    <a href="https://github.com/DenxVil" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+                    <a href="https://t.me/xDenvil_bot" target="_blank" rel="noopener" class="footer-link">Telegram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
