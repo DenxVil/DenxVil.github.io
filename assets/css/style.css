@@ -1438,6 +1438,20 @@ button:focus-visible {
     transform: scale(1.1);
 }
 
+/* Contact card with copy button wrapper */
+.contact-card-wrapper {
+    position: relative;
+}
+
+.contact-card-link {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    flex: 1;
+}
+
 .copy-btn svg {
     width: 18px;
     height: 18px;

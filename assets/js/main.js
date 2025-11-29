@@ -1,4 +1,20 @@
 // Main JavaScript for 3D Portfolio
+
+// Configuration object for customizable settings
+const CONFIG = {
+    typing: {
+        words: ['Developer', 'Designer', 'Esports Gamer', 'Website Creator'],
+        typeSpeed: 100,
+        deleteSpeed: 50,
+        pauseEnd: 2000,
+        pauseStart: 500
+    },
+    scroll: {
+        headerThreshold: 100,
+        scrolledThreshold: 50
+    }
+};
+
 // Debounce utility function
 function debounce(func, wait) {
     let timeout;
@@ -111,8 +127,7 @@ function initThemeToggle() {
 
     // Check for saved theme preference or system preference
     const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'dark'); // Default to dark
+    const currentTheme = savedTheme || 'dark'; // Default to dark theme
     
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateThemeIcon(themeToggle, currentTheme);
@@ -138,20 +153,20 @@ function initHeaderScroll() {
     if (!header) return;
 
     let lastScroll = 0;
-    const scrollThreshold = 100;
+    const { headerThreshold, scrolledThreshold } = CONFIG.scroll;
 
     const handleScroll = throttle(() => {
         const currentScroll = window.scrollY;
         
         // Add scrolled class for glassmorphism effect
-        if (currentScroll > 50) {
+        if (currentScroll > scrolledThreshold) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
 
         // Hide/show header based on scroll direction
-        if (currentScroll > scrollThreshold) {
+        if (currentScroll > headerThreshold) {
             if (currentScroll > lastScroll) {
                 // Scrolling down
                 header.classList.add('hidden');
@@ -268,11 +283,11 @@ function initTypingEffect() {
     const typingElement = document.querySelector('.typing-text');
     if (!typingElement || prefersReducedMotion()) return;
 
-    const words = ['Developer', 'Designer', 'Esports Gamer', 'Website Creator'];
+    const { words, typeSpeed, deleteSpeed, pauseEnd, pauseStart } = CONFIG.typing;
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    let typingSpeed = 100;
+    let currentSpeed = typeSpeed;
 
     function type() {
         const currentWord = words[wordIndex];
@@ -280,23 +295,23 @@ function initTypingEffect() {
         if (isDeleting) {
             typingElement.textContent = currentWord.substring(0, charIndex - 1);
             charIndex--;
-            typingSpeed = 50;
+            currentSpeed = deleteSpeed;
         } else {
             typingElement.textContent = currentWord.substring(0, charIndex + 1);
             charIndex++;
-            typingSpeed = 100;
+            currentSpeed = typeSpeed;
         }
 
         if (!isDeleting && charIndex === currentWord.length) {
-            typingSpeed = 2000; // Pause at end
+            currentSpeed = pauseEnd; // Pause at end
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             wordIndex = (wordIndex + 1) % words.length;
-            typingSpeed = 500; // Pause before next word
+            currentSpeed = pauseStart; // Pause before next word
         }
 
-        setTimeout(type, typingSpeed);
+        setTimeout(type, currentSpeed);
     }
 
     // Start typing effect
