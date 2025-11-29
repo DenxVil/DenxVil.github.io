@@ -8,17 +8,48 @@
     <meta name="author" content="Denvil (Harsh)">
     <meta name="theme-color" content="#141727">
     
+    <!-- Preconnect hints -->
+    <link rel="preconnect" href="https://github.com">
+    <link rel="preconnect" href="https://t.me">
+    
     <!-- Open Graph -->
     <meta property="og:title" content="Denvil (Harsh) - Developer, Designer, Esports Gamer">
     <meta property="og:description" content="20-year-old MBBS student with 4+ years coding experience. Python, Telethon, Web Development specialist.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://denxvil.github.io/">
     
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Denvil (Harsh)",
+        "url": "https://denxvil.github.io/",
+        "jobTitle": "Developer",
+        "description": "20-year-old MBBS student with 4+ years coding experience in Python, Telethon, and Web Development.",
+        "sameAs": [
+            "https://github.com/DenxVil",
+            "https://t.me/xDenvil_bot"
+        ],
+        "knowsAbout": ["Python", "Telethon", "HTML", "CSS", "SQL", "Telegram Bots", "Web Development"]
+    }
+    </script>
+    
     <title>Denvil (Harsh) - Developer, Designer, Esports Gamer</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" aria-hidden="true"></div>
+    
+    <!-- Noise Texture Overlay -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+    
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" aria-hidden="true"></div>
+    <div class="cursor-trail" aria-hidden="true"></div>
+    
     <!-- 3D Background Shapes -->
     <div class="bg-shapes" aria-hidden="true">
         <div class="shape-cube"></div>
@@ -44,8 +75,25 @@
                 <li><a href="projects.html" class="nav-link">All Projects</a></li>
                 <li><a href="#contact" class="nav-link-cta">Contact</a></li>
             </ul>
+            <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            <button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
     </header>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay" aria-hidden="true"></div>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+        <ul class="mobile-nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="projects.html">All Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -63,12 +111,12 @@
                 </div>
                 <div class="hero-right">
                     <h1 class="hero-title">
-                        Hi, I'm <span class="gradient-text">Denvil</span><br>
+                        Hi, I'm <span class="gradient-text gradient-text-animated">Denvil</span><br>
                         <span class="subtitle">(Harsh)</span>
                     </h1>
                     <p class="hero-description">
                         20-year-old MBBS 2nd year student at Maulana Azad Medical College, Delhi.<br>
-                        Developer with 4+ years of coding experience in Python, Telethon, HTML, CSS, and SQL.
+                        <span class="typing-container">I'm a <span class="typing-text">Developer</span><span class="typing-cursor" aria-hidden="true"></span></span>
                     </p>
                     <div class="hero-badges">
                         <span class="badge">Developer</span>
@@ -86,7 +134,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
+    <section class="about animate-on-scroll" id="about">
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
@@ -181,7 +229,7 @@
     </section>
 
     <!-- Featured Projects Section -->
-    <section class="projects" id="projects">
+    <section class="projects animate-on-scroll" id="projects">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
@@ -277,14 +325,14 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section class="contact animate-on-scroll" id="contact">
         <div class="container">
             <h2 class="section-title">Get in Touch</h2>
             <p class="contact-intro">
                 Have a project in mind or want to collaborate? Feel free to reach out!
             </p>
             <div class="contact-methods">
-                <a href="https://t.me/xDenvil_bot" target="_blank" rel="noopener" class="contact-card telegram">
+                <a href="https://t.me/xDenvil_bot" target="_blank" rel="noopener" class="contact-card telegram glass-card">
                     <div class="contact-icon">
                         <svg viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
@@ -295,17 +343,25 @@
                         <p>@xDenvil_bot</p>
                     </div>
                 </a>
-                <a href="mailto:xdenvil0@gmail.com" class="contact-card email">
-                    <div class="contact-icon">
+                <div class="contact-card email glass-card" style="position: relative;">
+                    <a href="mailto:xdenvil0@gmail.com" style="display: flex; align-items: center; gap: 1.5rem; text-decoration: none; color: inherit; flex: 1;">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-info">
+                            <h3>Email</h3>
+                            <p>xdenvil0@gmail.com</p>
+                        </div>
+                    </a>
+                    <button class="copy-btn" data-copy="xdenvil0@gmail.com" aria-label="Copy email address">
                         <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
                         </svg>
-                    </div>
-                    <div class="contact-info">
-                        <h3>Email</h3>
-                        <p>xdenvil0@gmail.com</p>
-                    </div>
-                </a>
+                        <span class="copy-tooltip">Copy</span>
+                    </button>
+                </div>
             </div>
         </div>
     </section>

@@ -15,21 +15,21 @@
         
         .nexus-hero {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: var(--space-xl);
             padding: 3rem 0;
             background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1), transparent);
         }
         
         .nexus-icon {
             font-size: 6rem;
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-md);
             animation: float3s 3s ease-in-out infinite;
         }
         
         .nexus-title {
             font-size: 4rem;
             font-weight: 900;
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-md);
             background: linear-gradient(135deg, #1e3a8a, #7c3aed);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -40,18 +40,18 @@
             font-size: 1.5rem;
             color: var(--color-text-secondary);
             max-width: 600px;
-            margin: 0 auto 2rem;
+            margin: 0 auto var(--space-lg);
         }
         
         .nexus-badges {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: var(--space-md);
             flex-wrap: wrap;
         }
         
         .status-badge {
-            padding: 0.5rem 1.5rem;
+            padding: var(--space-sm) 1.5rem;
             background: rgba(59, 130, 246, 0.2);
             border: 2px solid rgba(59, 130, 246, 0.4);
             border-radius: 2rem;
@@ -60,7 +60,7 @@
         }
         
         .features-section {
-            margin-bottom: 4rem;
+            margin-bottom: var(--space-xl);
         }
         
         .section-heading {
@@ -74,15 +74,15 @@
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            gap: var(--space-lg);
         }
         
         .feature-card {
             background: var(--color-bg-secondary);
             border: 2px solid rgba(59, 130, 246, 0.2);
             border-radius: 1rem;
-            padding: 2rem;
-            transition: all 0.3s ease;
+            padding: var(--space-lg);
+            transition: var(--transition-normal);
             transform-style: preserve-3d;
         }
         
@@ -94,7 +94,7 @@
         
         .feature-icon {
             font-size: 3rem;
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-md);
         }
         
         .feature-title {
@@ -111,9 +111,9 @@
         
         .usage-section {
             background: var(--color-bg-secondary);
-            padding: 4rem 0;
+            padding: var(--space-xl) 0;
             border-radius: 2rem;
-            margin-bottom: 4rem;
+            margin-bottom: var(--space-xl);
         }
         
         .usage-steps {
@@ -123,12 +123,12 @@
         
         .usage-step {
             display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            padding: 2rem;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+            padding: var(--space-lg);
             background: rgba(59, 130, 246, 0.05);
             border-left: 4px solid var(--color-primary);
-            border-radius: 0.5rem;
+            border-radius: var(--space-sm);
         }
         
         .step-number {
@@ -140,7 +140,7 @@
         
         .step-content h3 {
             font-size: 1.25rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--space-sm);
             color: var(--color-text);
         }
         
@@ -151,59 +151,59 @@
         
         .code-block {
             background: rgba(0, 0, 0, 0.3);
-            padding: 1rem;
-            border-radius: 0.5rem;
+            padding: var(--space-md);
+            border-radius: var(--space-sm);
             font-family: 'Courier New', monospace;
-            color: #22c55e;
-            margin-top: 0.5rem;
+            color: var(--color-success);
+            margin-top: var(--space-sm);
         }
         
         .cta-section {
             text-align: center;
-            padding: 4rem 0;
+            padding: var(--space-xl) 0;
         }
         
         .cta-title {
             font-size: 2.5rem;
             font-weight: bold;
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-md);
             color: var(--color-text);
         }
         
         .cta-desc {
             font-size: 1.25rem;
             color: var(--color-text-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: var(--space-lg);
         }
         
         .cta-buttons {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: var(--space-md);
             flex-wrap: wrap;
         }
         
         .tech-stack {
-            margin-top: 4rem;
+            margin-top: var(--space-xl);
             text-align: center;
         }
         
         .tech-items {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: var(--space-lg);
             flex-wrap: wrap;
-            margin-top: 2rem;
+            margin-top: var(--space-lg);
         }
         
         .tech-item {
-            padding: 1rem 2rem;
+            padding: var(--space-md) var(--space-lg);
             background: var(--gradient-primary);
             border-radius: 1rem;
             font-weight: 600;
             color: white;
             transform-style: preserve-3d;
-            transition: all 0.3s ease;
+            transition: var(--transition-normal);
         }
         
         .tech-item:hover {
@@ -213,6 +213,16 @@
     </style>
 </head>
 <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" aria-hidden="true"></div>
+    
+    <!-- Noise Texture Overlay -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+    
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" aria-hidden="true"></div>
+    <div class="cursor-trail" aria-hidden="true"></div>
+    
     <!-- Navigation -->
     <header class="header">
         <nav class="nav-container">
@@ -226,8 +236,25 @@
                 <li><a href="projects.html" class="nav-link">All Projects</a></li>
                 <li><a href="/#contact" class="nav-link-cta">Contact</a></li>
             </ul>
+            <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            <button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
     </header>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay" aria-hidden="true"></div>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+        <ul class="mobile-nav-links">
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#projects">Projects</a></li>
+            <li><a href="projects.html">All Projects</a></li>
+            <li><a href="/#contact">Contact</a></li>
+        </ul>
+    </nav>
 
     <main class="nexus-page">
         <div class="container">

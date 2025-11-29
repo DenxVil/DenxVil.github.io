@@ -15,21 +15,21 @@
         
         .pulse-hero {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: var(--space-xl);
             padding: 3rem 0;
             background: radial-gradient(circle at center, rgba(220, 38, 38, 0.1), rgba(5, 150, 105, 0.1), transparent);
         }
         
         .pulse-icon {
             font-size: 6rem;
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-md);
             animation: float3s 3s ease-in-out infinite;
         }
         
         .pulse-title {
             font-size: 4rem;
             font-weight: 900;
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-md);
             background: linear-gradient(135deg, #dc2626, #059669);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -40,19 +40,19 @@
             font-size: 1.5rem;
             color: var(--color-text-secondary);
             max-width: 700px;
-            margin: 0 auto 2rem;
+            margin: 0 auto var(--space-lg);
         }
         
         .pulse-badges {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: var(--space-md);
             flex-wrap: wrap;
-            margin-bottom: 2rem;
+            margin-bottom: var(--space-lg);
         }
         
         .status-badge {
-            padding: 0.5rem 1.5rem;
+            padding: var(--space-sm) 1.5rem;
             background: rgba(5, 150, 105, 0.2);
             border: 2px solid rgba(5, 150, 105, 0.4);
             border-radius: 2rem;
@@ -69,12 +69,12 @@
         .cta-buttons {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: var(--space-md);
             flex-wrap: wrap;
         }
         
         .features-section {
-            margin-bottom: 4rem;
+            margin-bottom: var(--space-xl);
         }
         
         .section-heading {
@@ -88,15 +88,15 @@
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            gap: var(--space-lg);
         }
         
         .feature-card {
             background: var(--color-bg-secondary);
             border: 2px solid rgba(5, 150, 105, 0.2);
             border-radius: 1rem;
-            padding: 2rem;
-            transition: all 0.3s ease;
+            padding: var(--space-lg);
+            transition: var(--transition-normal);
             transform-style: preserve-3d;
         }
         
@@ -108,7 +108,7 @@
         
         .feature-icon {
             font-size: 3rem;
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-md);
         }
         
         .feature-title {
@@ -125,9 +125,9 @@
         
         .triage-section {
             background: var(--color-bg-secondary);
-            padding: 4rem 0;
+            padding: var(--space-xl) 0;
             border-radius: 2rem;
-            margin-bottom: 4rem;
+            margin-bottom: var(--space-xl);
         }
         
         .triage-grid {
@@ -142,7 +142,7 @@
             padding: 1.5rem;
             border-radius: 1rem;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: var(--transition-normal);
         }
         
         .triage-card:hover {
@@ -172,12 +172,12 @@
         .triage-label {
             font-size: 1.5rem;
             font-weight: bold;
-            margin-bottom: 0.5rem;
+            margin-bottom: var(--space-sm);
         }
         
         .triage-card.red .triage-label { color: #dc2626; }
         .triage-card.yellow .triage-label { color: #eab308; }
-        .triage-card.green .triage-label { color: #22c55e; }
+        .triage-card.green .triage-label { color: var(--color-success); }
         .triage-card.black .triage-label { color: #9ca3af; }
         
         .triage-desc {
@@ -186,7 +186,7 @@
         }
         
         .scenarios-section {
-            margin-bottom: 4rem;
+            margin-bottom: var(--space-xl);
         }
         
         .scenarios-grid {
@@ -202,8 +202,8 @@
             padding: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 1rem;
-            transition: all 0.3s ease;
+            gap: var(--space-md);
+            transition: var(--transition-normal);
         }
         
         .scenario-card:hover {
@@ -218,7 +218,7 @@
         
         .scenario-info h4 {
             color: var(--color-text);
-            margin-bottom: 0.25rem;
+            margin-bottom: var(--space-xs);
         }
         
         .scenario-info p {
@@ -228,9 +228,9 @@
         
         .algorithm-section {
             background: var(--color-bg-secondary);
-            padding: 4rem 0;
+            padding: var(--space-xl) 0;
             border-radius: 2rem;
-            margin-bottom: 4rem;
+            margin-bottom: var(--space-xl);
         }
         
         .algorithm-grid {
@@ -261,30 +261,30 @@
         .algorithm-name {
             font-weight: 600;
             color: var(--color-text);
-            margin-top: 0.5rem;
+            margin-top: var(--space-sm);
         }
         
         .tech-stack {
-            margin-top: 4rem;
+            margin-top: var(--space-xl);
             text-align: center;
         }
         
         .tech-items {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: var(--space-lg);
             flex-wrap: wrap;
-            margin-top: 2rem;
+            margin-top: var(--space-lg);
         }
         
         .tech-item {
-            padding: 1rem 2rem;
+            padding: var(--space-md) var(--space-lg);
             background: linear-gradient(135deg, #dc2626, #059669);
             border-radius: 1rem;
             font-weight: 600;
             color: white;
             transform-style: preserve-3d;
-            transition: all 0.3s ease;
+            transition: var(--transition-normal);
         }
         
         .tech-item:hover {
@@ -294,20 +294,20 @@
         
         .cta-section {
             text-align: center;
-            padding: 4rem 0;
+            padding: var(--space-xl) 0;
         }
         
         .cta-title {
             font-size: 2.5rem;
             font-weight: bold;
-            margin-bottom: 1rem;
+            margin-bottom: var(--space-md);
             color: var(--color-text);
         }
         
         .cta-desc {
             font-size: 1.25rem;
             color: var(--color-text-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: var(--space-lg);
         }
         
         .disclaimer {
@@ -320,8 +320,8 @@
         }
         
         .disclaimer h4 {
-            color: #eab308;
-            margin-bottom: 0.5rem;
+            color: var(--color-warning);
+            margin-bottom: var(--space-sm);
         }
         
         .disclaimer p {
@@ -330,7 +330,7 @@
         }
         
         .references-section {
-            margin-top: 4rem;
+            margin-top: var(--space-xl);
         }
         
         .references-list {
@@ -340,11 +340,11 @@
         }
         
         .references-list li {
-            padding: 1rem;
+            padding: var(--space-md);
             background: rgba(59, 130, 246, 0.05);
             border-left: 3px solid var(--color-primary);
-            margin-bottom: 1rem;
-            border-radius: 0 0.5rem 0.5rem 0;
+            margin-bottom: var(--space-md);
+            border-radius: 0 var(--space-sm) var(--space-sm) 0;
         }
         
         .references-list strong {
@@ -353,6 +353,16 @@
     </style>
 </head>
 <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" aria-hidden="true"></div>
+    
+    <!-- Noise Texture Overlay -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+    
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" aria-hidden="true"></div>
+    <div class="cursor-trail" aria-hidden="true"></div>
+    
     <!-- Navigation -->
     <header class="header">
         <nav class="nav-container">
@@ -366,8 +376,25 @@
                 <li><a href="projects.html" class="nav-link">All Projects</a></li>
                 <li><a href="/#contact" class="nav-link-cta">Contact</a></li>
             </ul>
+            <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            <button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
     </header>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay" aria-hidden="true"></div>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+        <ul class="mobile-nav-links">
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#projects">Projects</a></li>
+            <li><a href="projects.html">All Projects</a></li>
+            <li><a href="/#contact">Contact</a></li>
+        </ul>
+    </nav>
 
     <main class="pulse-page">
         <div class="container">
