@@ -34,6 +34,11 @@
             fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`)
         ]);
 
+        // Handle rate limiting and other errors
+        if (userResponse.status === 403 || reposResponse.status === 403) {
+            throw new Error('GitHub API rate limit exceeded. Please try again later.');
+        }
+
         if (!userResponse.ok || !reposResponse.ok) {
             throw new Error('Failed to fetch GitHub data');
         }

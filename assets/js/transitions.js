@@ -4,6 +4,9 @@
 (function() {
     'use strict';
 
+    // Configuration
+    const TRANSITION_DURATION = 300; // milliseconds - matches CSS transition duration
+
     // Check for reduced motion preference
     function prefersReducedMotion() {
         return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -43,7 +46,7 @@
                 // Navigate after animation
                 setTimeout(() => {
                     window.location.href = href;
-                }, 300);
+                }, TRANSITION_DURATION);
             });
         });
     }

@@ -2267,6 +2267,7 @@ button:focus-visible {
     border-radius: inherit;
     z-index: -1;
     animation: neonPulse 3s linear infinite;
+    will-change: filter, background-position;
 }
 
 @keyframes neonPulse {
@@ -2277,6 +2278,14 @@ button:focus-visible {
     50% {
         background-position: 100% 50%;
         filter: blur(5px);
+    }
+}
+
+/* Reduce animation intensity on lower-end devices */
+@media (prefers-reduced-motion: reduce) {
+    .neon-border::before {
+        animation: none;
+        filter: blur(4px);
     }
 }
 
