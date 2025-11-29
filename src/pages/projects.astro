@@ -1,0 +1,365 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+// All projects data
+const projects = [
+  {
+    id: 'pulse-protector',
+    title: 'Pulse Protector',
+    description: 'AI-powered trauma assessment pad with real-time vitals monitoring, START triage protocol, and automated clinical recommendations.',
+    icon: '🏥',
+    status: 'completed',
+    statusLabel: 'Completed',
+    link: '/pulse-protector',
+    tech: ['HTML5', 'CSS3', 'JavaScript'],
+    featured: true,
+    gradient: 'from-red-600 to-emerald-600'
+  },
+  {
+    id: 'nexus-ai',
+    title: 'Nexus AI',
+    description: 'Advanced AI chatbot with intelligent conversation capabilities and natural language processing.',
+    icon: '🤖',
+    status: 'development',
+    statusLabel: 'In Development',
+    link: '/nexus',
+    tech: ['Python', 'AI/ML', 'Telegram'],
+    featured: false,
+    gradient: 'from-blue-900 to-purple-600'
+  },
+  {
+    id: 'dark-userbot',
+    title: 'Dark Userbot',
+    description: 'Powerful Telegram userbot with extensive automation features and custom modules.',
+    icon: '⚡',
+    status: 'completed',
+    statusLabel: 'Completed',
+    link: 'https://github.com/DenxVil/DARK-USERBOT',
+    tech: ['Python', 'Telethon', 'Telegram'],
+    featured: false,
+    gradient: 'from-gray-800 to-purple-600',
+    external: true
+  },
+  {
+    id: 'team-kyro',
+    title: 'TEAM KYRO',
+    description: 'Professional esports team brand identity, logo design, and online presence.',
+    icon: '🎮',
+    status: 'completed',
+    statusLabel: 'Active',
+    link: null,
+    tech: ['Branding', 'Design', 'Esports'],
+    featured: false,
+    gradient: 'from-red-600 to-orange-500'
+  },
+  {
+    id: 'hecker-result-bot',
+    title: 'Hecker/Aakash Result Bot',
+    description: 'Automated result checking and notification bot for educational purposes.',
+    icon: '📊',
+    status: 'completed',
+    statusLabel: 'Completed',
+    link: null,
+    tech: ['Python', 'Telegram', 'Automation'],
+    featured: false,
+    gradient: 'from-emerald-600 to-emerald-400'
+  },
+  {
+    id: 'x9-spammer',
+    title: 'X9 Spammer Modules',
+    description: 'Custom modules for X9 with advanced messaging capabilities.',
+    icon: '💬',
+    status: 'completed',
+    statusLabel: 'Completed',
+    link: null,
+    tech: ['Python', 'Telethon'],
+    featured: false,
+    gradient: 'from-purple-600 to-purple-400'
+  },
+  {
+    id: 'e-certificate',
+    title: 'E-Certificate Generator',
+    description: 'Automated certificate generation and distribution system with email integration.',
+    icon: '📜',
+    status: 'completed',
+    statusLabel: 'Completed',
+    link: null,
+    tech: ['Python', 'Email', 'PDF'],
+    featured: false,
+    gradient: 'from-cyan-600 to-cyan-400'
+  },
+  {
+    id: 'mitra-ai',
+    title: 'MITRA AI',
+    description: 'AI-powered assistant with advanced capabilities and multi-platform support.',
+    icon: '🧠',
+    status: 'development',
+    statusLabel: 'In Development',
+    link: null,
+    tech: ['Python', 'AI/ML', 'NLP'],
+    featured: false,
+    gradient: 'from-violet-500 to-violet-400'
+  },
+  {
+    id: 'synapse-web',
+    title: 'SYNAPSE WEB',
+    description: 'Modern web application with advanced features and responsive design.',
+    icon: '🌐',
+    status: 'development',
+    statusLabel: 'In Development',
+    link: null,
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    featured: false,
+    gradient: 'from-pink-500 to-pink-400'
+  },
+  {
+    id: 'arduino-projects',
+    title: 'Arduino Projects',
+    description: 'Hardware projects using Arduino for IoT and automation applications.',
+    icon: '🔧',
+    status: 'planned',
+    statusLabel: 'Planned',
+    link: null,
+    tech: ['Arduino', 'C++', 'IoT'],
+    featured: false,
+    gradient: 'from-sky-500 to-sky-400'
+  },
+  {
+    id: 'robot-hardware',
+    title: 'Robot Hardware',
+    description: 'Custom robot development with advanced sensors and control systems.',
+    icon: '🤖',
+    status: 'planned',
+    statusLabel: 'Planned',
+    link: null,
+    tech: ['Hardware', 'Robotics', 'Engineering'],
+    featured: false,
+    gradient: 'from-amber-500 to-amber-400'
+  },
+  {
+    id: 'pyboard-micropython',
+    title: 'Pyboard/Micropython',
+    description: 'Embedded systems programming with Micropython for efficient hardware control.',
+    icon: '⚙️',
+    status: 'planned',
+    statusLabel: 'Planned',
+    link: null,
+    tech: ['Micropython', 'Embedded', 'IoT'],
+    featured: false,
+    gradient: 'from-teal-500 to-teal-400'
+  },
+  {
+    id: 'denx-me-website',
+    title: 'Denx.me Website',
+    description: 'Personal website with portfolio, blog, and showcase of all projects.',
+    icon: '🌟',
+    status: 'planned',
+    statusLabel: 'Planned',
+    link: null,
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    featured: false,
+    gradient: 'from-indigo-500 to-indigo-400'
+  }
+];
+
+const filters = ['all', 'completed', 'development', 'planned'];
+---
+
+<Layout title="All Projects - Denvil (Harsh)">
+  <Header currentPage="all-projects" />
+  
+  <main class="pt-32 pb-20 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Page Header -->
+      <div class="text-center mb-16 gsap-reveal">
+        <h1 class="text-4xl md:text-6xl font-black gradient-text mb-4">All Projects</h1>
+        <p class="text-xl text-text-secondary max-w-2xl mx-auto">
+          A comprehensive showcase of my work in development, design, and technology
+        </p>
+      </div>
+      
+      <!-- Search & Filter -->
+      <div class="mb-12">
+        <!-- Search -->
+        <div class="max-w-md mx-auto mb-8 relative">
+          <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-secondary" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+          <input 
+            type="text" 
+            id="search-input"
+            placeholder="Search projects..."
+            class="w-full pl-12 pr-4 py-4 bg-bg-card/70 border border-white/10 rounded-full text-text-primary placeholder-text-secondary focus:outline-none focus:border-primary/50 transition-all duration-300"
+          />
+        </div>
+        
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-3">
+          {filters.map((filter, index) => (
+            <button 
+              class:list={[
+                'filter-btn px-6 py-2 rounded-full font-semibold capitalize transition-all duration-300',
+                index === 0 ? 'bg-gradient-to-r from-primary to-secondary text-white' : 'bg-primary/10 border border-primary/30 text-text-primary hover:bg-primary/20'
+              ]}
+              data-filter={filter}
+            >
+              {filter === 'all' ? 'All' : filter === 'development' ? 'In Development' : filter.charAt(0).toUpperCase() + filter.slice(1)}
+            </button>
+          ))}
+        </div>
+      </div>
+      
+      <!-- Projects Grid -->
+      <div class="bento-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-auto gap-6" id="projects-grid">
+        
+        {projects.map(project => (
+          <div 
+            class:list={[
+              'project-item transition-all duration-500',
+              project.featured && 'lg:col-span-2'
+            ]}
+            data-status={project.status}
+            id={project.id}
+          >
+            {project.link ? (
+              <a 
+                href={project.link}
+                target={project.external ? '_blank' : undefined}
+                rel={project.external ? 'noopener noreferrer' : undefined}
+                class:list={[
+                  'project-card tilt-card block h-full',
+                  project.featured && 'featured'
+                ]}
+              >
+                <div class={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
+                  {project.featured && (
+                    <span class="absolute top-3 right-3 text-2xl animate-pulse">⭐</span>
+                  )}
+                  <span class="text-6xl">{project.icon}</span>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-bold mb-2">{project.title}</h3>
+                  <p class="text-text-secondary text-sm mb-4">{project.description}</p>
+                  <div class="flex items-center gap-2 mb-4">
+                    <span class:list={[
+                      'px-3 py-1 rounded-full text-xs font-semibold',
+                      project.status === 'completed' && 'bg-emerald-500/20 text-emerald-400',
+                      project.status === 'development' && 'bg-blue-500/20 text-blue-400',
+                      project.status === 'planned' && 'bg-amber-500/20 text-amber-400'
+                    ]}>
+                      {project.statusLabel}
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    {project.tech.map(tech => (
+                      <span class="px-2 py-1 bg-primary/10 border border-primary/30 rounded-md text-xs text-primary">{tech}</span>
+                    ))}
+                  </div>
+                  <span class="text-primary font-semibold text-sm group-hover:translate-x-2 transition-transform duration-300 inline-block">
+                    {project.external ? 'View on GitHub →' : 'View Details →'}
+                  </span>
+                </div>
+              </a>
+            ) : (
+              <div class:list={[
+                'project-card tilt-card h-full',
+                project.featured && 'featured'
+              ]}>
+                <div class={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
+                  {project.featured && (
+                    <span class="absolute top-3 right-3 text-2xl animate-pulse">⭐</span>
+                  )}
+                  <span class="text-6xl">{project.icon}</span>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-bold mb-2">{project.title}</h3>
+                  <p class="text-text-secondary text-sm mb-4">{project.description}</p>
+                  <div class="flex items-center gap-2 mb-4">
+                    <span class:list={[
+                      'px-3 py-1 rounded-full text-xs font-semibold',
+                      project.status === 'completed' && 'bg-emerald-500/20 text-emerald-400',
+                      project.status === 'development' && 'bg-blue-500/20 text-blue-400',
+                      project.status === 'planned' && 'bg-amber-500/20 text-amber-400'
+                    ]}>
+                      {project.statusLabel}
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    {project.tech.map(tech => (
+                      <span class="px-2 py-1 bg-primary/10 border border-primary/30 rounded-md text-xs text-primary">{tech}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+        
+      </div>
+      
+    </div>
+  </main>
+  
+  <Footer />
+  
+  <script>
+    // Filter and Search functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const searchInput = document.getElementById('search-input') as HTMLInputElement;
+      const projectItems = document.querySelectorAll('.project-item');
+      
+      let currentFilter = 'all';
+      
+      function filterProjects() {
+        const searchTerm = searchInput?.value.toLowerCase() || '';
+        
+        projectItems.forEach((item) => {
+          const status = item.getAttribute('data-status') || '';
+          const title = item.querySelector('h3')?.textContent?.toLowerCase() || '';
+          const desc = item.querySelector('p')?.textContent?.toLowerCase() || '';
+          
+          const matchesFilter = currentFilter === 'all' || status === currentFilter;
+          const matchesSearch = !searchTerm || title.includes(searchTerm) || desc.includes(searchTerm);
+          
+          if (matchesFilter && matchesSearch) {
+            (item as HTMLElement).style.display = '';
+            (item as HTMLElement).style.opacity = '1';
+            (item as HTMLElement).style.transform = '';
+          } else {
+            (item as HTMLElement).style.opacity = '0';
+            (item as HTMLElement).style.transform = 'scale(0.8)';
+            setTimeout(() => {
+              if (!matchesFilter || !matchesSearch) {
+                (item as HTMLElement).style.display = 'none';
+              }
+            }, 300);
+          }
+        });
+      }
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-gradient-to-r', 'from-primary', 'to-secondary', 'text-white');
+            b.classList.add('bg-primary/10', 'border', 'border-primary/30', 'text-text-primary');
+          });
+          
+          btn.classList.remove('bg-primary/10', 'border', 'border-primary/30', 'text-text-primary');
+          btn.classList.add('bg-gradient-to-r', 'from-primary', 'to-secondary', 'text-white');
+          
+          currentFilter = btn.getAttribute('data-filter') || 'all';
+          filterProjects();
+        });
+      });
+      
+      searchInput?.addEventListener('input', () => {
+        filterProjects();
+      });
+    });
+  </script>
+</Layout>

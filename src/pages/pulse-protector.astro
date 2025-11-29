@@ -1,0 +1,210 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const features = [
+  { icon: '🧠', title: 'CNS Monitoring', desc: 'Glasgow Coma Scale (GCS) with E/V/M breakdown, pupil reactivity assessment, and consciousness level tracking (AVPU).' },
+  { icon: '💨', title: 'Respiratory Assessment', desc: 'Real-time respiratory rate monitoring, SpO2 saturation tracking, and breathing pattern analysis.' },
+  { icon: '❤️', title: 'Cardiovascular Tracking', desc: 'Heart rate, blood pressure, capillary refill time, and pulse strength monitoring with alerts.' },
+  { icon: '🩸', title: 'Circulation Assessment', desc: 'Skin color/perfusion evaluation, temperature monitoring, and estimated blood loss calculation.' },
+  { icon: '🤖', title: 'AI Triage Engine', desc: 'Intelligent START protocol implementation with confidence scoring and clinical reasoning explanation.' },
+  { icon: '📈', title: 'Trend Analysis', desc: 'Real-time trend graphs showing vital sign history over the last 5 minutes with critical alerts.' }
+];
+
+const triageCategories = [
+  { color: 'red', label: '🔴 RED - Immediate', desc: 'Critical patients requiring immediate intervention. RR <10 or >29, GCS ≤8, SpO2 <90%', bgClass: 'bg-red-600/20 border-red-600/50' },
+  { color: 'yellow', label: '🟡 YELLOW - Delayed', desc: 'Serious but stable patients. RR 10-29, can follow commands, GCS 9-13, SpO2 90-94%', bgClass: 'bg-yellow-500/20 border-yellow-500/50' },
+  { color: 'green', label: '🟢 GREEN - Minor', desc: 'Walking wounded with minor injuries. Normal vitals, GCS 14-15, SpO2 >95%', bgClass: 'bg-emerald-500/20 border-emerald-500/50' },
+  { color: 'black', label: '⚫ BLACK - Expectant', desc: 'No respiratory effort after positioning, no pulse, or injuries incompatible with survival', bgClass: 'bg-gray-900/40 border-gray-500/50' }
+];
+
+const scenarios = [
+  { icon: '🚗', title: 'Road Traffic Accident', desc: 'Hemorrhagic Shock simulation' },
+  { icon: '🌊', title: 'Drowning Victim', desc: 'Respiratory Distress case' },
+  { icon: '⚡', title: 'Electrocution', desc: 'Cardiac Arrest scenario' },
+  { icon: '🪜', title: 'Fall from Height', desc: 'Head Injury case' },
+  { icon: '💥', title: 'Mass Casualty', desc: 'Explosion Victim scenario' },
+  { icon: '🩹', title: 'Minor Trauma', desc: 'Stable Patient baseline' }
+];
+
+const algorithm = [
+  { percent: '30%', name: 'CNS Assessment' },
+  { percent: '25%', name: 'Respiratory Score' },
+  { percent: '25%', name: 'Cardiovascular' },
+  { percent: '20%', name: 'Circulation' }
+];
+
+const techStack = ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'No Dependencies', 'Offline Ready'];
+
+const references = [
+  { name: 'ATLS', desc: 'American College of Surgeons Committee on Trauma. ATLS Student Course Manual, 10th edition' },
+  { name: 'START Protocol', desc: 'Benson M, Koenig KL, Schultz CH. Disaster triage: START, then SAVE. Ann Emerg Med. 1996' },
+  { name: 'SALT Triage', desc: 'Lerner EB, et al. Mass casualty triage: An evaluation of the SALT triage guideline. Ann Emerg Med. 2008' }
+];
+---
+
+<Layout 
+  title="Pulse Protector - Smart Trauma Vitals Assessment"
+  description="Pulse Protector - AI-powered trauma assessment pad with real-time vitals monitoring and START triage protocol by Denvil (Harsh)"
+>
+  <Header />
+  
+  <main class="pt-32 pb-20 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Hero Section -->
+      <div class="text-center mb-20" style="background: radial-gradient(circle at center, rgba(220, 38, 38, 0.1), rgba(5, 150, 105, 0.1), transparent);">
+        <div class="text-8xl mb-6 animate-float">🏥</div>
+        <h1 class="text-5xl md:text-7xl font-black mb-6">
+          <span class="bg-gradient-to-r from-red-600 to-emerald-600 bg-clip-text text-transparent">Pulse Protector</span>
+        </h1>
+        <p class="text-xl text-text-secondary max-w-3xl mx-auto mb-8">
+          AI-powered Smart Trauma Vitals Assessment Pad that monitors patient vitals, analyzes conditions using clinical parameters, and provides automated triage recommendations based on START protocol.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          <span class="badge bg-amber-500/20 border-amber-500/40 text-amber-400">⭐ Featured Project</span>
+          <span class="badge bg-emerald-500/20 border-emerald-500/40 text-emerald-400">✅ Completed</span>
+          <span class="badge bg-red-500/20 border-red-500/40 text-red-400">🏥 Medical AI</span>
+          <span class="badge bg-primary/20 border-primary/40 text-primary">📊 Real-time Monitoring</span>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a 
+            href="https://denxvil.github.io/Pulse-Protector-/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="btn-primary btn-magnetic"
+          >
+            🚀 View Live Demo
+          </a>
+          <a 
+            href="https://github.com/DenxVil/Pulse-Protector-" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="btn-secondary btn-magnetic"
+          >
+            📂 View Repository
+          </a>
+        </div>
+      </div>
+      
+      <!-- Features Section -->
+      <section class="mb-20">
+        <h2 class="section-title text-3xl md:text-4xl font-black text-center mb-12 gradient-text">Key Features</h2>
+        <div class="bento-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature, i) => (
+            <div class="bento-card tilt-card p-8 hover:border-emerald-500/50" style={`animation-delay: ${i * 0.1}s`}>
+              <div class="text-5xl mb-4">{feature.icon}</div>
+              <h3 class="text-xl font-bold mb-3">{feature.title}</h3>
+              <p class="text-text-secondary">{feature.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <!-- Triage Categories Section -->
+      <section class="mb-20 bg-bg-card/50 rounded-bento-lg p-8 md:p-12">
+        <h2 class="section-title text-3xl md:text-4xl font-black text-center mb-12 gradient-text">Triage Categories (START Protocol)</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {triageCategories.map(category => (
+            <div class={`p-6 rounded-xl border-2 text-center transition-all duration-300 hover:-translate-y-2 ${category.bgClass}`}>
+              <div class="text-xl font-bold mb-3" style={`color: ${category.color === 'red' ? '#dc2626' : category.color === 'yellow' ? '#eab308' : category.color === 'green' ? '#22c55e' : '#9ca3af'}`}>
+                {category.label}
+              </div>
+              <p class="text-sm text-text-secondary">{category.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <!-- Pre-loaded Scenarios Section -->
+      <section class="mb-20">
+        <h2 class="section-title text-3xl md:text-4xl font-black text-center mb-12 gradient-text">Pre-loaded Trauma Scenarios</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {scenarios.map(scenario => (
+            <div class="bento-card tilt-card p-6 flex items-center gap-4 hover:border-primary/50">
+              <div class="text-4xl">{scenario.icon}</div>
+              <div>
+                <h4 class="font-bold">{scenario.title}</h4>
+                <p class="text-sm text-text-secondary">{scenario.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <!-- Clinical Algorithm Section -->
+      <section class="mb-20 bg-bg-card/50 rounded-bento-lg p-8 md:p-12">
+        <h2 class="section-title text-3xl md:text-4xl font-black text-center mb-12 gradient-text">Clinical Scoring Algorithm</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          {algorithm.map(item => (
+            <div class="text-center p-6 bg-primary/5 rounded-xl border-l-4 border-primary">
+              <div class="text-4xl font-black gradient-text mb-2">{item.percent}</div>
+              <div class="font-semibold text-sm">{item.name}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <!-- Tech Stack Section -->
+      <section class="text-center mb-20">
+        <h2 class="section-title text-3xl md:text-4xl font-black mb-12 gradient-text">Built With</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          {techStack.map(tech => (
+            <div class="px-6 py-3 bg-gradient-to-r from-red-600 to-emerald-600 rounded-xl font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/30">
+              {tech}
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <!-- Clinical References Section -->
+      <section class="mb-20">
+        <h2 class="section-title text-3xl md:text-4xl font-black text-center mb-12 gradient-text">Clinical References</h2>
+        <div class="max-w-3xl mx-auto space-y-4">
+          {references.map(ref => (
+            <div class="p-4 bg-primary/5 border-l-4 border-primary rounded-r-lg">
+              <strong class="text-primary">{ref.name}:</strong> {ref.desc}
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <!-- CTA Section -->
+      <section class="text-center">
+        <h2 class="text-3xl md:text-4xl font-black mb-4">Ready to Explore Pulse Protector?</h2>
+        <p class="text-xl text-text-secondary mb-8">Experience the AI-powered trauma assessment demonstration</p>
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          <a 
+            href="https://denxvil.github.io/Pulse-Protector-/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="btn-primary btn-magnetic"
+          >
+            🚀 Launch Demo
+          </a>
+          <a 
+            href="https://github.com/DenxVil/Pulse-Protector-" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="btn-secondary btn-magnetic"
+          >
+            📂 View Source Code
+          </a>
+        </div>
+        
+        <!-- Disclaimer -->
+        <div class="max-w-2xl mx-auto p-6 bg-amber-500/10 border-2 border-amber-500/30 rounded-xl text-center">
+          <h4 class="text-amber-400 font-bold mb-2">⚠️ Disclaimer</h4>
+          <p class="text-text-secondary text-sm">
+            This is a demonstration application for educational purposes only. NOT intended for clinical use, medical diagnosis, or treatment decisions. Always consult qualified medical professionals for actual patient care.
+          </p>
+        </div>
+      </section>
+      
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>

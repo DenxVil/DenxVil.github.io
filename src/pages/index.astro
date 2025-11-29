@@ -1,0 +1,379 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+// Skills data
+const skills = [
+  { name: 'Python', percent: 90 },
+  { name: 'Telethon', percent: 85 },
+  { name: 'HTML & CSS', percent: 88 },
+  { name: 'SQL', percent: 80 },
+  { name: 'GitHub', percent: 85 },
+  { name: 'Telegram Bots', percent: 92 }
+];
+
+// Projects data
+const projects = [
+  {
+    title: 'Pulse Protector',
+    description: 'AI-powered trauma assessment pad with real-time vitals monitoring & START triage',
+    icon: '🏥',
+    status: 'Completed',
+    link: '/pulse-protector',
+    tech: ['HTML5', 'CSS3', 'JavaScript'],
+    featured: true,
+    gradient: 'from-red-600 to-emerald-600'
+  },
+  {
+    title: 'Nexus AI',
+    description: 'Advanced AI chatbot with intelligent conversation capabilities',
+    icon: '🤖',
+    status: 'In Development',
+    link: '/nexus',
+    tech: ['Python', 'AI/ML', 'Telegram'],
+    featured: false,
+    gradient: 'from-blue-900 to-purple-600'
+  },
+  {
+    title: 'Dark Userbot',
+    description: 'Powerful Telegram userbot with extensive automation features',
+    icon: '⚡',
+    status: 'Completed',
+    link: 'https://github.com/DenxVil/DARK-USERBOT',
+    tech: ['Python', 'Telethon', 'Telegram'],
+    featured: false,
+    gradient: 'from-gray-800 to-purple-600',
+    external: true
+  },
+  {
+    title: 'TEAM KYRO',
+    description: 'Professional esports team brand and online presence',
+    icon: '🎮',
+    status: 'Active',
+    link: '/projects#team-kyro',
+    tech: ['Branding', 'Design', 'Esports'],
+    featured: false,
+    gradient: 'from-red-600 to-orange-500'
+  }
+];
+---
+
+<Layout title="Denvil (Harsh) - Developer, Designer, Esports Gamer">
+  <Header currentPage="home" />
+  
+  <main class="pt-20">
+    <!-- Hero Section with Bento Grid -->
+    <section id="home" class="min-h-screen flex items-center py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="bento-grid grid-cols-1 md:grid-cols-4 auto-rows-[200px]">
+          
+          <!-- Main Intro Card (2x2) -->
+          <div class="bento-card bento-2x2 flex flex-col justify-center relative overflow-hidden tilt-card">
+            <!-- 3D Rotating Cube -->
+            <div class="absolute top-4 right-4 w-20 h-20 md:w-28 md:h-28" style="perspective: 800px;">
+              <div class="w-full h-full animate-spin-slow" style="transform-style: preserve-3d;">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center text-4xl font-bold" style="transform: translateZ(40px);">D</div>
+                <div class="absolute inset-0 bg-gradient-to-br from-secondary to-accent rounded-lg flex items-center justify-center text-4xl font-bold" style="transform: rotateY(90deg) translateZ(40px);">E</div>
+                <div class="absolute inset-0 bg-gradient-to-br from-accent to-primary rounded-lg flex items-center justify-center text-4xl font-bold" style="transform: rotateY(180deg) translateZ(40px);">N</div>
+                <div class="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center text-4xl font-bold" style="transform: rotateY(-90deg) translateZ(40px);">V</div>
+              </div>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl font-black mb-4">
+              Hi, I'm <span class="gradient-text">Denvil</span>
+              <br>
+              <span class="text-3xl md:text-4xl text-text-secondary">(Harsh)</span>
+            </h1>
+            <p class="text-lg text-text-secondary mb-4">
+              20-year-old MBBS 2nd year student at Maulana Azad Medical College, Delhi.
+            </p>
+            <p class="text-lg text-text-secondary">
+              I'm a <span id="typing-text" class="text-primary font-semibold">Developer</span><span class="typing-cursor"></span>
+            </p>
+            <div class="flex gap-4 mt-6">
+              <a href="#projects" class="btn-primary btn-magnetic">View Projects</a>
+              <a href="#contact" class="btn-secondary btn-magnetic">Get in Touch</a>
+            </div>
+          </div>
+          
+          <!-- Skills Preview Card (1x2) -->
+          <div class="bento-card bento-1x2 flex flex-col justify-center tilt-card">
+            <h3 class="text-xl font-bold mb-4 gradient-text">Top Skills</h3>
+            <div class="space-y-4">
+              {skills.slice(0, 4).map(skill => (
+                <div>
+                  <div class="flex justify-between text-sm mb-1">
+                    <span class="font-medium">{skill.name}</span>
+                    <span class="text-text-secondary">{skill.percent}%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-fill" data-width={skill.percent} style="width: 0%;"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <!-- Quick Stats Card (1x1) -->
+          <div class="bento-card bento-1x1 flex flex-col justify-center items-center text-center tilt-card">
+            <div class="text-5xl font-black gradient-text mb-2">4+</div>
+            <div class="text-text-secondary">Years of Coding</div>
+            <div class="text-sm text-text-secondary mt-2">Experience</div>
+          </div>
+          
+          <!-- Location Card (1x1) -->
+          <div class="bento-card bento-1x1 flex flex-col justify-center items-center text-center tilt-card">
+            <div class="text-4xl mb-2">📍</div>
+            <div class="text-xl font-bold">Delhi, India</div>
+            <div class="text-sm text-text-secondary">Location</div>
+          </div>
+          
+          <!-- Badges Card (2x1) -->
+          <div class="bento-card bento-2x1 flex flex-col justify-center tilt-card">
+            <h3 class="text-lg font-bold mb-3 gradient-text">What I Do</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge animate-float" style="animation-delay: 0s;">Developer</span>
+              <span class="badge animate-float" style="animation-delay: 0.2s;">Esports Gamer</span>
+              <span class="badge animate-float" style="animation-delay: 0.4s;">Logo Designer</span>
+              <span class="badge animate-float" style="animation-delay: 0.6s;">Website Creator</span>
+            </div>
+          </div>
+          
+          <!-- Education Card (1x1) -->
+          <div class="bento-card bento-1x1 flex flex-col justify-center items-center text-center tilt-card">
+            <div class="text-4xl mb-2">🎓</div>
+            <div class="text-sm font-bold">MBBS 2nd Year</div>
+            <div class="text-xs text-text-secondary mt-1">MAMC, Delhi</div>
+          </div>
+          
+          <!-- Gaming Card (1x1) -->
+          <div class="bento-card bento-1x1 flex flex-col justify-center items-center text-center tilt-card bg-gradient-to-br from-red-600/20 to-orange-500/20 border-red-500/30">
+            <div class="text-4xl mb-2">🎮</div>
+            <div class="text-sm font-bold">TEAM KYRO</div>
+            <div class="text-xs text-text-secondary">Esports</div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    
+    <!-- About Section with Bento Grid -->
+    <section id="about" class="py-20 bg-bg-card/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="section-title text-4xl md:text-5xl font-black text-center mb-16 gradient-text">About Me</h2>
+        
+        <div class="bento-grid grid-cols-1 md:grid-cols-4 auto-rows-[180px]">
+          
+          <!-- Bio Card (2x1) -->
+          <div class="bento-card bento-2x1 flex flex-col justify-center tilt-card">
+            <p class="text-lg leading-relaxed">
+              I'm a passionate developer balancing medical studies with my love for technology and gaming. 
+              With <span class="text-primary font-semibold">4+ years of coding experience</span>, I specialize in 
+              Python, Telegram bots, and web development.
+            </p>
+          </div>
+          
+          <!-- Education Detail Card (1x1) -->
+          <div class="bento-card bento-1x1 flex flex-col justify-center tilt-card">
+            <div class="text-3xl mb-3">🏥</div>
+            <h4 class="font-bold mb-1">Education</h4>
+            <p class="text-sm text-text-secondary">MBBS 2nd Year</p>
+            <p class="text-xs text-text-secondary">Maulana Azad Medical College</p>
+          </div>
+          
+          <!-- Experience Card (1x1) -->
+          <div class="bento-card bento-1x1 flex flex-col justify-center tilt-card">
+            <div class="text-3xl mb-3">💻</div>
+            <h4 class="font-bold mb-1">Experience</h4>
+            <p class="text-sm text-text-secondary">4+ years</p>
+            <p class="text-xs text-text-secondary">in coding</p>
+          </div>
+          
+          <!-- Full Skills Grid Card (2x2) -->
+          <div class="bento-card bento-2x2 tilt-card">
+            <h3 class="text-xl font-bold mb-6 gradient-text">Technical Skills</h3>
+            <div class="space-y-4">
+              {skills.map(skill => (
+                <div>
+                  <div class="flex justify-between text-sm mb-1">
+                    <span class="font-medium">{skill.name}</span>
+                    <span class="text-text-secondary">{skill.percent}%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-fill" data-width={skill.percent} style="width: 0%;"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <!-- Gaming Team Card (1x1) -->
+          <div class="bento-card bento-1x1 flex flex-col justify-center items-center text-center tilt-card bg-gradient-to-br from-red-600/20 to-orange-500/20">
+            <div class="text-3xl mb-2">🏆</div>
+            <h4 class="font-bold">Gaming</h4>
+            <p class="text-sm text-red-400">TEAM KYRO Esports</p>
+          </div>
+          
+          <!-- Age Card (1x1) -->
+          <div class="bento-card bento-1x1 flex flex-col justify-center items-center text-center tilt-card">
+            <div class="text-4xl font-black gradient-text">20</div>
+            <p class="text-sm text-text-secondary">Years Old</p>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    
+    <!-- Featured Projects Section -->
+    <section id="projects" class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="section-title text-4xl md:text-5xl font-black text-center mb-16 gradient-text">Featured Projects</h2>
+        
+        <div class="bento-grid grid-cols-1 md:grid-cols-3 auto-rows-[300px]">
+          
+          {projects.map((project, index) => (
+            <a 
+              href={project.link}
+              target={project.external ? '_blank' : undefined}
+              rel={project.external ? 'noopener noreferrer' : undefined}
+              class:list={[
+                'project-card tilt-card p-6 flex flex-col relative group',
+                project.featured && 'md:col-span-2 md:row-span-2 featured'
+              ]}
+            >
+              {/* Featured Badge */}
+              {project.featured && (
+                <div class="absolute top-4 right-4 px-3 py-1 bg-amber-500/20 border border-amber-500/50 rounded-full text-amber-400 text-xs font-semibold animate-pulse-glow">
+                  ⭐ Featured
+                </div>
+              )}
+              
+              {/* Gradient Background */}
+              <div class={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-500 rounded-bento`}></div>
+              
+              {/* Content */}
+              <div class="relative z-10 flex flex-col h-full">
+                <div class={`text-5xl mb-4 ${project.featured ? 'text-7xl' : ''}`}>{project.icon}</div>
+                <h3 class={`font-bold mb-2 ${project.featured ? 'text-3xl' : 'text-xl'}`}>{project.title}</h3>
+                <p class={`text-text-secondary flex-grow ${project.featured ? 'text-lg' : 'text-sm'}`}>
+                  {project.description}
+                </p>
+                
+                {/* Status Badge */}
+                <div class="mt-4">
+                  <span class:list={[
+                    'px-3 py-1 rounded-full text-xs font-semibold',
+                    project.status === 'Completed' && 'bg-emerald-500/20 text-emerald-400',
+                    project.status === 'In Development' && 'bg-blue-500/20 text-blue-400',
+                    project.status === 'Active' && 'bg-amber-500/20 text-amber-400'
+                  ]}>
+                    {project.status}
+                  </span>
+                </div>
+                
+                {/* Tech Tags */}
+                <div class="flex flex-wrap gap-2 mt-4">
+                  {project.tech.map(tech => (
+                    <span class="px-2 py-1 bg-white/10 rounded-md text-xs">{tech}</span>
+                  ))}
+                </div>
+                
+                {/* Arrow */}
+                <div class="mt-4 text-primary font-semibold text-sm group-hover:translate-x-2 transition-transform duration-300">
+                  {project.external ? 'View on GitHub →' : 'View Details →'}
+                </div>
+              </div>
+            </a>
+          ))}
+          
+        </div>
+        
+        <!-- View All Projects CTA -->
+        <div class="text-center mt-12">
+          <a href="/projects" class="btn-secondary btn-magnetic inline-block">
+            View All Projects →
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact Section with Bento Grid -->
+    <section id="contact" class="py-20 bg-bg-card/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="section-title text-4xl md:text-5xl font-black text-center mb-8 gradient-text">Get in Touch</h2>
+        <p class="text-center text-text-secondary mb-16 text-lg">
+          Have a project in mind or want to collaborate? Feel free to reach out!
+        </p>
+        
+        <div class="bento-grid grid-cols-1 md:grid-cols-3 auto-rows-[150px] max-w-4xl mx-auto">
+          
+          <!-- Telegram Card -->
+          <a 
+            href="https://t.me/xDenvil_bot" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="contact-card tilt-card group"
+          >
+            <div class="contact-icon group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg">Telegram Bot</h3>
+              <p class="text-text-secondary">@xDenvil_bot</p>
+            </div>
+          </a>
+          
+          <!-- Email Card -->
+          <div class="contact-card tilt-card group relative">
+            <a href="mailto:xdenvil0@gmail.com" class="flex items-center gap-4 flex-grow">
+              <div class="contact-icon group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg">Email</h3>
+                <p class="text-text-secondary">xdenvil0@gmail.com</p>
+              </div>
+            </a>
+            <button 
+              class="copy-btn absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-all duration-300"
+              data-copy="xdenvil0@gmail.com"
+              aria-label="Copy email"
+            >
+              <svg class="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+              </svg>
+              <span class="copy-tooltip absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-bg-card rounded text-xs opacity-0 pointer-events-none transition-opacity duration-200">Copy</span>
+            </button>
+          </div>
+          
+          <!-- GitHub Card -->
+          <a 
+            href="https://github.com/DenxVil" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="contact-card tilt-card group"
+          >
+            <div class="contact-icon group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-lg">GitHub</h3>
+              <p class="text-text-secondary">@DenxVil</p>
+            </div>
+          </a>
+          
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

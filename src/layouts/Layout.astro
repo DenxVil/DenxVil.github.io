@@ -1,0 +1,546 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { 
+  title, 
+  description = "Denvil (Harsh) - 20-year-old MBBS student, Developer with 4+ years experience in Python, Telethon, Web Dev. Esports gamer at TEAM KYRO.", 
+  ogImage 
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={description}>
+  <meta name="keywords" content="Denvil, Harsh, Developer, Python, Telethon, HTML, CSS, SQL, GitHub, Telegram Bot, MBBS, TEAM KYRO">
+  <meta name="author" content="Denvil (Harsh)">
+  <meta name="theme-color" content="#141727">
+  
+  <!-- Preconnect hints -->
+  <link rel="preconnect" href="https://github.com">
+  <link rel="preconnect" href="https://t.me">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Google Fonts - Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://denx.me/">
+  {ogImage && <meta property="og:image" content={ogImage} />}
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Denvil (Harsh)",
+    "url": "https://denx.me/",
+    "jobTitle": "Developer",
+    "description": "20-year-old MBBS student with 4+ years coding experience in Python, Telethon, and Web Development.",
+    "sameAs": [
+      "https://github.com/DenxVil",
+      "https://t.me/xDenvil_bot"
+    ],
+    "knowsAbout": ["Python", "Telethon", "HTML", "CSS", "SQL", "Telegram Bots", "Web Development"]
+  }
+  </script>
+  
+  <title>{title}</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body class="bg-bg-dark text-text-primary font-sans antialiased overflow-x-hidden">
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+  
+  <!-- Noise Texture Overlay -->
+  <div class="noise-overlay"></div>
+  
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursor-trail"></div>
+  
+  <!-- Animated Background -->
+  <div class="animated-bg"></div>
+  
+  <!-- Floating Background Shapes -->
+  <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+    <div class="floating-shape w-96 h-96 bg-primary top-1/4 -left-48" style="animation-delay: 0s;"></div>
+    <div class="floating-shape w-80 h-80 bg-secondary bottom-1/4 -right-40" style="animation-delay: 2s;"></div>
+    <div class="floating-shape w-64 h-64 bg-accent top-1/2 left-1/3" style="animation-delay: 4s;"></div>
+  </div>
+  
+  <slot />
+  
+  <!-- GSAP and Custom Scripts -->
+  <script>
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Initialize on DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', () => {
+      initScrollProgress();
+      initCustomCursor();
+      initThemeToggle();
+      initMobileMenu();
+      initHeaderScroll();
+      initScrollAnimations();
+      initTypingEffect();
+      initMagneticButtons();
+      initTiltEffect();
+      initSmoothScroll();
+      initSkillBars();
+      initCopyToClipboard();
+      updateYear();
+    });
+    
+    // Check for reduced motion preference
+    function prefersReducedMotion() {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+    
+    // Check if device is touch-only
+    function isTouchDevice() {
+      return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    }
+    
+    // Throttle utility
+    function throttle(func, limit) {
+      let inThrottle;
+      return function(...args) {
+        if (!inThrottle) {
+          func.apply(this, args);
+          inThrottle = true;
+          setTimeout(() => inThrottle = false, limit);
+        }
+      };
+    }
+    
+    // Debounce utility
+    function debounce(func, wait) {
+      let timeout;
+      return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+      };
+    }
+    
+    // Update year in footer
+    function updateYear() {
+      const yearSpan = document.getElementById('year');
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear().toString();
+      }
+    }
+    
+    // Scroll Progress Indicator
+    function initScrollProgress() {
+      const progressBar = document.getElementById('scroll-progress');
+      if (!progressBar) return;
+      
+      const updateProgress = throttle(() => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / docHeight) * 100;
+        progressBar.style.width = `${Math.min(progress, 100)}%`;
+      }, 16);
+      
+      window.addEventListener('scroll', updateProgress, { passive: true });
+    }
+    
+    // Custom Cursor
+    function initCustomCursor() {
+      if (isTouchDevice() || prefersReducedMotion()) return;
+      
+      const cursor = document.getElementById('cursor');
+      const trail = document.getElementById('cursor-trail');
+      
+      if (!cursor) return;
+      
+      let mouseX = 0, mouseY = 0;
+      let cursorX = 0, cursorY = 0;
+      let trailX = 0, trailY = 0;
+      
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+      
+      function animateCursor() {
+        cursorX += (mouseX - cursorX) * 0.2;
+        cursorY += (mouseY - cursorY) * 0.2;
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+        
+        if (trail) {
+          trailX += (mouseX - trailX) * 0.1;
+          trailY += (mouseY - trailY) * 0.1;
+          trail.style.left = trailX + 'px';
+          trail.style.top = trailY + 'px';
+        }
+        
+        requestAnimationFrame(animateCursor);
+      }
+      animateCursor();
+      
+      // Hover effects
+      const interactiveElements = document.querySelectorAll('a, button, .bento-card, .project-card, .contact-card');
+      interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+      });
+    }
+    
+    // Theme Toggle
+    function initThemeToggle() {
+      const themeToggle = document.getElementById('theme-toggle');
+      if (!themeToggle) return;
+      
+      const html = document.documentElement;
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      html.classList.toggle('light', savedTheme === 'light');
+      html.classList.toggle('dark', savedTheme === 'dark');
+      updateThemeIcon(themeToggle, savedTheme);
+      
+      themeToggle.addEventListener('click', () => {
+        const isLight = html.classList.contains('light');
+        html.classList.toggle('light', !isLight);
+        html.classList.toggle('dark', isLight);
+        const newTheme = isLight ? 'dark' : 'light';
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(themeToggle, newTheme);
+      });
+    }
+    
+    function updateThemeIcon(button, theme) {
+      button.innerHTML = theme === 'dark' ? '🌙' : '☀️';
+    }
+    
+    // Mobile Menu
+    function initMobileMenu() {
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileOverlay = document.getElementById('mobile-overlay');
+      const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+      
+      if (!hamburger || !mobileMenu) return;
+      
+      const toggleMenu = () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('open');
+        mobileOverlay?.classList.toggle('open');
+        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+      };
+      
+      hamburger.addEventListener('click', toggleMenu);
+      mobileOverlay?.addEventListener('click', toggleMenu);
+      mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+    }
+    
+    // Header Hide/Show on Scroll
+    function initHeaderScroll() {
+      const header = document.getElementById('header');
+      if (!header) return;
+      
+      let lastScroll = 0;
+      
+      const handleScroll = throttle(() => {
+        const currentScroll = window.scrollY;
+        
+        if (currentScroll > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+        
+        if (currentScroll > 100) {
+          if (currentScroll > lastScroll) {
+            header.classList.add('hidden');
+          } else {
+            header.classList.remove('hidden');
+          }
+        } else {
+          header.classList.remove('hidden');
+        }
+        
+        lastScroll = currentScroll;
+      }, 100);
+      
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    }
+    
+    // GSAP Scroll Animations
+    function initScrollAnimations() {
+      if (prefersReducedMotion()) return;
+      
+      // Animate bento cards
+      gsap.utils.toArray('.bento-card').forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          },
+          opacity: 0,
+          y: 60,
+          duration: 0.8,
+          delay: i * 0.1,
+          ease: 'power3.out'
+        });
+      });
+      
+      // Animate section titles
+      gsap.utils.toArray('.section-title').forEach((title) => {
+        gsap.from(title, {
+          scrollTrigger: {
+            trigger: title,
+            start: 'top 85%'
+          },
+          opacity: 0,
+          y: 40,
+          duration: 0.6,
+          ease: 'power2.out'
+        });
+      });
+      
+      // Animate skill bars
+      gsap.utils.toArray('.skill-fill').forEach((bar) => {
+        const width = bar.getAttribute('data-width') || '0';
+        gsap.fromTo(bar, 
+          { width: '0%' },
+          {
+            scrollTrigger: {
+              trigger: bar,
+              start: 'top 85%'
+            },
+            width: width + '%',
+            duration: 1.5,
+            ease: 'power2.out'
+          }
+        );
+      });
+      
+      // Parallax effect for floating shapes
+      gsap.utils.toArray('.floating-shape').forEach((shape) => {
+        gsap.to(shape, {
+          scrollTrigger: {
+            trigger: 'body',
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 1
+          },
+          y: -100,
+          ease: 'none'
+        });
+      });
+    }
+    
+    // Typing Effect
+    function initTypingEffect() {
+      const typingElement = document.getElementById('typing-text');
+      if (!typingElement || prefersReducedMotion()) return;
+      
+      const words = ['Developer', 'Designer', 'Esports Gamer', 'Website Creator'];
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      
+      function type() {
+        const currentWord = words[wordIndex];
+        
+        if (isDeleting) {
+          typingElement.textContent = currentWord.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          typingElement.textContent = currentWord.substring(0, charIndex + 1);
+          charIndex++;
+        }
+        
+        let speed = isDeleting ? 50 : 100;
+        
+        if (!isDeleting && charIndex === currentWord.length) {
+          speed = 2000;
+          isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          speed = 500;
+        }
+        
+        setTimeout(type, speed);
+      }
+      
+      setTimeout(type, 1000);
+    }
+    
+    // Magnetic Buttons
+    function initMagneticButtons() {
+      if (isTouchDevice() || prefersReducedMotion()) return;
+      
+      const magneticElements = document.querySelectorAll('.btn-magnetic');
+      
+      magneticElements.forEach(el => {
+        el.addEventListener('mousemove', (e) => {
+          const rect = el.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          
+          gsap.to(el, {
+            x: x * 0.3,
+            y: y * 0.3,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        });
+        
+        el.addEventListener('mouseleave', () => {
+          gsap.to(el, {
+            x: 0,
+            y: 0,
+            duration: 0.5,
+            ease: 'elastic.out(1, 0.5)'
+          });
+        });
+      });
+    }
+    
+    // 3D Card Tilt Effect
+    function initTiltEffect() {
+      if (isTouchDevice() || prefersReducedMotion()) return;
+      
+      const tiltCards = document.querySelectorAll('.tilt-card');
+      
+      tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const rotateX = (y - centerY) / 10;
+          const rotateY = (centerX - x) / 10;
+          
+          gsap.to(card, {
+            rotateX: rotateX,
+            rotateY: rotateY,
+            scale: 1.02,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          gsap.to(card, {
+            rotateX: 0,
+            rotateY: 0,
+            scale: 1,
+            duration: 0.5,
+            ease: 'power2.out'
+          });
+        });
+      });
+    }
+    
+    // Smooth Scroll
+    function initSmoothScroll() {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          if (!href || href === '#') return;
+          
+          const target = document.querySelector(href);
+          if (target) {
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: prefersReducedMotion() ? 'auto' : 'smooth'
+            });
+          }
+        });
+      });
+    }
+    
+    // Skill Bars (fallback for non-GSAP)
+    function initSkillBars() {
+      const skillBars = document.querySelectorAll('.skill-fill');
+      if (skillBars.length === 0) return;
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const fill = entry.target;
+            const width = fill.getAttribute('data-width');
+            if (width) {
+              fill.style.width = width + '%';
+            }
+            observer.unobserve(fill);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      skillBars.forEach(bar => {
+        bar.style.width = '0%';
+        observer.observe(bar);
+      });
+    }
+    
+    // Copy to Clipboard
+    function initCopyToClipboard() {
+      const copyBtns = document.querySelectorAll('.copy-btn');
+      
+      copyBtns.forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const textToCopy = btn.getAttribute('data-copy');
+          if (!textToCopy) return;
+          
+          try {
+            await navigator.clipboard.writeText(textToCopy);
+            btn.classList.add('copied');
+            
+            const tooltip = btn.querySelector('.copy-tooltip');
+            if (tooltip) {
+              tooltip.textContent = 'Copied!';
+              tooltip.classList.add('visible');
+            }
+            
+            setTimeout(() => {
+              btn.classList.remove('copied');
+              if (tooltip) {
+                tooltip.classList.remove('visible');
+                tooltip.textContent = 'Copy';
+              }
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
