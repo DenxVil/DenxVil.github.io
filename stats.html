@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GitHub Statistics and Coding Activity for Denvil (Harsh) - Live repos, stars, followers, and language breakdown">
+    <meta name="keywords" content="Denvil, Harsh, GitHub Stats, Developer, Python, Telegram Bot, Coding Activity">
+    <meta name="author" content="Denvil (Harsh)">
+    <meta name="theme-color" content="#141727">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="GitHub Stats - Denvil (Harsh)">
+    <meta property="og:description" content="Live GitHub statistics, coding activity heatmap, and repository showcase">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://denxvil.github.io/stats.html">
+    
+    <title>GitHub Stats - Denvil (Harsh)</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" aria-hidden="true"></div>
+    
+    <!-- Noise Texture Overlay -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+    
+    <!-- Aurora Background -->
+    <div class="aurora-bg" aria-hidden="true">
+        <div class="aurora-layer"></div>
+        <div class="aurora-layer"></div>
+        <div class="aurora-layer"></div>
+    </div>
+    
+    <!-- Twinkling Stars -->
+    <div class="stars-container" aria-hidden="true">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+    
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" aria-hidden="true"></div>
+    <div class="cursor-trail" aria-hidden="true"></div>
+    
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="brand" aria-label="Home">
+                <div class="brand-cube" aria-hidden="true"></div>
+                <span>DENVIL</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#projects" class="nav-link">Projects</a></li>
+                <li><a href="projects.html" class="nav-link">All Projects</a></li>
+                <li><a href="stats.html" class="nav-link">Stats</a></li>
+                <li><a href="/#contact" class="nav-link-cta">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            <button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay" aria-hidden="true"></div>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+        <ul class="mobile-nav-links">
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#projects">Projects</a></li>
+            <li><a href="projects.html">All Projects</a></li>
+            <li><a href="stats.html">Stats</a></li>
+            <li><a href="/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="stats-page">
+        <div class="container">
+            <div class="page-header animate-on-scroll">
+                <h1 class="page-title">GitHub Stats</h1>
+                <p class="page-description">
+                    Live statistics from my GitHub profile - repositories, contributions, and coding activity
+                </p>
+            </div>
+
+            <!-- GitHub Stats Container - Will be populated by stats.js -->
+            <div class="github-stats-container animate-on-scroll">
+                <!-- Stats will be loaded here by JavaScript -->
+            </div>
+
+            <!-- GitHub Contribution Graph -->
+            <section class="contribution-section animate-on-scroll glass" style="padding: var(--space-lg); border-radius: 1.5rem; margin-top: var(--space-xl);">
+                <h3 style="text-align: center; margin-bottom: var(--space-lg);">GitHub Activity</h3>
+                <div style="text-align: center;">
+                    <img 
+                        src="https://ghchart.rshah.org/3b82f6/DenxVil" 
+                        alt="GitHub Contribution Chart" 
+                        style="max-width: 100%; height: auto; border-radius: 0.5rem;"
+                        loading="lazy"
+                    >
+                </div>
+            </section>
+
+            <!-- GitHub Stats Cards -->
+            <section class="github-cards animate-on-scroll" style="margin-top: var(--space-xl);">
+                <h3 style="text-align: center; margin-bottom: var(--space-lg);">GitHub Overview</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-md);">
+                    <div class="glass" style="padding: var(--space-lg); border-radius: 1rem; text-align: center;">
+                        <img 
+                            src="https://github-readme-stats.vercel.app/api?username=DenxVil&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000" 
+                            alt="GitHub Stats" 
+                            style="max-width: 100%; height: auto;"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="glass" style="padding: var(--space-lg); border-radius: 1rem; text-align: center;">
+                        <img 
+                            src="https://github-readme-stats.vercel.app/api/top-langs/?username=DenxVil&layout=compact&theme=tokyonight&hide_border=true&bg_color=00000000" 
+                            alt="Top Languages" 
+                            style="max-width: 100%; height: auto;"
+                            loading="lazy"
+                        >
+                    </div>
+                </div>
+            </section>
+
+            <!-- GitHub Streak -->
+            <section class="streak-section animate-on-scroll glass" style="padding: var(--space-lg); border-radius: 1.5rem; margin-top: var(--space-xl); text-align: center;">
+                <h3 style="margin-bottom: var(--space-lg);">Contribution Streak</h3>
+                <img 
+                    src="https://github-readme-streak-stats.herokuapp.com/?user=DenxVil&theme=tokyonight&hide_border=true&background=00000000" 
+                    alt="GitHub Streak" 
+                    style="max-width: 100%; height: auto;"
+                    loading="lazy"
+                >
+            </section>
+
+            <!-- Coding Journey -->
+            <section class="coding-journey animate-on-scroll" style="margin-top: var(--space-xl);">
+                <h3 style="text-align: center; margin-bottom: var(--space-lg);">My Coding Journey</h3>
+                <div class="glass" style="padding: var(--space-xl); border-radius: 1.5rem;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-lg); text-align: center;">
+                        <div>
+                            <div style="font-size: 3rem; margin-bottom: var(--space-sm);">🎮</div>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: var(--color-primary);">2020</div>
+                            <div style="color: var(--color-text-secondary);">Started Coding</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 3rem; margin-bottom: var(--space-sm);">🐍</div>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: var(--color-primary);">Python</div>
+                            <div style="color: var(--color-text-secondary);">Primary Language</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 3rem; margin-bottom: var(--space-sm);">🤖</div>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: var(--color-primary);">4+ Years</div>
+                            <div style="color: var(--color-text-secondary);">Experience</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 3rem; margin-bottom: var(--space-sm);">🏥</div>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: var(--color-primary);">MBBS</div>
+                            <div style="color: var(--color-text-secondary);">+ Development</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Chart -->
+            <section class="skills-chart animate-on-scroll" style="margin-top: var(--space-xl);">
+                <h3 style="text-align: center; margin-bottom: var(--space-lg);">Technical Skills</h3>
+                <div class="glass" style="padding: var(--space-xl); border-radius: 1.5rem;">
+                    <div class="skills-grid">
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span class="skill-name">Telegram Bots</span>
+                                <span class="skill-percent">92%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-fill" style="width: 92%" data-width="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-fill" style="width: 90%" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span class="skill-name">HTML & CSS</span>
+                                <span class="skill-percent">88%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-fill" style="width: 88%" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span class="skill-name">Telethon</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-fill" style="width: 85%" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span class="skill-name">GitHub</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-fill" style="width: 85%" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span class="skill-name">SQL</span>
+                                <span class="skill-percent">80%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-fill" style="width: 80%" data-width="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-percent">75%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-fill" style="width: 75%" data-width="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span class="skill-name">AI/ML</span>
+                                <span class="skill-percent">70%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-fill" style="width: 70%" data-width="70"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <section class="cta-section" style="text-align: center; padding: var(--space-xl) 0;">
+                <h2 style="font-size: 2rem; margin-bottom: var(--space-md);">Want to Collaborate?</h2>
+                <p style="color: var(--color-text-secondary); margin-bottom: var(--space-lg);">Check out my projects or get in touch!</p>
+                <div style="display: flex; justify-content: center; gap: var(--space-md); flex-wrap: wrap;">
+                    <a href="https://github.com/DenxVil" target="_blank" rel="noopener" class="btn-primary">
+                        View GitHub Profile
+                    </a>
+                    <a href="/#contact" class="btn-outline">
+                        Contact Me
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p>&copy; <span id="year">2024</span> Denvil (Harsh). All rights reserved.</p>
+                </div>
+                <div class="footer-right">
+                    <a href="https://github.com/DenxVil" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+                    <a href="https://t.me/xDenvil_bot" target="_blank" rel="noopener" class="footer-link">Telegram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/stats.js"></script>
+</body>
+</html>

@@ -15,6 +15,27 @@
     <!-- Noise Texture Overlay -->
     <div class="noise-overlay" aria-hidden="true"></div>
     
+    <!-- Aurora Background -->
+    <div class="aurora-bg" aria-hidden="true">
+        <div class="aurora-layer"></div>
+        <div class="aurora-layer"></div>
+        <div class="aurora-layer"></div>
+    </div>
+    
+    <!-- Twinkling Stars -->
+    <div class="stars-container" aria-hidden="true">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+    
     <!-- Custom Cursor -->
     <div class="custom-cursor" aria-hidden="true"></div>
     <div class="cursor-trail" aria-hidden="true"></div>
@@ -30,6 +51,7 @@
                 <li><a href="/#about" class="nav-link">About</a></li>
                 <li><a href="/#projects" class="nav-link">Projects</a></li>
                 <li><a href="projects.html" class="nav-link">All Projects</a></li>
+                <li><a href="stats.html" class="nav-link">Stats</a></li>
                 <li><a href="/#contact" class="nav-link-cta">Contact</a></li>
             </ul>
             <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
@@ -48,6 +70,7 @@
             <li><a href="/#about">About</a></li>
             <li><a href="/#projects">Projects</a></li>
             <li><a href="projects.html">All Projects</a></li>
+            <li><a href="stats.html">Stats</a></li>
             <li><a href="/#contact">Contact</a></li>
         </ul>
     </nav>
@@ -95,12 +118,14 @@
                             <span class="tech-badge">JavaScript</span>
                         </div>
                         <span class="project-link">View Details →</span>
+                        <div class="reaction-container" data-project-id="pulse-protector"></div>
                     </div>
                 </a>
 
                 <!-- Nexus AI -->
-                <a href="nexus.html" class="project-item" data-status="development">
+                <a href="nexus.html" class="project-item featured-project" data-status="development">
                     <div class="project-preview" style="background: linear-gradient(135deg, #1e3a8a, #7c3aed);">
+                        <span class="featured-star">🌟</span>
                         🤖
                     </div>
                     <div class="project-content">
@@ -115,6 +140,7 @@
                             <span class="tech-badge">Telegram</span>
                         </div>
                         <span class="project-link">View Details →</span>
+                        <div class="reaction-container" data-project-id="nexus-ai"></div>
                     </div>
                 </a>
 
@@ -324,6 +350,7 @@
                             <span class="tech-badge">CSS</span>
                             <span class="tech-badge">JavaScript</span>
                         </div>
+                        <div class="reaction-container" data-project-id="denxme"></div>
                     </div>
                 </div>
             </div>
@@ -339,11 +366,14 @@
                 <div class="footer-right">
                     <a href="https://github.com/DenxVil" target="_blank" rel="noopener" class="footer-link">GitHub</a>
                     <a href="https://t.me/xDenvil_bot" target="_blank" rel="noopener" class="footer-link">Telegram</a>
+                    <a href="stats.html" class="footer-link">Stats</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/reactions.js"></script>
+    <script src="assets/js/swipe.js"></script>
 </body>
 </html>

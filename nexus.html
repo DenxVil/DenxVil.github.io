@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Nexus AI - Advanced AI chatbot by Denvil (Harsh) with intelligent conversation capabilities">
+    <meta name="keywords" content="Nexus AI, AI Chatbot, Telegram Bot, NexusAiProbot, Denvil, Machine Learning">
+    <meta name="author" content="Denvil (Harsh)">
+    <meta name="theme-color" content="#1e3a8a">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Nexus AI - Advanced AI Chatbot">
+    <meta property="og:description" content="Experience intelligent conversations with Nexus AI - powered by advanced machine learning">
+    <meta property="og:type" content="website">
+    
     <title>Nexus AI - Advanced AI Chatbot</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -11,36 +20,133 @@
         .nexus-page {
             padding-top: 120px;
             min-height: 100vh;
+            position: relative;
+        }
+        
+        .nexus-bg-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .nexus-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            animation: orbFloat 20s infinite ease-in-out;
+        }
+        
+        .nexus-orb:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .nexus-orb:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.3), transparent);
+            top: 50%;
+            right: 10%;
+            animation-delay: -10s;
+        }
+        
+        .nexus-orb:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent);
+            bottom: 10%;
+            left: 30%;
+            animation-delay: -5s;
+        }
+        
+        @keyframes orbFloat {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(50px, -30px) scale(1.1);
+            }
+            50% {
+                transform: translate(-30px, 50px) scale(0.9);
+            }
+            75% {
+                transform: translate(30px, 30px) scale(1.05);
+            }
         }
         
         .nexus-hero {
             text-align: center;
             margin-bottom: var(--space-xl);
             padding: 3rem 0;
-            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1), transparent);
+            position: relative;
         }
         
-        .nexus-icon {
-            font-size: 6rem;
-            margin-bottom: var(--space-md);
+        .nexus-icon-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .nexus-icon-wrapper img {
+            width: 150px;
+            height: 150px;
             animation: float3s 3s ease-in-out infinite;
         }
         
+        .nexus-icon-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.4), transparent);
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            animation: pulseGlow 2s infinite ease-in-out;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.3);
+                opacity: 0.8;
+            }
+        }
+        
         .nexus-title {
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 900;
             margin-bottom: var(--space-md);
-            background: linear-gradient(135deg, #1e3a8a, #7c3aed);
+            background: linear-gradient(135deg, #3b82f6, #06b6d4, #9333ea);
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: gradientFlow 4s ease infinite;
+        }
+        
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         
         .nexus-subtitle {
             font-size: 1.5rem;
             color: var(--color-text-secondary);
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto var(--space-lg);
+            line-height: 1.8;
         }
         
         .nexus-badges {
@@ -48,6 +154,7 @@
             justify-content: center;
             gap: var(--space-md);
             flex-wrap: wrap;
+            margin-bottom: var(--space-lg);
         }
         
         .status-badge {
@@ -57,6 +164,20 @@
             border-radius: 2rem;
             font-weight: 600;
             color: var(--color-primary);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .status-badge:hover {
+            transform: translateY(-2px);
+            background: rgba(59, 130, 246, 0.3);
+        }
+        
+        .nexus-cta {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
         }
         
         .features-section {
@@ -213,11 +334,30 @@
     </style>
 </head>
 <body>
+    <!-- Background Effects -->
+    <div class="nexus-bg-effects" aria-hidden="true">
+        <div class="nexus-orb"></div>
+        <div class="nexus-orb"></div>
+        <div class="nexus-orb"></div>
+    </div>
+    
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress" aria-hidden="true"></div>
     
     <!-- Noise Texture Overlay -->
     <div class="noise-overlay" aria-hidden="true"></div>
+    
+    <!-- Twinkling Stars -->
+    <div class="stars-container" aria-hidden="true">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
     
     <!-- Custom Cursor -->
     <div class="custom-cursor" aria-hidden="true"></div>
@@ -234,6 +374,7 @@
                 <li><a href="/#about" class="nav-link">About</a></li>
                 <li><a href="/#projects" class="nav-link">Projects</a></li>
                 <li><a href="projects.html" class="nav-link">All Projects</a></li>
+                <li><a href="stats.html" class="nav-link">Stats</a></li>
                 <li><a href="/#contact" class="nav-link-cta">Contact</a></li>
             </ul>
             <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
@@ -252,6 +393,7 @@
             <li><a href="/#about">About</a></li>
             <li><a href="/#projects">Projects</a></li>
             <li><a href="projects.html">All Projects</a></li>
+            <li><a href="stats.html">Stats</a></li>
             <li><a href="/#contact">Contact</a></li>
         </ul>
     </nav>
@@ -260,15 +402,26 @@
         <div class="container">
             <!-- Hero Section -->
             <div class="nexus-hero">
-                <div class="nexus-icon">🤖</div>
+                <div class="nexus-icon-wrapper">
+                    <div class="nexus-icon-glow"></div>
+                    <img src="logo/nexus-ai-3d.svg" alt="Nexus AI">
+                </div>
                 <h1 class="nexus-title">Nexus AI</h1>
                 <p class="nexus-subtitle">
-                    Advanced AI chatbot with intelligent conversation capabilities, natural language processing, and seamless Telegram integration.
+                    Advanced AI chatbot with intelligent conversation capabilities, natural language processing, and seamless Telegram integration. Experience the future of AI-powered communication.
                 </p>
                 <div class="nexus-badges">
                     <span class="status-badge">🚀 In Development</span>
                     <span class="status-badge">🤖 AI-Powered</span>
                     <span class="status-badge">⚡ Fast Response</span>
+                </div>
+                <div class="nexus-cta" style="margin-top: 2rem;">
+                    <a href="https://t.me/NexusAiProbot" target="_blank" rel="noopener" class="btn-primary magnetic-btn">
+                        🚀 Try on Telegram
+                    </a>
+                    <a href="https://github.com/Shanxai/Nexus" target="_blank" rel="noopener" class="btn-outline magnetic-btn">
+                        📂 View Source
+                    </a>
                 </div>
             </div>
 
@@ -276,7 +429,7 @@
             <section class="features-section">
                 <h2 class="section-heading">Key Features</h2>
                 <div class="features-grid">
-                    <div class="feature-card">
+                    <div class="feature-card glass holographic">
                         <div class="feature-icon">💬</div>
                         <h3 class="feature-title">Natural Conversations</h3>
                         <p class="feature-desc">
@@ -284,7 +437,7 @@
                         </p>
                     </div>
                     
-                    <div class="feature-card">
+                    <div class="feature-card glass holographic">
                         <div class="feature-icon">🧠</div>
                         <h3 class="feature-title">Smart AI Engine</h3>
                         <p class="feature-desc">
@@ -292,7 +445,7 @@
                         </p>
                     </div>
                     
-                    <div class="feature-card">
+                    <div class="feature-card glass holographic">
                         <div class="feature-icon">⚡</div>
                         <h3 class="feature-title">Lightning Fast</h3>
                         <p class="feature-desc">
@@ -368,15 +521,15 @@
             </section>
 
             <!-- CTA Section -->
-            <section class="cta-section">
+            <section class="cta-section glass" style="border-radius: 2rem; padding: 3rem;">
                 <h2 class="cta-title">Ready to Experience Nexus AI?</h2>
                 <p class="cta-desc">Start chatting with one of the most advanced AI bots on Telegram</p>
                 <div class="cta-buttons">
-                    <a href="https://t.me/NexusAiProbot" target="_blank" rel="noopener" class="btn-primary">
-                        Chat on Telegram
+                    <a href="https://t.me/NexusAiProbot" target="_blank" rel="noopener" class="btn-primary magnetic-btn">
+                        🤖 Chat on Telegram
                     </a>
-                    <a href="https://github.com/Shanxai/Nexus" target="_blank" rel="noopener" class="btn-outline">
-                        View Repository
+                    <a href="https://github.com/Shanxai/Nexus" target="_blank" rel="noopener" class="btn-outline magnetic-btn">
+                        📂 View Repository
                     </a>
                 </div>
             </section>
@@ -404,11 +557,13 @@
                 <div class="footer-right">
                     <a href="https://github.com/DenxVil" target="_blank" rel="noopener" class="footer-link">GitHub</a>
                     <a href="https://t.me/xDenvil_bot" target="_blank" rel="noopener" class="footer-link">Telegram</a>
+                    <a href="stats.html" class="footer-link">Stats</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/magnetic.js"></script>
 </body>
 </html>

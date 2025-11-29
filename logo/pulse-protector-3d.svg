@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="pulseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ef4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <filter id="pulseGlow3d" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="heartbeatGlow">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background glow -->
+  <circle cx="100" cy="100" r="90" fill="url(#pulseGradient)" opacity="0.1"/>
+  
+  <!-- Outer ring -->
+  <circle cx="100" cy="100" r="85" fill="none" stroke="url(#pulseGradient)" stroke-width="2" opacity="0.3"/>
+  <circle cx="100" cy="100" r="75" fill="none" stroke="url(#pulseGradient)" stroke-width="1.5" opacity="0.4"/>
+  
+  <!-- Medical cross background -->
+  <g filter="url(#pulseGlow3d)">
+    <rect x="85" y="40" width="30" height="120" rx="4" fill="url(#pulseGradient)" opacity="0.3"/>
+    <rect x="40" y="85" width="120" height="30" rx="4" fill="url(#pulseGradient)" opacity="0.3"/>
+  </g>
+  
+  <!-- Central medical cross -->
+  <g filter="url(#pulseGlow3d)">
+    <rect x="90" y="50" width="20" height="100" rx="3" fill="url(#pulseGradient)" opacity="0.9"/>
+    <rect x="50" y="90" width="100" height="20" rx="3" fill="url(#pulseGradient)" opacity="0.9"/>
+  </g>
+  
+  <!-- ECG/Heartbeat line -->
+  <g filter="url(#heartbeatGlow)">
+    <path d="M 20 100 
+             L 40 100 
+             L 50 100 
+             L 55 90 
+             L 60 110 
+             L 65 80 
+             L 70 120 
+             L 75 70 
+             L 80 130 
+             L 85 60 
+             L 90 100 
+             L 100 100
+             L 110 100 
+             L 115 90 
+             L 120 110 
+             L 125 80 
+             L 130 120 
+             L 135 70 
+             L 140 130 
+             L 145 60 
+             L 150 100 
+             L 160 100 
+             L 180 100" 
+          stroke="#ef4444" 
+          stroke-width="3" 
+          fill="none" 
+          opacity="0.9"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Heart icon in center -->
+  <g transform="translate(88, 88)" filter="url(#pulseGlow3d)">
+    <path d="M 12 4 
+             C 10 -1 5 -1 3 4 
+             C 0 10 12 20 12 20 
+             C 12 20 24 10 21 4 
+             C 19 -1 14 -1 12 4 Z" 
+          fill="#dc2626" 
+          stroke="#ffffff" 
+          stroke-width="1"/>
+  </g>
+  
+  <!-- Vital sign indicators -->
+  <g fill="url(#pulseGradient)" filter="url(#pulseGlow3d)">
+    <!-- Top -->
+    <circle cx="100" cy="25" r="5"/>
+    <!-- Bottom -->
+    <circle cx="100" cy="175" r="5"/>
+    <!-- Left -->
+    <circle cx="25" cy="100" r="5"/>
+    <!-- Right -->
+    <circle cx="175" cy="100" r="5"/>
+  </g>
+  
+  <!-- Pulse dots -->
+  <g fill="#ef4444" opacity="0.8">
+    <circle cx="35" cy="100" r="3"/>
+    <circle cx="55" cy="100" r="2"/>
+    <circle cx="145" cy="100" r="2"/>
+    <circle cx="165" cy="100" r="3"/>
+  </g>
+  
+  <!-- Small indicator lights -->
+  <circle cx="40" cy="45" r="4" fill="#22c55e" opacity="0.9"/>
+  <circle cx="160" cy="45" r="4" fill="#22c55e" opacity="0.9"/>
+  <circle cx="40" cy="155" r="4" fill="#059669" opacity="0.9"/>
+  <circle cx="160" cy="155" r="4" fill="#059669" opacity="0.9"/>
+</svg>
