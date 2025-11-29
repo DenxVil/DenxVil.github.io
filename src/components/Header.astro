@@ -1,0 +1,85 @@
+---
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = 'home' } = Astro.props;
+---
+
+<header id="header" class="header">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+    <!-- Brand -->
+    <a href="/" class="flex items-center gap-3 group">
+      <div class="w-10 h-10 relative transform-gpu group-hover:rotate-180 transition-transform duration-700" style="transform-style: preserve-3d;">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-lg" style="transform: rotateY(0deg);"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-secondary to-accent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      </div>
+      <span class="text-2xl font-bold gradient-text">DENVIL</span>
+    </a>
+    
+    <!-- Desktop Navigation -->
+    <ul class="hidden md:flex items-center gap-8">
+      <li>
+        <a href="/#about" class={`nav-link ${currentPage === 'about' ? 'text-text-primary' : ''}`}>About</a>
+      </li>
+      <li>
+        <a href="/#projects" class={`nav-link ${currentPage === 'projects' ? 'text-text-primary' : ''}`}>Projects</a>
+      </li>
+      <li>
+        <a href="/projects" class={`nav-link ${currentPage === 'all-projects' ? 'text-text-primary' : ''}`}>All Projects</a>
+      </li>
+      <li>
+        <a href="/#contact" class="btn-primary btn-magnetic py-2 px-6">Contact</a>
+      </li>
+    </ul>
+    
+    <!-- Theme Toggle & Mobile Menu -->
+    <div class="flex items-center gap-4">
+      <button 
+        id="theme-toggle" 
+        class="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-all duration-300 hover:scale-110"
+        aria-label="Toggle theme"
+      >
+        🌙
+      </button>
+      
+      <!-- Hamburger Menu (Mobile) -->
+      <button id="hamburger" class="hamburger md:hidden" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile Overlay -->
+<div id="mobile-overlay" class="mobile-overlay"></div>
+
+<!-- Mobile Menu -->
+<nav id="mobile-menu" class="mobile-menu">
+  <div class="pt-20 px-6">
+    <ul class="flex flex-col gap-4">
+      <li>
+        <a href="/#about" class="mobile-nav-link block py-3 px-4 rounded-lg text-text-primary hover:bg-primary/10 transition-all duration-300">
+          About
+        </a>
+      </li>
+      <li>
+        <a href="/#projects" class="mobile-nav-link block py-3 px-4 rounded-lg text-text-primary hover:bg-primary/10 transition-all duration-300">
+          Projects
+        </a>
+      </li>
+      <li>
+        <a href="/projects" class="mobile-nav-link block py-3 px-4 rounded-lg text-text-primary hover:bg-primary/10 transition-all duration-300">
+          All Projects
+        </a>
+      </li>
+      <li>
+        <a href="/#contact" class="mobile-nav-link block py-3 px-4 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold text-center">
+          Contact
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

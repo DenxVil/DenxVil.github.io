@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const features = [
+  { icon: '💬', title: 'Natural Conversations', desc: 'Engage in human-like conversations with advanced natural language understanding and context awareness.' },
+  { icon: '🧠', title: 'Smart AI Engine', desc: 'Powered by cutting-edge AI models for accurate responses and intelligent decision making.' },
+  { icon: '⚡', title: 'Lightning Fast', desc: 'Optimized for speed with minimal latency, providing instant responses to your queries.' },
+  { icon: '🔒', title: 'Secure & Private', desc: 'Your conversations are encrypted and private, ensuring complete data security.' },
+  { icon: '🎯', title: 'Multi-Purpose', desc: 'From general queries to specific tasks, Nexus AI handles diverse conversation types.' },
+  { icon: '🔄', title: '24/7 Available', desc: 'Always online and ready to assist you whenever you need help or information.' }
+];
+
+const steps = [
+  { num: '1', title: 'Start the Bot', desc: 'Open Telegram and search for @NexusAiProbot or click the link below to start chatting.', code: '/start' },
+  { num: '2', title: 'Send Your Query', desc: 'Type your question or message naturally. Nexus AI understands context and conversational flow.', code: null },
+  { num: '3', title: 'Get Instant Response', desc: 'Receive intelligent, accurate responses powered by advanced AI within seconds.', code: null },
+  { num: '4', title: 'Continue Conversation', desc: 'Ask follow-up questions or start new topics. Nexus AI maintains context throughout the conversation.', code: null }
+];
+
+const techStack = ['Python', 'AI/ML', 'Natural Language Processing', 'Telegram Bot API', 'Cloud Infrastructure'];
+---
+
+<Layout 
+  title="Nexus AI - Advanced AI Chatbot"
+  description="Nexus AI - Advanced AI chatbot by Denvil (Harsh) with intelligent conversation capabilities"
+>
+  <Header />
+  
+  <main class="pt-32 pb-20 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Hero Section -->
+      <div class="text-center mb-20">
+        <div class="text-8xl mb-6 animate-float">🤖</div>
+        <h1 class="text-5xl md:text-7xl font-black mb-6">
+          <span class="bg-gradient-to-r from-blue-900 via-purple-600 to-blue-500 bg-clip-text text-transparent">Nexus AI</span>
+        </h1>
+        <p class="text-xl text-text-secondary max-w-2xl mx-auto mb-8">
+          Advanced AI chatbot with intelligent conversation capabilities, natural language processing, and seamless Telegram integration.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          <span class="badge bg-blue-500/20 border-blue-500/40 text-blue-400">🚀 In Development</span>
+          <span class="badge bg-purple-500/20 border-purple-500/40 text-purple-400">🤖 AI-Powered</span>
+          <span class="badge bg-primary/20 border-primary/40 text-primary">⚡ Fast Response</span>
+        </div>
+      </div>
+      
+      <!-- Features Section -->
+      <section class="mb-20">
+        <h2 class="section-title text-3xl md:text-4xl font-black text-center mb-12 gradient-text">Key Features</h2>
+        <div class="bento-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature, i) => (
+            <div class="bento-card tilt-card p-8 hover:border-blue-500/50" style={`animation-delay: ${i * 0.1}s`}>
+              <div class="text-5xl mb-4">{feature.icon}</div>
+              <h3 class="text-xl font-bold mb-3">{feature.title}</h3>
+              <p class="text-text-secondary">{feature.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <!-- How to Use Section -->
+      <section class="mb-20 bg-bg-card/50 rounded-bento-lg p-8 md:p-12">
+        <h2 class="section-title text-3xl md:text-4xl font-black text-center mb-12 gradient-text">How to Use</h2>
+        <div class="max-w-3xl mx-auto space-y-6">
+          {steps.map(step => (
+            <div class="flex gap-6 p-6 bg-blue-500/5 border-l-4 border-primary rounded-r-lg">
+              <div class="text-3xl font-black text-primary flex-shrink-0">{step.num}</div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">{step.title}</h3>
+                <p class="text-text-secondary mb-2">{step.desc}</p>
+                {step.code && (
+                  <code class="block bg-black/30 px-4 py-2 rounded-lg text-emerald-400 font-mono text-sm">{step.code}</code>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <!-- CTA Section -->
+      <section class="text-center mb-20">
+        <h2 class="text-3xl md:text-4xl font-black mb-4">Ready to Experience Nexus AI?</h2>
+        <p class="text-xl text-text-secondary mb-8">Start chatting with one of the most advanced AI bots on Telegram</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a 
+            href="https://t.me/NexusAiProbot" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="btn-primary btn-magnetic"
+          >
+            Chat on Telegram
+          </a>
+          <a 
+            href="https://github.com/Shanxai/Nexus" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="btn-secondary btn-magnetic"
+          >
+            View Repository
+          </a>
+        </div>
+      </section>
+      
+      <!-- Tech Stack Section -->
+      <section class="text-center">
+        <h2 class="section-title text-3xl md:text-4xl font-black mb-12 gradient-text">Built With</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          {techStack.map(tech => (
+            <div class="px-6 py-3 bg-gradient-to-r from-blue-900 to-purple-600 rounded-xl font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/30">
+              {tech}
+            </div>
+          ))}
+        </div>
+      </section>
+      
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>
