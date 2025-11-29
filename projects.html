@@ -7,227 +7,18 @@
     <title>All Projects - Denvil (Harsh)</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="stylesheet" href="assets/css/style.css">
-    <style>
-        .projects-page {
-            padding-top: 120px;
-            min-height: 100vh;
-        }
-        
-        .page-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .page-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .page-description {
-            font-size: 1.25rem;
-            color: var(--color-text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .project-filters {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-        
-        .filter-btn {
-            padding: 0.75rem 1.5rem;
-            background: rgba(59, 130, 246, 0.1);
-            border: 2px solid rgba(59, 130, 246, 0.3);
-            color: var(--color-text);
-            border-radius: 2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-        
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--gradient-primary);
-            border-color: transparent;
-            transform: translateY(-2px);
-        }
-        
-        .all-projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-        
-        .project-item {
-            background: var(--color-bg-secondary);
-            border: 2px solid rgba(59, 130, 246, 0.2);
-            border-radius: 1rem;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            transform-style: preserve-3d;
-            text-decoration: none;
-            display: block;
-            color: inherit;
-        }
-        
-        .project-item:hover {
-            border-color: var(--color-primary);
-            transform: translateY(-8px) rotateX(2deg);
-            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
-        }
-        
-        .project-preview {
-            height: 200px;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            transform: rotateX(0deg) rotateZ(0deg);
-            transition: transform 0.3s ease;
-        }
-        
-        .project-item:hover .project-preview {
-            transform: rotateX(5deg) rotateZ(-2deg);
-        }
-        
-        .project-content {
-            padding: 1.5rem;
-        }
-        
-        .project-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: var(--color-text);
-        }
-        
-        .project-desc {
-            font-size: 0.875rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-        
-        .project-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .project-status {
-            padding: 0.25rem 0.75rem;
-            border-radius: 1rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-        
-        .status-completed {
-            background: rgba(34, 197, 94, 0.2);
-            color: #22c55e;
-        }
-        
-        .status-development {
-            background: rgba(59, 130, 246, 0.2);
-            color: #3b82f6;
-        }
-        
-        .status-planned {
-            background: rgba(249, 115, 22, 0.2);
-            color: #f97316;
-        }
-        
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .tech-badge {
-            padding: 0.25rem 0.75rem;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 1rem;
-            font-size: 0.75rem;
-            color: var(--color-primary);
-        }
-        
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .project-link:hover {
-            gap: 0.75rem;
-        }
-        
-        /* Featured Project Styles */
-        .featured-project {
-            border: 2px solid rgba(251, 191, 36, 0.5);
-            position: relative;
-            overflow: visible;
-        }
-        
-        .featured-project::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #fbbf24, transparent, #f59e0b);
-            border-radius: 1rem;
-            z-index: -1;
-            opacity: 0.4;
-            animation: featuredGlow 3s ease-in-out infinite;
-        }
-        
-        @keyframes featuredGlow {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
-        
-        .featured-project:hover {
-            border-color: #fbbf24;
-            box-shadow: 0 15px 35px rgba(251, 191, 36, 0.3);
-        }
-        
-        .featured-star {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5rem;
-            animation: starPulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes starPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-        
-        .featured-project .project-preview {
-            position: relative;
-        }
-    </style>
 </head>
 <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" aria-hidden="true"></div>
+    
+    <!-- Noise Texture Overlay -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+    
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" aria-hidden="true"></div>
+    <div class="cursor-trail" aria-hidden="true"></div>
+    
     <!-- Navigation -->
     <header class="header">
         <nav class="nav-container">
@@ -241,16 +32,41 @@
                 <li><a href="projects.html" class="nav-link">All Projects</a></li>
                 <li><a href="/#contact" class="nav-link-cta">Contact</a></li>
             </ul>
+            <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+            <button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
     </header>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay" aria-hidden="true"></div>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+        <ul class="mobile-nav-links">
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#projects">Projects</a></li>
+            <li><a href="projects.html">All Projects</a></li>
+            <li><a href="/#contact">Contact</a></li>
+        </ul>
+    </nav>
 
     <main class="projects-page">
         <div class="container">
-            <div class="page-header">
+            <div class="page-header animate-on-scroll">
                 <h1 class="page-title">All Projects</h1>
                 <p class="page-description">
                     A comprehensive showcase of my work in development, design, and technology
                 </p>
+            </div>
+
+            <!-- Search Input -->
+            <div class="search-container">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+                <input type="text" class="search-input" placeholder="Search projects..." aria-label="Search projects">
             </div>
 
             <div class="project-filters">
@@ -529,29 +345,5 @@
     </footer>
 
     <script src="assets/js/main.js"></script>
-    <script>
-        // Project filtering
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectItems = document.querySelectorAll('.project-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Update active state
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                const filter = btn.getAttribute('data-filter');
-
-                // Filter projects
-                projectItems.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-status') === filter) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
