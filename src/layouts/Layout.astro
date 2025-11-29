@@ -121,9 +121,9 @@ const {
     }
     
     // Throttle utility
-    function throttle(func: Function, limit: number) {
-      let inThrottle: boolean;
-      return function(this: any, ...args: any[]) {
+    function throttle(func, limit) {
+      let inThrottle;
+      return function(...args) {
         if (!inThrottle) {
           func.apply(this, args);
           inThrottle = true;
@@ -133,9 +133,9 @@ const {
     }
     
     // Debounce utility
-    function debounce(func: Function, wait: number) {
-      let timeout: ReturnType<typeof setTimeout>;
-      return function(this: any, ...args: any[]) {
+    function debounce(func, wait) {
+      let timeout;
+      return function(...args) {
         clearTimeout(timeout);
         timeout = setTimeout(() => func.apply(this, args), wait);
       };
@@ -168,8 +168,8 @@ const {
     function initCustomCursor() {
       if (isTouchDevice() || prefersReducedMotion()) return;
       
-      const cursor = document.getElementById('cursor') as HTMLElement;
-      const trail = document.getElementById('cursor-trail') as HTMLElement;
+      const cursor = document.getElementById('cursor');
+      const trail = document.getElementById('cursor-trail');
       
       if (!cursor) return;
       
@@ -228,7 +228,7 @@ const {
       });
     }
     
-    function updateThemeIcon(button: Element, theme: string) {
+    function updateThemeIcon(button, theme) {
       button.innerHTML = theme === 'dark' ? '🌙' : '☀️';
     }
     
@@ -290,7 +290,7 @@ const {
       if (prefersReducedMotion()) return;
       
       // Animate bento cards
-      gsap.utils.toArray('.bento-card').forEach((card: any, i: number) => {
+      gsap.utils.toArray('.bento-card').forEach((card, i) => {
         gsap.from(card, {
           scrollTrigger: {
             trigger: card,
@@ -306,7 +306,7 @@ const {
       });
       
       // Animate section titles
-      gsap.utils.toArray('.section-title').forEach((title: any) => {
+      gsap.utils.toArray('.section-title').forEach((title) => {
         gsap.from(title, {
           scrollTrigger: {
             trigger: title,
@@ -320,7 +320,7 @@ const {
       });
       
       // Animate skill bars
-      gsap.utils.toArray('.skill-fill').forEach((bar: any) => {
+      gsap.utils.toArray('.skill-fill').forEach((bar) => {
         const width = bar.getAttribute('data-width') || '0';
         gsap.fromTo(bar, 
           { width: '0%' },
@@ -337,7 +337,7 @@ const {
       });
       
       // Parallax effect for floating shapes
-      gsap.utils.toArray('.floating-shape').forEach((shape: any) => {
+      gsap.utils.toArray('.floating-shape').forEach((shape) => {
         gsap.to(shape, {
           scrollTrigger: {
             trigger: 'body',
@@ -396,11 +396,10 @@ const {
       const magneticElements = document.querySelectorAll('.btn-magnetic');
       
       magneticElements.forEach(el => {
-        el.addEventListener('mousemove', (e: Event) => {
-          const event = e as MouseEvent;
-          const rect = (el as HTMLElement).getBoundingClientRect();
-          const x = event.clientX - rect.left - rect.width / 2;
-          const y = event.clientY - rect.top - rect.height / 2;
+        el.addEventListener('mousemove', (e) => {
+          const rect = el.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
           
           gsap.to(el, {
             x: x * 0.3,
@@ -428,11 +427,10 @@ const {
       const tiltCards = document.querySelectorAll('.tilt-card');
       
       tiltCards.forEach(card => {
-        card.addEventListener('mousemove', (e: Event) => {
-          const event = e as MouseEvent;
-          const rect = (card as HTMLElement).getBoundingClientRect();
-          const x = event.clientX - rect.left;
-          const y = event.clientY - rect.top;
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
           
           const centerX = rect.width / 2;
           const centerY = rect.height / 2;
@@ -464,7 +462,7 @@ const {
     // Smooth Scroll
     function initSmoothScroll() {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(this: HTMLAnchorElement, e: Event) {
+        anchor.addEventListener('click', function(e) {
           e.preventDefault();
           const href = this.getAttribute('href');
           if (!href || href === '#') return;
@@ -492,7 +490,7 @@ const {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            const fill = entry.target as HTMLElement;
+            const fill = entry.target;
             const width = fill.getAttribute('data-width');
             if (width) {
               fill.style.width = width + '%';
@@ -503,7 +501,7 @@ const {
       }, { threshold: 0.5 });
       
       skillBars.forEach(bar => {
-        (bar as HTMLElement).style.width = '0%';
+        bar.style.width = '0%';
         observer.observe(bar);
       });
     }
@@ -513,11 +511,11 @@ const {
       const copyBtns = document.querySelectorAll('.copy-btn');
       
       copyBtns.forEach(btn => {
-        btn.addEventListener('click', async (e: Event) => {
+        btn.addEventListener('click', async (e) => {
           e.preventDefault();
           e.stopPropagation();
           
-          const textToCopy = (btn as HTMLElement).getAttribute('data-copy');
+          const textToCopy = btn.getAttribute('data-copy');
           if (!textToCopy) return;
           
           try {
